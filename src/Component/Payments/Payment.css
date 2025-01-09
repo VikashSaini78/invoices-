@@ -1,0 +1,272 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.Payment_div{
+width: 95%;
+height: auto;
+/* background-color: aqua; */
+margin: auto;
+
+}
+
+
+.payment_maintext{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.payment_maintext h6{
+    font-weight: bold;
+    color: rgb(80, 80, 80);
+}
+.payment_maintext div{
+    display: flex;
+    font-size: 13px;
+}
+.payment_maintext div span {
+    color: rgb(80, 80, 80);
+}
+.payment_maintext div i{
+    padding: 5px;
+    font-size: 9px;
+}
+.button_search-payment {
+    margin-top: 10px;
+    /* background-color: yellowgreen; */
+    display: flex;
+    justify-content: space-between;
+    
+}
+.button_search-payment input {
+    width: 230px;
+    font-size: 11px;
+    
+}
+.button_search-payment input:focus {
+box-shadow: none;
+    
+}
+
+.button_search-payment button{
+    font-size: 12px;
+    background-color: rgb(25, 122, 109);
+    color: white;
+}
+
+/* payment_three-icons */
+
+.invoice_three-icons{
+    width: 120px;
+    height: 70px;
+    background-color: #ffffff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: absolute;
+    right: 23px;
+    top: 130px;
+    padding: 10px;
+    color: rgb(63, 63, 63);
+    font-size: 12px;
+  
+  }
+/* 
+  .invoice_three-icons ul:hover{
+    background-color: #2a8383;
+  } */
+
+
+
+.button_search-payment button i{
+    padding: 5px;
+    font-size: 10px;
+}
+.button_search-payment button:focus{
+  box-shadow: none;
+}
+.button_search-payment button:hover{
+    color: rgb(255, 255, 255)
+}
+.button_search-payment div{
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+}
+.button_search-payment div span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+   padding: 5px;
+   background-color: rgb(210, 228, 228);
+   color: rgb(6, 158, 158);
+   font-size: 12px
+}
+
+
+/* All_payment */
+
+.All_payment{
+    width: 95%;
+    height: 100vh;
+    margin: auto;
+    background-color: white;
+    margin-top: 20px;
+}
+
+/* payment_id */
+
+.payment_id{
+    width: 100%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 13px;
+
+   }
+   .payment_id input:focus{
+     box-shadow: none;
+     cursor: pointer;
+   }
+   .payment_id td h6{
+    font-size: 11px;
+   }
+   .payment_id th{
+    font-size: 12px;
+    background-color:rgb(236, 236, 236);
+   }
+/* 
+   .table {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  } */
+
+
+
+
+   .table th,
+   .table td{
+     vertical-align: middle; 
+     text-align: center; 
+   }
+   
+
+
+   .action_td-id{
+    width: 40px;
+   background-color: rgb(203, 218, 236);
+   color: rgb(9, 49, 158);
+   border-radius: 3px;
+   margin: auto;
+   font-weight: bold;
+   }
+   .action_td-id:hover{
+    background-color: rgb(0, 79, 175);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+
+    }
+  
+
+    .status_paid-id{
+        width: 30px;
+        background-color: rgb(182, 182, 182);
+        color: rgb(94, 19, 124);
+        border-radius: 3px;
+       font-size: 7px;
+        margin: auto;
+        font-weight: bold;
+        padding: 5px;
+        }
+
+        .payment_text{
+            display: flex;
+            padding: 5px;
+        }
+        .payment_text h6{
+            padding: 7px;
+            font-size: 13px;
+            
+        }
+        .payment_text-all{
+            color: blueviolet;
+            cursor: pointer;
+            
+          
+        }
+        .payment_text-all:hover{
+           text-decoration: underline;
+          
+        }
+
+        .status_pending-id{
+            width: 40px;
+            background-color: rgb(255, 242, 219);
+            color: rgb(254, 189, 73);
+            border-radius: 3px;
+           font-size: 7px;
+            margin: auto;
+            font-weight: bold;
+            padding: 5px;
+            }
+      
+  
+
+            .status_Refund-id{
+                width: 40px;
+                background-color: rgb(220, 239, 253);
+                color: rgb(80, 176, 243);
+                border-radius: 3px;
+               font-size: 7px;
+                margin: auto;
+                font-weight: bold;
+                padding: 5px; 
+            }
+            .status_failed-id{
+                width: 40px;
+                background-color: rgb(251, 217, 217);
+                color: rgb(221, 47, 47);
+                border-radius: 3px;
+               font-size: 7px;
+                margin: auto;
+                font-weight: bold;
+                padding: 5px; 
+            } 
+
+
+
+            /* .pagination */
+
+            
+            .pagination-payment{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 15px;
+                font-size: 13px;
+                /* background-color: rgb(87, 117, 143); */
+            }
+            .Showing_results-payment{
+               display: flex;
+            }
+            .Showing_results-payment h6{
+                font-size: 10px;
+                padding: 4px;
+                font-weight: bold;
+             }
+             .previous_next-payment{
+                display: flex;
+                justify-content: center;
+                align-items: center;    
+                gap: 5px;
+                font-size: 13px;
+                /* background-color: white; */
+                /* padding: 10px; */
+
+             }
+        
+
+
+             

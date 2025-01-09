@@ -1,0 +1,859 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.Dashboard_container{
+    width: 100%;
+    height: auto;
+    background-color: rgb(237, 238, 238);
+
+}
+.Dashboard_md{
+    width: 95%;
+    margin: auto;
+}
+.Top_header{
+    width: 100%;
+    height: 60px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: aliceblue; */
+    align-items: center;
+   
+}
+.Top_header h5{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(75, 75, 74);
+}
+.Top_header div{
+    display: flex;
+    font-size: 13px;
+    
+}
+.Top_header span{
+    color: black;
+}
+
+.Top_header div i{
+    padding: 7px;
+    font-size: 8px;
+}
+
+
+/* Professiona_div */
+.container-fluid{
+    /* background-color: rgb(161, 68, 83); */
+    margin: 0;
+    padding:0 ;
+}
+.Professiona_div1{
+    width: 100%;
+    height:  auto;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.Professiona_div1 span h5{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(73, 73, 73);
+    margin: 5px;
+}
+.Professiona_div1 span p{
+    /* padding: 5px; */
+    margin: 5px;
+}
+.Professiona_div1 button{
+    font-size: 13px;
+    background-color: rgb(37, 128, 120);
+    color: white;
+    margin: 5px;
+}
+.Professiona_div1 button:hover{
+    color: white;
+}
+.Professiona_div1 button:focus{
+    box-shadow: none;
+}
+
+.Professiona_div1 img{
+width: 70px;
+height: 80px;
+padding: 5px;
+margin: auto;
+}
+.Professiona_div2{
+    width: 100%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
+}
+.overview_div{
+    font-size: 13px;
+    padding: 10px;
+    display: flex;
+   
+}
+.overview_div h6{
+    font-size: 13px;
+    color: rgb(34, 34, 34);
+    font-weight: 500;
+    padding: 4px;
+}
+.overview_div h5{
+    padding: 3px;
+    font-size: 19px;
+    color: rgb(87, 87, 87);
+}
+.overview_div p{
+    padding: 4px;
+}
+.overview_div button{
+    width: 40px;
+    height: 15px;
+    margin: 3px;
+    padding: 1px;
+    font-size: 7px;
+    background-color: rgb(59, 157, 238);
+    color: white;
+}
+.overview_div button:hover{
+    color: rgb(255, 255, 255);
+}
+.overview_div button:focus{
+    box-shadow: none;
+}
+
+.overview_texts{
+    /* background-color: yellowgreen; */
+    border-right: 1px solid var(--in-border-color, rgb(221, 221, 221)); /* Apply border only on the right */
+    width: 33%; 
+}
+.overview_texts p{
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(83, 82, 82);
+}
+.overview_texts span{
+    gap: 3px;
+    /* background-color: aqua; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.overview_texts span p{
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* .overview_number */
+
+ 
+.overview_number pre{
+  visibility: hidden;
+}
+.overview_number{
+    margin: auto;
+    border-right: 1px solid var(--in-border-color, rgb(221, 221, 221)); /* Apply border only on the right */
+    width: 33%; 
+    /* background-color: rgb(95, 60, 60); */
+}
+.overview_number h5{
+    font-size: 19px;
+    color: rgb(87, 87, 87);
+}
+.overview_number p{
+    font-size: 11px;
+    font-weight: bold;
+    color: rgb(83, 82, 82);
+}
+.overview_number span{
+    gap: 3px;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+}
+.overview_number span p{
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.overview_number span button{
+width: 40px;
+/* height: 15px; */
+margin: 3px;
+padding: 1px;
+font-size: 8px;
+background-color: rgb(238, 59, 59);
+color: white;
+gap: 10px;
+}
+
+
+/* .overview_spantag */
+
+
+
+.overview_spantag{
+    /* background-color: rgba(82, 75, 114, 0.822); */
+    width: 33%;
+    margin: auto;
+}
+.overview_spantag div{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* background-color: aqua; */
+}
+.overview_spantag-div span{
+   font-weight: bold;
+}
+.overview_spantag-div i{
+    padding: 5px;
+    font-size: 10px;
+ }
+ .overview_spantag h5{
+ font-size: 19px;
+ color: rgb(87, 87, 87);
+ }
+ .overview_spantag div p{
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(83, 82, 82);
+ }
+ .Invoice_sent{
+    font-size: 11px;
+    font-weight: bold;
+    color: rgb(83, 82, 82);
+ }
+ .overview_spantag span{
+    gap: 3px;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+}
+.overview_spantag span p{
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* graph */
+
+.Activity_div{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin-top: 22px;
+    font-size: 13px;
+    padding: 10px;
+    
+}
+.Payment_Activity{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.payment_chart{
+    width: 100%;
+    height: 320px;
+
+}
+.Payment_Activity h6{
+    font-size: 14px;
+    color: rgb(63, 63, 63);
+}
+
+.activity_buttons span{
+padding: 5px;
+background-color: rgb(213, 241, 241);
+font-size: 10px;
+cursor: pointer;
+border-radius: 3px;
+color: rgb(0, 153, 255);
+gap: 2px;
+}
+#active{
+    background-color: rgb(0, 153, 255);
+    color: white;  
+}
+.activity_buttons span:hover{
+    background-color: rgb(0, 153, 255);
+    color: white;
+}
+.activity_incoms{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: rgb(78, 78, 78);
+    /* font-size: 16px; */
+}
+.activity_incoms h5{
+    font-size: 18px;
+    color: rgb(92, 92, 92);
+}
+.activity_incoms-span{
+    display: flex;
+    gap: 5px;
+}
+.activity_incoms-span h6{
+    font-size: 17px;
+    color: rgb(31, 146, 146);
+}
+
+
+/* .Quick_form */
+
+
+.Quick_form{
+    width: 100%;
+    height:  auto;
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    margin-top: 20px;
+}
+.Quick_text p{
+    width: 25px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgb(191, 191, 204);
+    color: blue;
+    font-size: 15px;
+    border-radius: 3px;
+}
+.Quick_text p i{
+    font-size: 10px;
+    padding: 3px;
+}
+.Quick_text p:hover{
+background-color: blue;
+color: white;
+
+}
+.Quick_text{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.quick_lable {
+    /* background-color: aliceblue; */
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 10px;
+    font-size: 12px;
+}
+
+.quick_lable-input{
+width: 100%;
+
+}
+.quick_lable-input input{
+    font-size: 12px;
+}
+.quick_lable input:focus{
+    box-shadow: none;
+}
+.quick_textarea{
+    margin-top: 7px;
+    font-size: 12px;
+   
+}
+.quick_textarea textarea{
+    width: 100%;
+    font-size: 12px;
+    height: 10vh;
+    margin-top: 5px;
+}
+.quick_textarea textarea:focus{
+box-shadow: none;
+}
+
+.Sub_Total1{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-top: 6px;
+  
+}
+.Sub_Total{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+  
+}
+.Sub_Total span{
+    color: gray;
+    font-size: 11px;
+}
+.Sub_Total h6{
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+}
+.Sub_Total-button{
+    display: flex;
+    justify-content: space-between;
+}
+
+#btn1{
+    background-color: rgb(38, 124, 141);
+    color: white;
+    width: 150px;
+    font-size: 12px;
+}
+#btn2{
+    background-color: rgb(230, 233, 233);
+    color: rgb(0, 0, 0);
+    width: 150px;
+    font-size: 12px;
+}
+#btn2:hover{
+    background-color: rgb(156, 167, 167);
+    color: rgb(255, 255, 255);
+    width: 150px;
+}
+.Sub_Total-button button:focus{
+    box-shadow: none;
+}
+
+/* Areachart_payment */
+
+.Areachart_payment{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+   
+}
+.Payment_Overview-chart{
+    width: 100%;
+    height: auto;
+    background-color: pink;
+    font-size: 12px;
+}
+.Sort_By-text{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: pink; */
+}
+.Sort_By-text h6{
+ font-size: 13px;
+ font-weight: bold;
+ padding: 2px;
+}
+.Sort_By-text div{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+font-size: 12px;
+}
+.Sort_By-text div p{
+   font-size: 12px;
+   padding: 2px;
+   
+   }
+   .Received_Amount{
+    display: flex;
+   }
+   .Received_Amount{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: rgb(46, 46, 46);
+   }
+   .amount_number{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(46, 46, 46);
+   }
+
+   /* Recent_Transaction */
+
+
+
+   .Recent_Transaction{
+    margin-top: 20px;
+    width: 100%;
+    height: 74vh;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    /* overflow: scroll;
+    overflow-x: hidden; */
+   }
+   .Recent_Transactionh6 h6{
+    font-size: 14px;
+   }
+   .Recent_Transactionh6 p{
+    font-size: 12px;
+    color: gray;
+   }
+
+   /* salary_pay */
+
+   .salary_pay{
+    width: 100%;
+    /* background-color: pink; */
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    
+   }
+   .salary_pay i{
+    width: 30px;
+    height: 30px;
+    
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(23, 128, 128);
+   }
+
+   .payment_date b{
+    font-size: 10px;
+    color: rgb(92, 91, 91);
+   }
+
+   .payment_date{
+    font-size: 10px;
+
+   }
+   .salary_pay span{
+    width: 50px;
+    border-radius: 3px;
+    padding: 1px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 176, 176);
+    color: red;
+   }
+   
+
+   /* 2 */
+   
+   .Online_Pro{
+    width: 100%;
+    /* background-color: pink; */
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    
+   }
+   .Online_Pro i{
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(23, 128, 128);
+   }
+   .Online_Pro span{
+    width: 50px;
+    border-radius: 3px;
+    padding: 1px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 176, 176);
+    color: rgb(120, 69, 179);
+   }
+
+
+   /* Yesterday_text */
+
+   .Yesterday_text{
+    font-size: 12px;
+    color: rgb(104, 103, 103);
+   }
+
+
+   /* 3 */
+   .Maintenanc{
+    width: 100%;
+    /* background-color: pink; */
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    
+   }
+   .Maintenanc i{
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(23, 128, 128);
+   }
+   .Maintenanc span{
+    width: 50px;
+    border-radius: 3px;
+    padding: 1px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 176, 176);
+    color: rgb(120, 69, 179);
+   }
+
+   /* 4 */
+   
+   .Bus_Bookin{
+    width: 100%;
+    /* background-color: pink; */
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    
+   }
+   .Bus_Bookin i{
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(23, 128, 128);
+   }
+   .Bus_Bookin span{
+    width: 50px;
+    border-radius: 3px;
+    padding: 1px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 176, 176);
+    color: rgb(255, 0, 0);
+   }
+   
+   /* 5 */
+   
+   .Flight_Book{
+    width: 100%;
+    padding: 5px;
+    /* background-color: pink; */
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+   }
+   .Flight_Book i{
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(23, 128, 128);
+   }
+   .Flight_Book span{
+    width: 50px;
+    border-radius: 3px;
+    padding: 1px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 176, 176);
+    color: rgb(81, 59, 182);
+   }
+    /* 6 */
+    
+   .Office_Rent{
+    width: 100%;
+    padding: 5px;
+    /* background-color: pink; */
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+   }
+   .Office_Rent i{
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(23, 128, 128);
+   }
+   .Office_Rent span{
+    width: 50px;
+    border-radius: 3px;
+    padding: 1px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 176, 176);
+    color: rgb(81, 59, 182);
+   }
+
+
+   /* Revenue_map */
+
+
+
+   @media only screen and (max-width: 768px){
+   .Recent_Transaction{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+   }
+   
+   .Countrie_div{
+    width: 44%;
+    height: auto;
+    /* background-color: rgb(165, 109, 109); */
+    font-size: 11px;
+    padding: 5px;
+    overflow: scroll;
+    overflow-y: hidden;
+   }
+   
+   .Invoice_List{
+    width: 100%;
+    height: auto;
+    /* background-color: rgb(78, 55, 55); */
+    padding: 10px;
+    margin-top: 20px;
+    overflow: scroll;
+    overflow-y: hidden;
+    margin-bottom: 20px;
+   }
+
+   .Top_header{
+    width: 95%;
+    margin: auto;
+   }
+   .Professiona_div1{
+    width: 95%;
+    margin: auto;
+   }
+   .Professiona_div2{
+    width: 95%;
+    margin: auto;
+    height: auto;
+    background-color: #9acd3200;
+    box-shadow: none;
+  
+   
+   }
+   .overview_div{
+    display: inline;
+   }
+
+   .overview_texts{
+    padding: 7px;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   }
+   .overview_number{
+    padding: 7px;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   }
+   .overview_spantag{
+    padding: 7px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   }
+   .Quick_form {
+    width: 95%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 27px;
+}
+.Areachart_payment {
+    width: 95%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-top: 19px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 27px;
+}
+.Recent_Transaction {
+    width: 95%;
+    height: auto;
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 27px;
+}
+
+ 
+}
+
+/* @media only screen and (max-width: 448px){
+
+   }
+  */
+
+   
+
+   

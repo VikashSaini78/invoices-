@@ -1,0 +1,208 @@
+.sign_in-container{
+    width: 100%;
+    height: 120vh;
+    padding: 30px;
+    background-color: rgb(228, 227, 227);
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.signin_div{
+    width: 40%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 15px;
+    /* position: fixed; */
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.signin_logo{
+    text-align: center;
+}
+.signin_logo img{
+    width: 150px;
+    margin: auto;
+}
+
+.login_page{
+    width: 80%;
+    height: auto;
+    /* background-color: rgba(255, 255, 0, 0.116); */
+    margin: auto;
+    padding: 10px;
+   
+}
+.form-label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: .5rem;
+}
+.login_page input{
+    font-size: 13px;
+}
+.login_page input:focus{
+    box-shadow: none;
+}
+.login_page h6{
+    text-align: center;
+    font-weight: 500;
+    color: rgb(78, 78, 78);
+}
+.login_page p{
+    padding: 7px;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: rgb(78, 78, 78);
+}
+.heide_show{
+    position: relative;
+    width: 93%; 
+    margin: auto;
+    right: 10px;
+    cursor: pointer;
+   
+}
+
+.rember_forgatepass{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rgb(85, 71, 52); */
+}
+.rember_forgatepass p{
+font-size: 13px;
+text-decoration: underline;
+}
+.rember_forgatepass p link:hover{
+    color: black;
+}
+.rember_forgatepass div{
+display: flex;
+align-items: center;
+gap: 5px;
+font-size: 13px;
+}
+#login_btn{
+    width: 100%;
+    font-size: 13px;
+    background-color: rgb(57, 117, 104);
+    color: white;
+    margin-top: 10px;
+
+}
+#login_btn:hover{
+    background-color: rgb(42, 88, 79);
+}
+#login_btn:focus{
+  box-shadow: none;
+    
+}
+.signin-other-title{
+ position: relative;
+ top: 11px;
+}
+.hrsign-in{
+    margin-top: 10px;
+   text-align: center;
+   font-size: 13px;
+   font-weight: bold;
+   color: rgb(76, 100, 98);
+}
+hr:not([size]) {
+    height: 1px;
+    color: #c0c0c091;
+}
+
+.socalmedia_icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+    /* background-color: yellowgreen; */
+}
+
+.facbook_i{
+    font-size: 15px;
+    padding: 5px;
+    background-color: rgb(67, 138, 122);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+.twitter_i{
+      font-size: 15px;
+    padding: 5px;
+    background-color: rgb(80, 176, 243);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+.google_i{
+    font-size: 15px;
+  padding: 5px;
+  background-color: rgb(237, 67, 67);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+
+.Don_have{
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 500;
+   
+}
+.Don_have{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Don_have p{
+    color: rgb(47, 153, 118);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+
+  @media only screen and (max-width: 768px) {
+    .sign_in-container {
+      width: 100%;
+      /* background-color: palevioletred; */
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+  
+  
+    .login_page {
+      width: 96%;
+      height: auto;
+      /* background-color: rgba(255, 255, 0, 0.116); */
+      margin: auto;
+    }
+    .heide_show{
+        position: relative;
+        bottom: 23px;
+        right: 0;
+        left: 0;
+        display: flex;
+        justify-content: end;
+}
+     
+       
+    
+  }
+  

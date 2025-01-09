@@ -1,0 +1,121 @@
+.User{
+    width: 95%;
+    margin: auto;
+    height: auto;
+
+}
+
+.user_list{
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.user_listt h6{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(83, 110, 114);
+}
+.user_list div{
+    display: flex;
+    font-size: 13px;
+}
+.user_list div span {
+    color: rgb(80, 80, 80);
+}
+.user_list div i{
+    padding: 5px;
+    font-size: 9px;
+}
+.button_search-user {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: aqua; */
+    margin-top: 10px;
+    
+}
+.button_search-user input {
+    width: 230px;
+font-size: 11px;
+    
+}
+.button_search-user input:focus {
+box-shadow: none;
+    
+}
+
+.button_search-user button{
+    font-size: 12px;
+    background-color: rgb(57, 117, 104);
+    color: white;
+}
+.button_search-user button i{
+    padding: 5px;
+    font-size: 10px;
+}
+.button_search-user button:focus{
+  box-shadow: none;
+}
+.button_search-user button:hover{
+    color: rgb(255, 255, 255)
+}
+.button_search-user div{
+    display: flex;
+    gap: 13px;
+}
+.button_search-user div span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+   padding: 5px;
+   background-color: rgb(210, 228, 228);
+   color: rgb(6, 158, 158);
+   font-size: 12px;
+   cursor: pointer;
+   
+}
+
+
+/* user_table */
+
+.user_table{
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    font-size: 13px;
+  
+}
+.user_table h6{
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+
+}
+.user_table img{
+    width: 40px;
+    border-radius: 50%;
+    padding: 5px;
+
+}
+.table th, .table td {
+    vertical-align: middle;
+    text-align: justify;
+}
+.use_table-action{
+    display: flex;
+}
+.action_eye{
+    width: 30px;
+    padding: 4px;
+    background-color: rgb(218, 218, 218);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+/* .action_eye:hover{
+
+} */

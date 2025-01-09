@@ -1,0 +1,525 @@
+.Add-invoice_container{
+    width: 95%;
+    margin: auto;
+  
+    /* background-color: yellowgreen; */
+}
+.Top_header-addinvoice{
+    width: 100%;
+    height: 60px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rgb(67, 98, 124); */
+    align-items: center;
+   
+}
+.Top_header-addinvoice h5{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(75, 75, 74);
+}
+.Top_header-addinvoice div{
+    display: flex;
+    font-size: 13px;
+    
+}
+.Top_header-addinvoice span{
+    color: black;
+}
+
+.Top_header-addinvoice div i{
+    padding: 7px;
+    font-size: 8px;
+}
+
+
+/* new-invoice_div */
+
+.new-invoice_div{
+    width: 100%;
+    height: auto;
+    margin-top: 8px;
+    /* height: auto; */
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+
+}
+
+.newinvoice_input-div{
+    width: 92%;
+    margin: auto;
+    margin-top: 16px;
+    /* background-color: rgba(153, 205, 50, 0.24); */
+    font-size: 12px;
+    padding: 5px;
+}
+
+.newinvoice_input-div p{
+width: 260px;
+border-radius: 3px;
+background-color: rgba(236, 236, 236, 0.384);
+padding: 8px;
+}
+.newinvoice_input-div label{
+    font-size: 11px;
+}
+.form-select{
+ width: 260px;
+ border: none;
+ outline: none;
+ box-shadow: none;
+ background-color: rgba(236, 236, 236, 0.384);
+ border-radius: 3px;
+ font-size: 12px;
+}
+.form-select:focus{
+    box-shadow: none;
+}
+.form-select option{
+    font-size: 12px;
+}
+
+
+
+/* newinvoice_address-div */
+
+.address_container{
+    width: 100%;
+    /* background-color: rgb(168, 168, 114); */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+}
+
+.newinvoice_address-div{
+    width: 65%;
+    height: auto;
+     margin: 15px 15px;
+    /* background-color: rgba(68, 69, 134, 0.616); */
+    font-size: 12px;
+    padding: 5px;
+}
+.newinvoice_address-logo{
+    width: 65%;
+    height: auto;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+    /* margin: auto; */
+    border-radius: 3px;
+    border: 1px solid rgba(231, 231, 231, 0.623);
+}
+.newinvoice_address-logo img{
+    width: 150px;
+}
+
+.newinvoice_address-div textarea{
+ width: 270px;
+ height: 70px;
+ border: none;
+ font-size: 12px;
+ background-color: rgba(236, 236, 236, 0.384);
+}
+.newinvoice_address-div textarea:focus{
+ box-shadow: none;
+ background-color: rgba(236, 236, 236, 0.384);
+   }
+   .newinvoice_address-div input{
+   border: none;
+   background-color: rgba(236, 236, 236, 0.384);
+   border-radius: 3px;
+   font-size: 12px;
+  margin-top: 10px;
+   
+
+   }
+   .newinvoice_address-div input:focus{
+    box-shadow: none;
+    background-color: rgba(236, 236, 236, 0.384);
+   }
+   
+
+
+/* .Billing_shipping-div */
+
+.Billing_shipping-div{
+    display: flex;
+    width: 100%;
+    height: auto;
+     margin: 15px 15px;
+    /* background-color: rgba(160, 105, 141, 0.616); */
+    font-size: 12px;
+    padding: 5px;
+
+}
+.Billing_Address-div{
+    width: 50%;
+    /* background-color: aliceblue; */
+}
+.Billing_Address-div h3{
+    font-weight: 500;
+   margin-bottom: 20px;
+   font-size: 14px;
+   color: rgb(53, 53, 53);
+    /* background-color: aliceblue; */
+
+}
+
+.Billing_Address-div textarea{
+ width: 270px;
+ border: none;
+ font-size: 12px;
+ background-color: rgba(236, 236, 236, 0.384);
+}
+.Billing_Address-div textarea:focus{
+ box-shadow: none;
+ background-color: rgba(236, 236, 236, 0.384);
+   }
+   .Billing_Address-div input{
+    width: 270px;
+   border: none;
+   background-color: rgba(236, 236, 236, 0.384);
+   border-radius: 3px;
+   font-size: 12px;
+   margin-top: 10px;
+   
+
+   }
+   .Billing_Address-div input:focus{
+    box-shadow: none;
+    background-color: rgba(236, 236, 236, 0.384);
+   }
+
+   .check_box-div{
+   display: flex;
+   }
+   
+   .check_box-div input{
+    width: 20px;
+    }
+
+
+    /* .newinvoice_table */
+
+    .newinvoice_table{
+      
+        width: 95%;
+        height: auto;
+        margin: auto;
+        margin-top: 30px;
+        /* background-color: rgb(143, 164, 184); */
+        font-size: 12px;
+       border-bottom-width: 0px;
+       border-color: rgba(255, 255, 255, 0.315);
+    }
+    .tr_table{
+        background-color: rgba(236, 236, 236, 0.384);
+        
+    }
+
+    .iinput-table_newvoice{
+        width: 200px;
+        border: none;
+        /* background-color: rgb(88, 125, 158); */
+    }
+    .iinput-table_newvoice input{
+        font-size: 12px;
+        width: 270px;
+        border: none;
+        outline: none;
+        background-color: rgba(236, 236, 236, 0.384);
+        
+    }
+    .iinput-table_newvoice input:focus{
+        box-shadow: none;
+    }
+    .iinput-table_newvoice textarea{
+        font-size: 12px;
+        margin-top: 8px;
+        width: 270px;
+        border: none;
+        outline: none;
+        background-color: rgba(236, 236, 236, 0.384);
+    }
+    .iinput-table_newvoice textarea:focus{
+        box-shadow: none;
+    }
+
+    .table th, .table td {
+        vertical-align: baseline;
+        text-align: justify;
+      border: none;
+    }
+    .reate_s{
+        height: 25px;
+        width: 70px;
+        border: 1px solid rgb(207, 207, 207);
+        background-color: rgba(236, 236, 236, 0.384);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+     
+    }
+
+
+    .counter_div{
+        width: 100px;
+        height: 27px;
+        border: 1px solid rgb(182, 182, 182);
+        align-items: center;
+        border-radius: 3px;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .counter_div p{
+        background-color: rgba(197, 197, 197, 0.384);
+        width: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        padding: 4px;
+        cursor: pointer;
+        border-radius: 2px;
+        
+    }
+    .Amount_div{
+        display: flex;
+        gap: 15px;
+        border: none;
+    }
+    .Amount_div p{
+        font-size: 12px;
+        width: 80px;
+        background-color: rgba(175, 175, 175, 0.384);
+        border-radius: 3px;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .Amount_div button{
+        font-size: 12px;
+        background-color: blueviolet;
+        color: white;
+       
+    }
+    .Amount_div button:focus{
+        box-shadow: none;
+
+    }
+ 
+    .td___1{
+        width: 200px;
+        /* background-color: pink; */
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .Add-item_button{
+        width: 95%;
+        margin: auto;
+        /* background-color: blueviolet; */
+        
+    }
+    .Add-item_button button{
+        font-size: 12px;
+        background-color: rgb(209, 222, 252);
+        color: rgb(64, 111, 224);
+        font-weight: 400;
+        
+    }
+    .Add-item_button button:hover{
+        background-color: rgb(64, 111, 224);
+        color: white;
+    }
+    .Add-item_button button:focus{
+      box-shadow: none;
+    }
+
+    /* text_Charges-container */
+    .hr{
+        width: 95%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .text_Charges-container{
+        width: 95%;
+        background-color: white;
+        /* margin: auto; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+ 
+
+    .space_div{
+        width: 48%;
+    }
+    .text_Charges{
+        width: 100%;
+        /* background-color: rgba(136, 109, 73, 0.425); */
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+
+    }
+
+.text_Charges{
+    display: flex;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.text_Charges h6{
+    width: 130px;
+}
+.text_Charges p{
+    width: 100px;
+    font-size: 13px;
+    font-weight: 200;
+    padding: 6px;
+    background-color: rgba(197, 197, 197, 0.384);
+    border-radius: 3px;
+}
+
+.hr_total{
+    width: 230px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+
+.Payment-Details_container{
+    width: 95%;
+    /* background-color: antiquewhite; */
+    display: flex;
+}
+.payment-method_div{
+    width: 46%;
+    margin: auto;
+    /* background-color: aliceblue; */
+    padding: 5px;
+}
+.payment-method_div h6{
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(70, 70, 70);
+}
+
+
+.white_space-payment{
+    width: 50%;
+}
+
+.payment-method_div input{
+    font-size: 12px;
+    width: 270px;
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    background-color: rgba(236, 236, 236, 0.384);
+    
+}
+.payment-method_div input:focus{
+    box-shadow: none;
+    background-color: rgba(236, 236, 236, 0.384);
+}
+.payment-method_div select{
+    width: 270px;
+    margin-top: 10px;
+}
+.notes{
+    width: 95%;
+    margin: auto;
+    /* background-color: antiquewhite; */
+    margin-top: 20px;
+}
+.notes p{
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    overflow: scroll;
+    background-color: rgb(220, 239, 253);
+    font-size: 13px;
+    margin-top: 8px;
+    border: 1px solid rgb(216, 216, 216);
+}
+  .buttons_div{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    /* background-color: aqua; */
+    padding: 22px;
+    gap: 10px;
+
+  }
+  #Sav_button{
+    width: 80px;
+    background-color: rgb(7, 173, 214);
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   gap: 7px;
+   font-size: 13px;
+   color: white;
+  }
+  #Sav_button:focus{
+    box-shadow: none;
+  }
+
+  #downlod_btn{
+    width: 140px;
+    background-color: rgb(9, 163, 143);
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   gap: 7px;
+   font-size: 13px;
+   color: white;
+  }
+  #downlod_btn:focus{
+    box-shadow: none;
+  }
+  #sen_invoice{
+    width: 120px;
+    background-color: rgb(214, 7, 7);
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   gap: 7px;
+   font-size: 13px;
+   color: white;
+  }
+  #sen_invoice:focus{
+    box-shadow: none;
+  }
+
+    @media only screen and (max-width: 768px){
+        .address_container{
+            width: 100%;
+            /* background-color: rgb(168, 168, 114); */
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            
+        }
+        .Billing_shipping-div{
+            gap: 20px;
+        
+        }
+    }

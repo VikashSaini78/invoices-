@@ -1,0 +1,249 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(241, 241, 241);
+}
+
+.Taxes{
+   width: 95%;
+   height: auto;
+   margin: auto;
+   /* background-color: white; */
+  
+}
+.Taxes_maintext{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.Taxes_maintext h6{
+    font-weight: bold;
+    color: rgb(80, 80, 80);
+}
+.Taxes_maintext div{
+    display: flex;
+    font-size: 13px;
+}
+.Taxes_maintext div span {
+    color: rgb(80, 80, 80);
+}
+.Taxes_maintext div i{
+    padding: 5px;
+    font-size: 9px;
+}
+.button_search-text {
+    margin-top: 10px;
+    /* background-color: yellowgreen; */
+    display: flex;
+    justify-content: space-between;
+    
+}
+.button_search-text input{
+    width: 230px;
+font-size: 11px;
+    
+}
+.button_search-text input:focus {
+box-shadow: none;
+    
+}
+
+.button_search-text button{
+    font-size: 12px;
+    background-color: rgb(25, 122, 109);
+    color: white;
+}
+.button_search-text button i{
+    padding: 5px;
+    font-size: 10px;
+}
+.button_search-text button:focus{
+  box-shadow: none;
+}
+.button_search-text button:hover{
+    color: rgb(255, 255, 255)
+}
+.button_search-text div{
+    display: flex;
+    gap: 13px;
+}
+.button_search-text div span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+   padding: 5px;
+   background-color: rgb(210, 228, 228);
+   color: rgb(6, 158, 158);
+   font-size: 12px;
+   cursor: pointer;
+   
+}
+
+
+/* taxes_three-icon */
+
+
+
+
+.texts_three-icons{
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: absolute;
+    right: 23px;
+    top: 130px;
+    padding: 10px;
+    color: rgb(63, 63, 63);
+    font-size: 12px;
+    cursor: pointer;
+  
+  }
+  .texts_three-icons ul{
+    padding: 3px;
+  }
+
+
+
+
+/* taxies table */
+
+.TExt_table{
+    width: 95%;
+    margin: auto;
+    font-size: 13px;
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
+}
+.TExt_table input:focus{
+    box-shadow: none;
+    cursor: pointer;
+}
+
+
+
+.status_Enabled-id{
+    width: 50px;
+    background-color: rgb(151, 76, 76);
+    color: rgb(94, 19, 124);
+    border-radius: 3px;
+   font-size: 7px;
+    margin: auto;
+    font-weight: bold;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+ 
+    .table {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+      }
+
+      table th, .table td {
+        text-align: revert;
+        vertical-align: middle;
+    }
+
+
+      .custom-switch {
+       
+        background-color: #d8ebea; /* Background color when unchecked */
+        /* border-radius: 25px; */
+        transition: background-color 0.3s ease, width 0.3s ease;
+        border: 1px solid #ccc;
+        height: 12px;
+        cursor: pointer;
+      }
+      
+      .custom-switch:checked {
+        height: 20px;
+        border: 1px solid #ccc;
+        background-color: #21a59a; /* Background color when checked */
+      }
+      .form-switch .form-check-input {
+        width: 25px;
+        height: 13px;
+    
+      }
+
+      /* models */
+
+
+      .modal-dialog{
+        max-width: 38%;
+      }
+      .texts_model-closeicons{
+       display: flex;
+       justify-content: space-between;
+       padding: 15px;
+       font-size: 13px;
+      }
+      .texts_model-closeicons h6{
+        font-size: 13px;
+        font-weight: bold;
+        color: rgb(83, 83, 83);
+       }
+       #model_closebtn-text{
+        font-size: 12px;
+        width: 100%;
+        text-align: end;
+       
+       }
+       #model_closebtn-text button:focus{
+        box-shadow: none;
+       }
+       #btn_1{
+        font-size: 12px;
+        padding: 5px;
+        background-color: #eee8e8;
+        margin: 10px;
+       }
+       #btn_1:hover{
+        background-color: #918d8d;
+        color: white;
+       }
+       #btn_2{
+        font-size: 12px;
+        background-color: #842c96;
+        margin: 5px;
+        
+       }
+       #btn_2:hover{
+        background-color: #8f529b;
+       }
+   
+
+       .textes_table-model{
+        font-size: 12px;
+        padding: 20px;
+       }
+       .textes_table-model input{
+        font-size: 12px;
+       }
+       .textes_table-model input:focus{
+        box-shadow: none;
+       }
+
+       .model_selected-option{
+        display: flex;
+        gap: 10px;
+
+       }
+       .model_selected-option p{
+        width: 100%;
+        font-size: 12px;
+       }
+       .model_selected-option select{
+        font-size: 12px;
+       }
+
+
+       .model_selected-option select:focus{
+        box-shadow: none;
+        font-size: 12px;
+       }

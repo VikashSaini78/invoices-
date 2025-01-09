@@ -1,0 +1,527 @@
+
+/* Dashboard */
+
+
+.dashbord{
+    width: auto;
+    height: 100vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    position: fixed; 
+    background-color: rgb(255, 255, 255);
+}
+.admin_panal-logo{
+    width: 150px;
+    /* height: 100px; */
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.next-logo{
+    width: 100px;
+    /* background-color: aqua; */
+}
+
+.das_menu i{
+    padding: 10px;
+    /* margin: auto; */
+}
+
+/* p */
+
+.paragraph{
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    font-size: 13px;
+    color: gray;
+    /* background-color: yellow; */
+
+}
+.dot_dot{
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.dashbord_text-div h6{
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    font-size: 13px;
+    cursor: pointer;
+
+
+}
+.container_das-sm{
+    width: 90%;
+    margin: auto;
+   
+}
+.das_menu{
+    cursor: pointer;
+    display: flex;
+   align-items: center;
+  color: rgb(52, 151, 135);
+  background-image: linear-gradient(to right, rgba(67, 158, 154, 0.295) , rgb(228, 228, 227));
+
+}
+.das_management{
+    color: gray;
+    display: flex;
+    width: 90%;
+    /* background-color: aqua; */
+    align-items: center;
+    margin: auto;
+    
+}
+
+.das_management p{
+    font-size: 13px;
+    /* margin: auto; */
+}
+.das_management i{
+    padding: 9px;
+    font-size: 13px;
+    /* margin: auto; */
+
+   
+}
+.das_management pre{
+margin: auto;
+}
+.das_management:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+.management_list-items{
+    width: 85%;
+    margin: auto;
+    font-size: 13px;
+    
+}
+.management_list-items li{
+    padding: 5px;
+    color: gray;
+}
+.management_list-items li:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+.drop_product-list{
+    width: 88%;
+    margin: auto;
+}
+
+/* .das_Authentication */
+
+
+
+
+.das_Authentication{
+    display: flex;
+    align-items: center;
+    /* background-color: yellowgreen; */
+    color: gray;
+    width: 90%;
+    margin: auto;
+}
+.das_Authentication p{
+    font-size: 13px;
+}
+.das_Authentication i{
+    font-size: 13px;
+    padding: 9px;
+    /* margin: auto; */
+}
+.das_Authentication:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+/* das_components */
+
+.comp_bootstap{
+    align-items: center;
+    display: flex;
+    color: gray;
+    width: 90%;
+    margin: auto;
+   
+}
+
+.comp_bootstap:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+.comp_bootstap p{
+    font-size: 13px;
+}
+.comp_bootstap i{
+    font-size: 13px;
+    padding: 9px;
+}
+
+.bootstrap_list-item li{
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+}
+.bootstrap_list-item li:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+
+
+/* das_advance */
+
+
+
+.das_advance{
+    display: flex;
+    align-items: center;
+    color: gray;
+    width: 90%;
+    margin: auto;
+}
+
+.das_advance p{
+    font-size: 13px;
+}
+.das_advance i{
+    padding: 8px;
+    font-size: 13px;
+}
+.das_advance:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+.advance_list-item li{
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+}
+.advance_list-item li:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+/* das_tables */
+
+
+
+.das_tables{
+    color: gray;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+.das_tables:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+.das_tables p{
+    font-size: 13px;
+}
+.das_tables i{
+    padding: 9px;
+    font-size: 13px;
+
+}
+
+.tables_list-items li{
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+}
+.tables_list-items li:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+/* das_Apexcharts */
+
+
+
+.das_Apexcharts{
+    display: flex;
+    align-items: center;
+color: gray;
+width: 90%;
+margin: auto;
+}
+.das_Apexcharts:hover{
+color: rgb(52, 151, 135);
+cursor: pointer;
+}
+.das_Apexcharts p{
+font-size: 13px;
+}
+.das_Apexcharts i{
+    font-size: 13px;
+    padding: 9px;
+}
+
+.Apexcharts_list-item li{
+padding: 5px;
+color: gray;
+width: 90%;
+margin: auto;
+font-size: 13px;
+}
+.Apexcharts_list-item li:hover{
+color: rgb(52, 151, 135);
+cursor: pointer;
+}
+
+
+/* logout */
+
+
+.das_logout{
+    display: flex;
+    align-items: center;
+    color: rgb(219, 10, 10);
+    width: 90%;
+    margin: auto;
+}
+.das_logout p{
+    font-size: 13px;
+    color: red;
+  
+}
+.das_logout i{
+    font-size: 15px;
+    padding: 9px;
+    cursor: pointer;
+}
+
+
+/* das_Icons */
+
+.das_Icons{
+    display: flex;
+    align-items: center;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    }
+    .das_Icons:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+    }
+    .das_Icons p{
+    font-size: 13px;
+    }
+    .das_Icons i{
+    padding: 9px;
+    font-size: 13px;
+    }
+    
+    .icons_list-items li{
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+    }
+    .icons_list-items li:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+    }
+    
+
+
+    /* maps  */
+
+    
+.das_maps{
+    display: flex;
+    align-items: center;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    }
+    .das_maps:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+    }
+    .das_maps p{
+    font-size: 13px;
+    }
+    .das_maps i{
+    padding: 9px;
+    font-size: 13px;
+    }
+    
+    .map_list-items li{
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+    }
+    .map_list-items li:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+    }
+    
+    /* multi level */
+
+
+    
+       
+.das_multi-lavel{
+    display: flex;
+    align-items: center;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    }
+    .das_multi-lavel:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+    }
+    .das_multi-lavel p{
+    font-size: 13px;
+    }
+    .das_multi-lavel i{
+    padding: 9px;
+    font-size: 13px;
+    }
+    
+    .multi_list-item li{
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+    }
+    .multi_list-item li:hover{
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+    }
+    
+    /* das_invoice-div */
+
+
+
+    .das_invoice-div {
+        width: 90%;
+        margin: auto;
+        height: auto;
+        text-align: center;
+        /* background-color: #9e505054; */
+    }
+    .md_invoice-div{
+        width: 100%;
+        /* height: 180px; */
+        position: relative;
+        bottom: 70px;
+        background-color: #a1a1a123;
+        z-index: -1;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+     
+    }
+    .das_invoice-div img{
+     width: 120px;
+    
+    }
+    .invoice_text-button{
+        width: auto;
+        /* background-color: pink; */
+        font-size: 13px;
+        color: rgb(58, 58, 58);
+        padding: 10px;
+    }
+    .invoice_text-button button{
+        font-size: 13px;
+        background-color: rgb(41, 105, 105);
+        color: white;
+    }
+ 
+
+
+    
+
+
+
+    /* Scrollbar width for vertical and horizontal bars */
+
+
+::-webkit-scrollbar {
+    width: 4px; 
+    height: 10px; 
+    line-height: 2px;
+  }
+
+
+
+  ::-webkit-scrollbar-thumb {
+    background: #c7c7c7; 
+    border-radius: 5px;
+  }
+  
+ 
+  .dashbord::-webkit-scrollbar-thumb:hover {
+    background: #d3d3d3; 
+  }
+
+
+ 
+
+
+  /* :hover
+
+  .comp_bootstap {
+    position: relative;
+  }
+  
+  .bootstrap_list-itemhover {
+    background-color: rgb(60, 92, 92);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 200px;
+    position: absolute;
+    top: 20%;
+    left: 100px; 
+    transform: translate(-50%, -100%); 
+    z-index: 99;
+    color: rgb(0, 0, 0);
+  }
+
+
+
+  .bootstrap_list-itemhover ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: aqua;
+  }
+  
+  .bootstrap_list-itemhover li {
+    margin: 8px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .bootstrap_list-itemhover li:hover {
+    color: #007bff; 
+  } */
+  
