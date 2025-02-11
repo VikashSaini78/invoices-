@@ -17,6 +17,7 @@ body {
   display: flex;
   justify-content: space-between;
 
+
 }
 
 .Taxes_maintext h6 {
@@ -48,6 +49,7 @@ body {
 .button_search-text input {
   width: 230px;
   font-size: 11px;
+
 
 }
 
@@ -128,6 +130,7 @@ body {
 .Addtext_Details-colom {
   width: 50%;
   margin-top: 20px;
+ 
 }
 
 
@@ -159,7 +162,6 @@ body {
 
 .text_rare-table {
   width: 50%;
-  /* margin: auto; */
   margin-top: 30px;
   background-color: #9b9393;
 }
@@ -197,6 +199,7 @@ body {
 .modal-content {
   max-width: 400px;
   margin: auto;
+ 
 }
 
 .close_topbutton-taxes {
@@ -275,9 +278,12 @@ body {
 
 /* edit taxes  */
 
+
 .adit_model-container {
   width: 340px;
+  background: #000;
 }
+
 
 
 .taxes_modal-body h6 {
@@ -327,4 +333,16 @@ body {
   border-radius: 7px;
   font-size: 13px;
   width: 100px;
+}
+
+@media only screen and (max-width: 768px){
+  .button_search-text input {
+      width: 190px;
+  }
+  .Addtext_Details-colom {
+    width: 100%;
+  }
+  .text_rare-table {
+    width: 100%;
+  }
 }
