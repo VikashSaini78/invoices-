@@ -479,4 +479,11 @@ box-shadow: none;
                 /* background-color: white; */
                 padding: 5px;
                 cursor: pointer;
+             }  
+
+             @media only screen and (max-width: 768px){
+                .button_search-br input {
+                    width: 180px;
+                    font-size: 11px;
+                }
              }
