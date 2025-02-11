@@ -509,6 +509,8 @@ padding: 8px;
     box-shadow: none;
   }
 
+
+
     @media only screen and (max-width: 768px){
         .address_container{
             width: 100%;
@@ -520,6 +522,33 @@ padding: 8px;
         }
         .Billing_shipping-div{
             gap: 20px;
-        
         }
+        .Billing_shipping-div {
+            display: inline;
+                }
+        .Billing_Address-div{
+            width: 95%;
+           margin-left: 20px;
+        }
+        #downlod_btn {
+            font-size: 12px;
+        }
+        #Sav_button {
+            font-size: 12px;
+        }
+        #sen_invoice{
+            font-size: 12px;
+        }
+
+
+        /*  */
+
+        .newinvoice_table{
+            background-color: antiquewhite;
+          }
+  
     }
+
+
+
+    

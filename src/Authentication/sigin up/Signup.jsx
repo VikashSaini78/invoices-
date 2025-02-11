@@ -9,13 +9,28 @@ import { FaGoogle } from "react-icons/fa6";
 
 import { Link } from "react-router-dom";
 function Signup() {
+  const [name, setname] = useState("");
+  const [number, setnumber] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
   
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     };
-  
+
+    const onsubmitvalue = async (e) => {
+      e.preventDefault();
+      // console.log({ name, number, password });
+
+       const data = { name, number, password }
+       fetch("api/signupdata", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+    
+    };
+    
     return ( 
         <>
            <div className="sign_up-container">
@@ -25,18 +40,24 @@ function Signup() {
 
            <div className="signup_div">
            <div className="sign_logo">
-            <img src="./media/response infoway_logo.jpg" alt=""/>
+            <img src="./media/responseinfoway_logo.jpg" alt="errir image"/>
 
             </div>
-           <div className="lognup_page">
+           <form className="lognup_page" onSubmit={onsubmitvalue}>
            <h6>Create New Account !</h6>
            <p>Get your free Invoika account now</p>
 
            <label className="form-label">Email</label>
-          <input type="email" className="form-control" placeholder="Enter Email id / Mobole No."/>
+          <input type="email" className="form-control" placeholder="Enter Email id / Mobole No." 
+             value={name}
+             onChange={(e) => setname(e.target.value)}
+          />
 
           <label className="form-label">Mobile Number</label>
-          <input type="Number" className="form-control no-spinner" placeholder="Mobile Number"/>
+          <input type="number" className="form-control no-spinner" placeholder="Mobile Number"
+            value={number}
+            onChange={(e)=>setnumber(e.target.value)}
+          />
            
 
       <label  className="form-label">Password:</label>
@@ -49,14 +70,14 @@ function Signup() {
       
       />
 
-      <div className="heide_show" onClick={togglePasswordVisibility}> 
-        {showPassword ?<BiHide />: <FaEye />}
+      <div className="heide_show-signup" onClick={togglePasswordVisibility}> 
+        {showPassword ? <i><BiHide /></i>: <i> <FaEye /></i>}
        </div>
 
-       <div className="rember_forgatepassup"><p>By registering you agree to the Invoika</p><Link>  <h6> Terms of Use</h6></Link></div>
+       <div className="rember_forgatepassup mt-3"><p>By registering you agree to the Invoika</p><Link>  <h6> Terms of Use</h6></Link></div>
      
 
-       <button type="button" class="btn btn" id="login_btn">Sign Up</button>
+       <button type="submit" className="btn btn" id="login_btn">Sign Up</button>
 
           <div className="hrsign-in"><hr className="signin-other-title"/> Create account with</div>
 
@@ -67,10 +88,10 @@ function Signup() {
           </div>
 
           <div className="Don_have">Don't have an account ? <Link to={"/signin"}><p>Signin</p></Link></div>
-
+          
         
      
-        </div>
+        </form>
 
 
            </div>
@@ -80,4 +101,4 @@ function Signup() {
      );
 }
 
-export default Signup;
+export default Signup; 

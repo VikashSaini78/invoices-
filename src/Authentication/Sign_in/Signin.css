@@ -62,13 +62,21 @@
     text-align: center;
     color: rgb(78, 78, 78);
 }
+
 .heide_show{
-    position: relative;
-    width: 93%; 
+    width: 100%; 
+    height: 0px;
     margin: auto;
-    right: 10px;
-    cursor: pointer;
-   
+    display: flex;
+    justify-content: end;
+    background-color: yellowgreen;
+    margin-top: 20px;
+    display: none;
+}
+.heide_show i{
+    position: relative;
+    bottom: 20px;
+    right: 7px;
 }
 
 .rember_forgatepass{

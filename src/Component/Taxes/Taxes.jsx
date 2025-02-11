@@ -1,46 +1,67 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
 import "./Taxes.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 function Taxes() {
-  const [texticon, settexticon] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [taxes, setTaxes] = useState([]);
+  const [taxName, setTaxName] = useState("");
+  const [taxRate, setTaxRate] = useState("");
+  const [editIndex, setEditIndex] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
-  // Sample data for the table
-  const taxes = [
-    { name: "Sales Tax", country: "United States", region: "(any)", rate: "10%", status: "Enabled" },
-    { name: "Value Added Tax", country: "India", region: "Maharashtra", rate: "18%", status: "Enabled" },
-    { name: "Luxury Tax", country: "United States", region: "California", rate: "15%", status: "Enabled" },
-    { name: "Luxury Tax", country: "United States", region: "California", rate: "15%", status: "Enabled" },
-    { name: "Luxury Tax", country: "United States", region: "California", rate: "15%", status: "Enabled" },
-    { name: "Luxury Tax", country: "United States", region: "California", rate: "15%", status: "Enabled" },
-    { name: "Luxury Tax", country: "United States", region: "California", rate: "15%", status: "Enabled" },
 
-  ];
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (taxName.trim() === "" || taxRate.trim() === "") {
+      return;
+    }
 
-  // Filter rows based on search term
-  const filteredTaxes = taxes.filter((tax) =>
-    tax.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    tax.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    tax.region.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    if (editIndex !== null) {
+      const updatedTaxes = taxes.map((tax, index) =>
+        index === editIndex ? { name: taxName, rate: taxRate } : tax
+      );
+      setTaxes(updatedTaxes);
+      setEditIndex(null);
+    } else {
+      setTaxes([...taxes, { name: taxName, rate: taxRate }]);
+    }
+    
+    setTaxName("");
+    setTaxRate("");
+    setShowEditModal(false);
+  };
+
+  const handleEdit = (index) => {
+    setTaxName(taxes[index].name);
+    setTaxRate(taxes[index].rate);
+    setEditIndex(index);
+    setShowEditModal(true);
+  };
+
+  const handleDelete = () => {
+    setTaxes(taxes.filter((_, i) => i !== deleteIndex));
+    setShowDeleteModal(false);
+  };
 
   return (
     <>
       <div className="container-fluid">
         <div className="Taxes">
           <div className="Taxes_maintext">
-            <h6>INVOICE</h6>
+            <h6>TAXES</h6>
             <div>
-              <p>Invoice</p>
+              <p>Taxes</p>
               <span>
                 <i className="fa-solid fa-chevron-right"></i>Invoice
               </span>
             </div>
           </div>
           <div className="button_search-text">
-            <button type="button" className="btn btn" data-bs-toggle="modal" data-bs-target="#Addtaxes">
+            <button type="button" className="btn btn">
               <i className="fa-solid fa-plus"></i> Add Taxes
             </button>
 
@@ -52,117 +73,203 @@ function Taxes() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <span onClick={() => settexticon(!texticon)}>
+              <span>
                 <BsThreeDotsVertical />
               </span>
             </div>
           </div>
 
-          {texticon && (
-            <div className="texts_three-icons">
-              <ul>All</ul>
-              <ul>Last Week</ul>
-              <ul>Last Month</ul>
-              <ul>Last Year</ul>
+          <div className="Addtext_Details-colom">
+            <h2 className="text-xl font-semibold text-gray-700 mb-4 ">
+              Add Tax Details
+            </h2>
+
+            {/* Form */}
+            <form onSubmit={handleSubmit}>
+              <div className="grid grid-cols-3 gap-3">
+                {/* Taxes Name Input */}
+                <div>
+                  <label className="block text-gray-600 text-sm font-medium ">
+                    Taxes Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Taxes Name"
+                    value={taxName}
+                    onChange={(e) => setTaxName(e.target.value)}
+                    className="w-full border rounded outline outline-none  mt-2 "
+                  />
+                </div>
+
+                {/* Taxes Rate Input */}
+
+                <div>
+                  <label className="block text-gray-600 text-sm font-medium">
+                    Taxes Rate (%)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Taxes Rate"
+                    value={taxRate}
+                    onChange={(e) => setTaxRate(e.target.value)}
+                    className="w-full border rounded outline outline-none  mt-2 "
+                  />
+                </div>
+                <div className="submit_button-taxes">
+                  <button type="submit">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          {taxes.length > 0 && (
+            <div className="text_rare-table">
+              <table className="w-full border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-200">
+                    <th className="p-2 border text-center">Taxes Name</th>
+                    <th className="p-2 border text-center">Taxes Rate (%)</th>
+                    <th className="p-2 border text-center">Edit</th>
+                    <th className="p-2 border text-center">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {taxes.map((tax, index) => (
+                    <tr key={index} className="text-center">
+                      <td className="p-2 border">{tax.name}</td>
+                      <td className="p-2 border">{tax.rate}</td>
+                      <td
+                        className="border"
+                        data-bs-toggle="modal"
+                        data-bs-target="#taxes_editmodel-taxes"
+                      >
+                        <i id="update_taxes" className="fa-solid fa-pen"
+                           onClick={() => handleEdit(index)}
+                        >
+                        </i>
+                      </td>
+                      <td
+                        className="border"
+                        data-bs-toggle="modal"
+                        data-bs-target="#taxes_deletmodelt-axes"
+                      >
+                        <i id="delet_taxes" className="fa-solid fa-trash"
+                         onClick={() => {
+                          setDeleteIndex(index);
+                          setShowDeleteModal(true);
+                        }}
+                        ></i>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>
-
-        <div className="TExt_table">
-          <table className="table table-hover">
-            <thead>
-              <tr>
-                <th>TAX NAME</th>
-                <th>COUNTRY</th>
-                <th>REGION</th>
-                <th>TAX RATE(%)</th>
-                <th>STATUS</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredTaxes.length > 0 ? (
-                filteredTaxes.map((tax, index) => (
-                  <tr key={index}>
-                    <td>{tax.name}</td>
-                    <td>{tax.country}</td>
-                    <td>{tax.region}</td>
-                    <td>{tax.rate}</td>
-                    <td>
-                      <p className={tax.status === "Enabled" ? "status_Enabled-id" : "status_Disabled-id"}>
-                        {tax.status}
-                      </p>
-                    </td>
-                    <td>
-                      <div className="form-check form-switch">
-                        <input className="form-check-input custom-switch" type="checkbox" />
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="6" className="text-center">
-                    No results found.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
       </div>
 
-      {/* Add Taxes Modal */}
+      {/* delet model  */}
+
       <div
         className="modal fade"
-        id="Addtaxes"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabIndex="-1"
-        aria-labelledby="staticBackdropLabel"
+        id="taxes_deletmodelt-axes"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
-            <div className="texts_model-closeicons">
-              <h6>Add Payment</h6>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="close_topbutton-taxes">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
 
-            <div className="textes_table-model">
-              <label className="form-label">Test Name</label>
-              <input type="text" className="form-control" placeholder="Enter Name" />
-              <div className="model_selected-option">
-                <p>
-                  <label htmlFor="inputState" className="form-label">
-                    Country
-                  </label>
-                  <select id="inputState" className="form-select">
-                    <option selected>select Country</option>
-                    <option>India</option>
-                  </select>
-                </p>
-                <p>
-                  <label htmlFor="inputState" className="form-label">
-                    Region
-                  </label>
-                  <select id="inputState" className="form-select">
-                    <option selected>Select Region</option>
-                    <option>(Any)</option>
-                  </select>
-                </p>
-              </div>
-
-              <label className="form-label">Tax Rate</label>
-              <input type="text" className="form-control" placeholder="Enter Tax Rate" />
+            <div className="delet_icon-boxtaxes">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+            <div className="taxes_pcolom">
+              <h6>Confirm Delete</h6>
+              <p>
+                Are you sure you want to delete 
+              </p>
             </div>
 
-            <div id="model_closebtn-text">
-              <button id="btn_1" type="button" className="btn btn" data-bs-dismiss="modal">
-                Close
+            <div className="close_bottombutton-taxes">
+              <button
+                type="button"
+                className="cencle_button"
+                data-bs-dismiss="modal"
+                onClick={() => setShowDeleteModal(false)}
+              >
+                Cancel
               </button>
-              <button id="btn_2" type="button" className="btn btn">
-                Add Taxes
+              <button
+                type="button"
+                className="delete_button"
+                data-bs-dismiss="modal"
+                onClick={handleDelete}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Edit model */}
+
+      <div
+        className="modal fade"
+        id="taxes_editmodel-taxes"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content adit_model-container">
+            <div className="close_topbutton-taxes">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div className="taxes_modal-body">
+              <h6>Edit Taxes</h6>
+              <div className="taxes_modal-input">
+                <input type="text" placeholder="Taxes Name" 
+                  value={taxName} onChange={(e) => setTaxName(e.target.value)}
+                />
+
+                <input type="text" placeholder="Taxes Rate (%)" 
+                   value={taxRate} onChange={(e) => setTaxRate(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="edit_bottombutton-taxes">
+              <button
+                type="button"
+                className="cencl_button"
+                data-bs-dismiss="modal"
+                onClick={() => setShowEditModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="edit_button"
+                data-bs-dismiss="modal"
+                onClick={handleSubmit}
+              >
+                Edit
               </button>
             </div>
           </div>

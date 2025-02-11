@@ -209,7 +209,7 @@ function Invoice() {
       </div>
       </div>
 
-      <div className='col-md-12'>
+      {/* <div className='col-md-12'>
       <div className="Invoice_id">
                  
                   <table class="table table-striped table-sm">
@@ -265,7 +265,7 @@ function Invoice() {
                  <div className='Showing_results'><p>Showing</p> <h6>1 </h6> <h6>5</h6>  <h6>10</h6> <pre>results</pre></div>
                  <div className='previous_next'><pre className='Previous'>Previous</pre> <pre className='previous_next-fix'>1</pre> <p>2</p> <p>3</p> <pre className='Next'>Next</pre> </div>
                  </div>
-                 </div>
+                 </div> */}
       </div>
       </div>
       </div>

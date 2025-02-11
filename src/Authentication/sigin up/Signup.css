@@ -1,4 +1,4 @@
-.sign_up-container{
+.sign_up-container {
     width: 100%;
     height: 120vh;
     padding: 30px;
@@ -12,16 +12,18 @@
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.sign_logo{
+
+.sign_logo {
     text-align: center;
     /* background-color: aqua; */
-} 
-.sign_logo img{
+}
+
+.sign_logo img {
     width: 150px;
     margin: auto;
 }
 
-.signup_div{
+.signup_div {
     width: 40%;
     height: auto;
     background-color: rgb(255, 255, 255);
@@ -31,73 +33,84 @@
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 10px;
-    
+
 }
-.lognup_page{
+
+.lognup_page {
     width: 80%;
     height: auto;
     /* background-color: rgba(255, 255, 0, 0.116); */
     margin: auto;
-   
+
 }
+
 .form-label {
     font-size: 13px;
     font-weight: 500;
     margin-bottom: .5rem;
 }
-.lognup_page input{
+
+.lognup_page input {
     font-size: 13px;
 }
-.lognup_page input:focus{
+
+.lognup_page input:focus {
     box-shadow: none;
 }
-.lognup_page h6{
+
+.lognup_page h6 {
     text-align: center;
     font-weight: 500;
     color: rgb(78, 78, 78);
+    margin-left: 5px;
+    font-size: 15px;
 }
-.lognup_page p{
+
+.lognup_page p {
     padding: 7px;
     font-size: 12px;
     font-weight: 400;
     text-align: center;
     color: rgb(78, 78, 78);
 }
-.heide_show{
+
+.heide_show-signup {
+    width: 100%;
+    height: 0px;
+    margin: auto;
+   display: flex;
+   justify-content: end;
+}
+.heide_show-signup i{
     position: relative;
-    bottom: 23px;
-    right: 10px;
-    left: 0px;
-    display: flex;
-    justify-content: end;
-    cursor: pointer;
-   
+    bottom: 24px;
+    right: 7px;
 }
 
-.rember_forgatepassup{
+.rember_forgatepassup {
     display: flex;
-    /* justify-content: space-between; */
-    /* background-color: rgb(168, 166, 164); */
 }
-.rember_forgatepassup p{
-font-size: 12px;
-padding: 0;
-margin: 0;
+
+.rember_forgatepassup p {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
     font-family: "Comfortaa", serif;
     font-optical-sizing: auto;
     font-style: normal;
- 
-/* background-color: yellowgreen; */
-/* text-decoration: underline; */
+
+    /* background-color: yellowgreen; */
+    /* text-decoration: underline; */
 }
-.rember_forgatepassup h6{
+
+.rember_forgatepassup h6 {
     font-size: 12px;
     font-weight: 500;
     text-decoration: underline;
     color: rgb(47, 110, 112);
 }
 
-#login_btn{
+#login_btn {
     width: 100%;
     font-size: 13px;
     background-color: rgb(57, 117, 104);
@@ -105,30 +118,35 @@ margin: 0;
     margin-top: 10px;
 
 }
-#login_btn:hover{
+
+#login_btn:hover {
     background-color: rgb(42, 88, 79);
 }
-#login_btn:focus{
-  box-shadow: none;
-    
+
+#login_btn:focus {
+    box-shadow: none;
+
 }
-.signin-other-title{
- position: relative;
- top: 11px;
+
+.signin-other-title {
+    position: relative;
+    top: 11px;
 }
-.hrsign-in{
+
+.hrsign-in {
     margin-top: 10px;
-   text-align: center;
-   font-size: 13px;
-   font-weight: bold;
-   color: rgb(76, 100, 98);
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(76, 100, 98);
 }
+
 hr:not([size]) {
     height: 1px;
     color: #c0c0c091;
 }
 
-.socalmedia_icons{
+.socalmedia_icons {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,7 +155,7 @@ hr:not([size]) {
     /* background-color: yellowgreen; */
 }
 
-.facbook_i{
+.facbook_i {
     font-size: 15px;
     padding: 5px;
     background-color: rgb(67, 138, 122);
@@ -146,36 +164,39 @@ hr:not([size]) {
     cursor: pointer;
 }
 
-.twitter_i{
-      font-size: 15px;
+.twitter_i {
+    font-size: 15px;
     padding: 5px;
     background-color: rgb(80, 176, 243);
     border-radius: 50%;
     color: white;
     cursor: pointer;
 }
-.google_i{
+
+.google_i {
     font-size: 15px;
-  padding: 5px;
-  background-color: rgb(237, 67, 67);
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
+    padding: 5px;
+    background-color: rgb(237, 67, 67);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
 }
 
-.Don_have{
+.Don_have {
     font-size: 12px;
     text-align: center;
     margin-top: 10px;
     font-weight: 500;
-   
+
 }
-.Don_have{
+
+.Don_have {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.Don_have p{
+
+.Don_have p {
     color: rgb(47, 153, 118);
     font-weight: bold;
     text-decoration: underline;
@@ -185,20 +206,25 @@ hr:not([size]) {
 
 @media only screen and (max-width: 768px) {
     .sign_in-container {
-      width: 100%;
-      /* background-color: palevioletred; */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: palevioletred; */
     }
-  
+
+    .signup_div{
+        width: 100%;
+        /* background-color: rgb(163, 65, 65); */
+    }
     .signin_div {
-      width: 100%;
-      /* background-color: rgb(163, 65, 65); */
+        width: 100%;
     }
-  
+
     .login_page {
-      width: 80%;
-      height: auto;
-      /* background-color: rgba(255, 255, 0, 0.116); */
-      margin: auto;
+        width: 80%;
+        height: auto;
+        /* background-color: rgba(255, 255, 0, 0.808); */
+        margin: auto;
     }
-  }
-  
+}

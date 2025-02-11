@@ -463,65 +463,23 @@ cursor: pointer;
     /* Scrollbar width for vertical and horizontal bars */
 
 
+
+/* Scrollbar size */
+
+
 ::-webkit-scrollbar {
-    width: 4px; 
-    height: 10px; 
-    line-height: 2px;
-  }
+    width: 3px;
+    height: 300px; 
+}
 
-
-
-  ::-webkit-scrollbar-thumb {
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
     background: #c7c7c7; 
     border-radius: 5px;
-  }
-  
- 
-  .dashbord::-webkit-scrollbar-thumb:hover {
-    background: #d3d3d3; 
-  }
+}
 
-
- 
-
-
-  /* :hover
-
-  .comp_bootstap {
-    position: relative;
-  }
-  
-  .bootstrap_list-itemhover {
-    background-color: rgb(60, 92, 92);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    width: 200px;
-    position: absolute;
-    top: 20%;
-    left: 100px; 
-    transform: translate(-50%, -100%); 
-    z-index: 99;
-    color: rgb(0, 0, 0);
-  }
-
-
-
-  .bootstrap_list-itemhover ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background-color: aqua;
-  }
-  
-  .bootstrap_list-itemhover li {
-    margin: 8px 0;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .bootstrap_list-itemhover li:hover {
-    color: #007bff; 
-  } */
-  
+/* Scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #909090; 
+    width: 6px; 
+}
