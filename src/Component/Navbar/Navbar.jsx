@@ -402,7 +402,7 @@ function Navbar() {
                   <i
                     className="fa-solid fa-bars"
                     onClick={() => {
-                      setadmin(!admin);
+                      setadmin(!admin); 
                     }}
                   ></i>
 

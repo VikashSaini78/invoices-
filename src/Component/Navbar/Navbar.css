@@ -32,7 +32,8 @@
     justify-content: center;
     cursor: pointer;
     align-items: center;
-    /* background-color: rgb(134, 134, 134); */
+    /* background-color: rgb(134, 134, 134);  */
+    
 }
 .nav_searchbar{
     margin-left: 20px;

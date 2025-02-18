@@ -14,7 +14,6 @@ import InvoicesDetails from "./Component/Invoices Details/InvoicesDetails";
 import MasterData from "./Masters/MasterData";
 import Getdata from "./Masters/Getdata";
 
-
 function Service() {
   return (
     <>
@@ -31,7 +30,6 @@ function Service() {
         <Route path="/user" element={<User />} />
         <Route path="/masterdata" element={<MasterData/>} />
         <Route path="/getdata" element={<Getdata/>} />
-  
       </Routes>
       <Footer />
     </>

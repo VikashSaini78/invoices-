@@ -1,35 +1,36 @@
-
 /* Dashboard */
 
 
-.dashbord{
+.dashbord {
     width: auto;
     height: 100vh;
-    overflow: scroll;
-    overflow-x: hidden;
-    position: fixed; 
+    /* overflow: scroll;
+    overflow-x: hidden; */
+    position: fixed;
     background-color: rgb(255, 255, 255);
 }
-.admin_panal-logo{
+
+.admin_panal-logo {
     width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
-.next-logo{
+
+.next-logo {
     width: 100px;
     /* background-color: aqua; */
 }
 
-.das_menu i{
+.das_menu i {
     padding: 10px;
     /* margin: auto; */
 }
 
 /* p */
 
-.paragraph{
+.paragraph {
     width: 90%;
     margin: auto;
     padding: 10px;
@@ -38,13 +39,14 @@
     /* background-color: yellow; */
 
 }
-.dot_dot{
+
+.dot_dot {
     font-size: 20px;
     margin: 0;
     padding: 0;
 }
 
-.dashbord_text-div h6{
+.dashbord_text-div h6 {
     width: 90%;
     margin: auto;
     padding: 10px;
@@ -53,62 +55,72 @@
 
 
 }
-.container_das-sm{
+
+.container_das-sm {
     width: 90%;
     margin: auto;
-   
-}
-.das_menu{
-    cursor: pointer;
-    display: flex;
-   align-items: center;
-  color: rgb(52, 151, 135);
-  background-image: linear-gradient(to right, rgba(67, 158, 154, 0.295) , rgb(228, 228, 227));
 
 }
-.das_management{
+
+.das_menu {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: rgb(52, 151, 135);
+    background-image: linear-gradient(to right, rgba(67, 158, 154, 0.295), rgb(228, 228, 227));
+
+}
+
+.das_management {
     color: gray;
     display: flex;
     width: 90%;
     /* background-color: aqua; */
     align-items: center;
     margin: auto;
-    
+
 }
 
-.das_management p{
+.das_management p {
     font-size: 13px;
     /* margin: auto; */
 }
-.das_management i{
+
+.das_management i {
     padding: 9px;
     font-size: 13px;
     /* margin: auto; */
 
-   
+
 }
-.das_management pre{
-margin: auto;
+
+.das_management pre {
+    margin: auto;
 }
-.das_management:hover{
+
+.das_management:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
-.management_list-items{
+
+.management_list-items {
     width: 85%;
     margin: auto;
     font-size: 13px;
-    
+
 }
-.management_list-items li{
+
+.management_list-items li {
     padding: 5px;
     color: gray;
 }
-.management_list-items li:hover{
+
+.management_list-items li:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
-.drop_product-list{
+
+.drop_product-list {
     width: 88%;
     margin: auto;
 }
@@ -118,7 +130,7 @@ margin: auto;
 
 
 
-.das_Authentication{
+.das_Authentication {
     display: flex;
     align-items: center;
     /* background-color: yellowgreen; */
@@ -126,50 +138,56 @@ margin: auto;
     width: 90%;
     margin: auto;
 }
-.das_Authentication p{
+
+.das_Authentication p {
     font-size: 13px;
 }
-.das_Authentication i{
+
+.das_Authentication i {
     font-size: 13px;
     padding: 9px;
     /* margin: auto; */
 }
-.das_Authentication:hover{
+
+.das_Authentication:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
 
 /* das_components */
 
-.comp_bootstap{
+.comp_bootstap {
     align-items: center;
     display: flex;
     color: gray;
     width: 90%;
     margin: auto;
-   
+
 }
 
-.comp_bootstap:hover{
+.comp_bootstap:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
-.comp_bootstap p{
+
+.comp_bootstap p {
     font-size: 13px;
 }
-.comp_bootstap i{
+
+.comp_bootstap i {
     font-size: 13px;
     padding: 9px;
 }
 
-.bootstrap_list-item li{
+.bootstrap_list-item li {
     padding: 5px;
     color: gray;
     width: 90%;
     margin: auto;
     font-size: 13px;
 }
-.bootstrap_list-item li:hover{
+
+.bootstrap_list-item li:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
@@ -180,7 +198,7 @@ margin: auto;
 
 
 
-.das_advance{
+.das_advance {
     display: flex;
     align-items: center;
     color: gray;
@@ -188,26 +206,29 @@ margin: auto;
     margin: auto;
 }
 
-.das_advance p{
+.das_advance p {
     font-size: 13px;
 }
-.das_advance i{
+
+.das_advance i {
     padding: 8px;
     font-size: 13px;
 }
-.das_advance:hover{
+
+.das_advance:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
 
-.advance_list-item li{
+.advance_list-item li {
     padding: 5px;
     color: gray;
     width: 90%;
     margin: auto;
     font-size: 13px;
 }
-.advance_list-item li:hover{
+
+.advance_list-item li:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
@@ -216,34 +237,38 @@ margin: auto;
 
 
 
-.das_tables{
+.das_tables {
     color: gray;
     display: flex;
     align-items: center;
     width: 90%;
     margin: auto;
 }
-.das_tables:hover{
+
+.das_tables:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
-.das_tables p{
+
+.das_tables p {
     font-size: 13px;
 }
-.das_tables i{
+
+.das_tables i {
     padding: 9px;
     font-size: 13px;
 
 }
 
-.tables_list-items li{
+.tables_list-items li {
     padding: 5px;
     color: gray;
     width: 90%;
     margin: auto;
     font-size: 13px;
 }
-.tables_list-items li:hover{
+
+.tables_list-items li:hover {
     color: rgb(52, 151, 135);
     cursor: pointer;
 }
@@ -252,54 +277,60 @@ margin: auto;
 
 
 
-.das_Apexcharts{
+.das_Apexcharts {
     display: flex;
     align-items: center;
-color: gray;
-width: 90%;
-margin: auto;
+    color: gray;
+    width: 90%;
+    margin: auto;
 }
-.das_Apexcharts:hover{
-color: rgb(52, 151, 135);
-cursor: pointer;
+
+.das_Apexcharts:hover {
+    color: rgb(52, 151, 135);
+    cursor: pointer;
 }
-.das_Apexcharts p{
-font-size: 13px;
+
+.das_Apexcharts p {
+    font-size: 13px;
 }
-.das_Apexcharts i{
+
+.das_Apexcharts i {
     font-size: 13px;
     padding: 9px;
 }
 
-.Apexcharts_list-item li{
-padding: 5px;
-color: gray;
-width: 90%;
-margin: auto;
-font-size: 13px;
+.Apexcharts_list-item li {
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
 }
-.Apexcharts_list-item li:hover{
-color: rgb(52, 151, 135);
-cursor: pointer;
+
+.Apexcharts_list-item li:hover {
+    color: rgb(52, 151, 135);
+    cursor: pointer;
 }
 
 
 /* logout */
 
 
-.das_logout{
+.das_logout {
     display: flex;
     align-items: center;
     color: rgb(219, 10, 10);
     width: 90%;
     margin: auto;
 }
-.das_logout p{
+
+.das_logout p {
     font-size: 13px;
     color: red;
-  
+
 }
-.das_logout i{
+
+.das_logout i {
     font-size: 15px;
     padding: 9px;
     cursor: pointer;
@@ -308,169 +339,244 @@ cursor: pointer;
 
 /* das_Icons */
 
-.das_Icons{
+.das_Icons {
     display: flex;
     align-items: center;
     color: gray;
     width: 90%;
     margin: auto;
-    }
-    .das_Icons:hover{
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-    }
-    .das_Icons p{
-    font-size: 13px;
-    }
-    .das_Icons i{
-    padding: 9px;
-    font-size: 13px;
-    }
-    
-    .icons_list-items li{
-    padding: 5px;
-    color: gray;
-    width: 90%;
-    margin: auto;
-    font-size: 13px;
-    }
-    .icons_list-items li:hover{
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-    }
-    
-
-
-    /* maps  */
-
-    
-.das_maps{
-    display: flex;
-    align-items: center;
-    color: gray;
-    width: 90%;
-    margin: auto;
-    }
-    .das_maps:hover{
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-    }
-    .das_maps p{
-    font-size: 13px;
-    }
-    .das_maps i{
-    padding: 9px;
-    font-size: 13px;
-    }
-    
-    .map_list-items li{
-    padding: 5px;
-    color: gray;
-    width: 90%;
-    margin: auto;
-    font-size: 13px;
-    }
-    .map_list-items li:hover{
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-    }
-    
-    /* multi level */
-
-
-    
-       
-.das_multi-lavel{
-    display: flex;
-    align-items: center;
-    color: gray;
-    width: 90%;
-    margin: auto;
-    }
-    .das_multi-lavel:hover{
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-    }
-    .das_multi-lavel p{
-    font-size: 13px;
-    }
-    .das_multi-lavel i{
-    padding: 9px;
-    font-size: 13px;
-    }
-    
-    .multi_list-item li{
-    padding: 5px;
-    color: gray;
-    width: 90%;
-    margin: auto;
-    font-size: 13px;
-    }
-    .multi_list-item li:hover{
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-    }
-    
-    /* das_invoice-div */
-
-
-
-    .das_invoice-div {
-        width: 90%;
-        margin: auto;
-        height: auto;
-        text-align: center;
-        /* background-color: #9e505054; */
-    }
-    .md_invoice-div{
-        width: 100%;
-        /* height: 180px; */
-        position: relative;
-        bottom: 70px;
-        background-color: #a1a1a123;
-        z-index: -1;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: end;
-     
-    }
-    .das_invoice-div img{
-     width: 120px;
-    
-    }
-    .invoice_text-button{
-        width: auto;
-        /* background-color: pink; */
-        font-size: 13px;
-        color: rgb(58, 58, 58);
-        padding: 10px;
-    }
-    .invoice_text-button button{
-        font-size: 13px;
-        background-color: rgb(41, 105, 105);
-        color: white;
-    }
- 
-
-
-    
-
-
-
-    /* Scrollbar width for vertical and horizontal bars */
-
-
-
-/* Scrollbar size */
-
-
-/* ::-webkit-scrollbar {
-    width: 3px;
-    height: 300px; 
 }
 
-::-webkit-scrollbar-thumb {
+.das_Icons:hover {
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+.das_Icons p {
+    font-size: 13px;
+}
+
+.das_Icons i {
+    padding: 9px;
+    font-size: 13px;
+}
+
+.icons_list-items li {
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+}
+
+.icons_list-items li:hover {
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+
+
+/* maps  */
+
+
+.das_maps {
+    display: flex;
+    align-items: center;
+    color: gray;
+    width: 90%;
+    margin: auto;
+}
+
+.das_maps:hover {
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+.das_maps p {
+    font-size: 13px;
+}
+
+.das_maps i {
+    padding: 9px;
+    font-size: 13px;
+}
+
+.map_list-items li {
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+}
+
+.map_list-items li:hover {
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+/* multi level */
+
+
+
+
+.das_multi-lavel {
+    display: flex;
+    align-items: center;
+    color: gray;
+    width: 90%;
+    margin: auto;
+}
+
+.das_multi-lavel:hover {
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+.das_multi-lavel p {
+    font-size: 13px;
+}
+
+.das_multi-lavel i {
+    padding: 9px;
+    font-size: 13px;
+}
+
+.multi_list-item li {
+    padding: 5px;
+    color: gray;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
+}
+
+.multi_list-item li:hover {
+    color: rgb(52, 151, 135);
+    cursor: pointer;
+}
+
+/* das_invoice-div */
+
+
+
+.das_invoice-div {
+    width: 90%;
+    margin: auto;
+    height: auto;
+    text-align: center;
+    /* background-color: #9e505054; */
+}
+
+.md_invoice-div {
+    width: 100%;
+    /* height: 180px; */
+    position: relative;
+    bottom: 70px;
+    background-color: #a1a1a123;
+    z-index: -1;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+}
+
+.das_invoice-div img {
+    width: 120px;
+
+}
+
+.invoice_text-button {
+    width: auto;
+    /* background-color: pink; */
+    font-size: 13px;
+    color: rgb(58, 58, 58);
+    padding: 10px;
+}
+
+.invoice_text-button button {
+    font-size: 13px;
+    background-color: rgb(41, 105, 105);
+    color: white;
+}
+
+
+/* Initial state: Hide the scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 0px; /* Hide scrollbar initially */
+    height: 0px; /* Hide horizontal scrollbar */
+}
+
+/* When user hovers over the sidebar (desktop) or on touch (mobile), show the scrollbar */
+.sidebar:hover::-webkit-scrollbar,
+.sidebar:active::-webkit-scrollbar {
+    width: 5px; /* Show vertical scrollbar */
+    height: 5px; /* Show horizontal scrollbar if needed */
+}
+
+/* Styling for the track of the scrollbar */
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track background */
+    border-radius: 5px;
+}
+
+/* Styling for the scrollbar thumb */
+.sidebar::-webkit-scrollbar-thumb {
+    background: #c7c7c7; /* Thumb color */
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Hover effect on the scrollbar thumb */
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #909090;
+}
+
+/* Sidebar container */
+.sidebar {
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: 100%; /* Set the height of the sidebar */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .sidebar {
+        overflow-y: scroll; 
+    }
+    .sidebar:active::-webkit-scrollbar {
+        width: 5px; 
+    }
+}
+
+/* 
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+  
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #909090;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb {
+    width: 6px;
+} 
+::-webkit-scrollbar {
+    width: 3px;
+    height: 300px; 
+} */
+
+/* ::-webkit-scrollbar-thumb {
     background: #c7c7c7; 
     border-radius: 5px;
 }
@@ -478,23 +584,4 @@ cursor: pointer;
 ::-webkit-scrollbar-thumb:hover {
     background: #909090; 
     width: 6px; 
-} */
-
-.sidebar::-webkit-scrollbar {
-    width: 5px; 
-}
-.sidebar::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-    border-radius: 5px;
-}
-.sidebar::-webkit-scrollbar-thumb {
-    background: #c7c7c7;
-    border-radius: 5px;
-    transition: background 0.3s ease-in-out;
-}
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: #909090;
-}
-.sidebar:hover::-webkit-scrollbar-thumb {
-    width: 6px;
-} 
+}   */

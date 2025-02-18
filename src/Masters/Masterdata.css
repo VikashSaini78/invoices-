@@ -1,7 +1,7 @@
 .masdata_container{
     width: 96%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     gap: 50px;
 }
@@ -40,5 +40,7 @@
   }
   .Columname-inputcolom input{
     width: 100%;
+    padding: 7px;
+    font-size: 14px;
   }
 }
