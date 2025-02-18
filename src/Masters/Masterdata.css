@@ -1,0 +1,44 @@
+.masdata_container{
+    width: 96%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    gap: 50px;
+}
+.Columname-inputcolom{
+  display: grid;
+}
+.Columname-inputcolom input{
+    width: 250px;
+    outline: none;
+    font-size: 13px;
+    padding: 6px;
+    margin-top: 10px;
+}
+.Columname-inputcolom select{
+ /* color: rgb(165, 165, 165); */
+  outline: none;
+  font-size: 13px;
+  padding: 6px;
+  margin-top: 10px;
+}
+
+.Columname-inputcolom button{
+  width: 100px;
+  margin: auto;
+  margin-top: 20px;
+   background-color: teal;
+   font-size: 13px;
+   padding: 6px;
+   color: white;
+}
+
+@media only screen and (max-width: 768px){
+  .Columname-inputcolom{
+    width: 95%;
+    margin: auto;
+  }
+  .Columname-inputcolom input{
+    width: 100%;
+  }
+}

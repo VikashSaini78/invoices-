@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Addinvoice.css";
-import { FaPlus } from "react-icons/fa";
-import { FaMinus } from "react-icons/fa";
+// import { FaPlus } from "react-icons/fa";
+// import { FaMinus } from "react-icons/fa";
 import { IoMdPrint } from "react-icons/io";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
@@ -22,7 +22,7 @@ function Addinvoice() {
           <h5>NEW INVOICE</h5>
           <div>
             <span>Invoice</span>
-            <i class="fa-solid fa-chevron-right"></i>
+            <i className="fa-solid fa-chevron-right"></i>
             <p>New Invoice</p>
           </div>
         </div>
@@ -32,21 +32,21 @@ function Addinvoice() {
             <div className="row">
               <div className="col-md-6">
                 <div className="newinvoice_input-div">
-                  <label class="form-label">Invoice No</label>
+                  <label className="form-label">Invoice No</label>
                   <p>#VL42048121</p>
 
-                  <label class="form-label">Date</label>
+                  <label className="form-label">Date</label>
                   <p> Date-time</p>
 
-                  <label class="form-label">Total Amount</label>
-                  <select class="form-select">
+                  <label className="form-label">Total Amount</label>
+                  <select className="form-select">
                     <option> Select Payment Status</option>
                     <option value="1">Paid</option>
                     <option value="2">Refund</option>
                     <option value="3">Unpaid</option>
                   </select>
 
-                  <label class="form-label">Total Amount</label>
+                  <label className="form-label">Total Amount</label>
                   <p>$0.00</p>
                 </div>
               </div>
@@ -58,32 +58,32 @@ function Addinvoice() {
                       <img src="./media/response infoway_logo.jpg" alt="" />
                     </div>
 
-                    <div class="mb-2">
-                      <label class="form-label">Address</label>
+                    <div className="mb-2">
+                      <label className="form-label">Address</label>
                       <textarea
-                        class="form-control"
+                        className="form-control"
                         placeholder="Compney Address"
                         rows="3"
                       ></textarea>
                     </div>
 
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="text"
                       placeholder="Enter Postal Code"
                     />
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="text"
                       placeholder="Email Address"
                     />
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="text"
                       placeholder="Website"
                     />
                     <input
-                      class="form-control no-spinner"
+                      className="form-control no-spinner"
                       type="number"
                       placeholder="Contact No"
                     />
@@ -161,60 +161,11 @@ function Addinvoice() {
           </div>
 
           <div className="newinvoice_table">
-            {/* <table className="table">
-              <thead>
-                <tr className="tr_table">
-                  <th>#</th>
-                  <th>COUNTRY</th>
-                  <th>REGION</th>
-                  <th>TAX RATE(%)</th>
-                  <th>STATUS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <th>1</th>
-                <td>
-                  <div className="iinput-table_newvoice">
-                    <input
-                      className="form-control"
-                      type="text"
-                      placeholder="Full Name"
-                    />
-                    <textarea
-                      className="form-control"
-                      placeholder="Compney Address"
-                      rows="3"
-                    ></textarea>
-                  </div>
-                </td>
-                <td>
-                  <div className="reate_s">0.00</div>
-                </td>
-                <td>
-                  <div className="counter_div">
-                    <p onClick={increment}>
-                      <FaMinus />
-                    </p>{" "}
-                    {count}
-                    <p onClick={decrement}>
-                      <FaPlus />
-                    </p>
-                  </div>
-                </td>
-                <td>
-                  <div className="Amount_div">
-                    <p>£0.00</p>
-                    <button type="button" class="btn btn">
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tbody>
-            </table> */}
+    
           </div>
 
           <div className="Add-item_button">
-            <button type="button" class="btn btn">
+            <button type="button" className="btn btn">
               + Add Item
             </button>
           </div>
@@ -259,7 +210,7 @@ function Addinvoice() {
             <div className="payment-method_div">
               <h6>PAYMENT DETAILS</h6>
 
-              <select class="form-select">
+              <select className="form-select">
                 <option>Payment method</option>
                 <option value="1">Credit Card</option>
                 <option value="2">Master Card</option>
@@ -293,19 +244,19 @@ function Addinvoice() {
           </div>
 
           <div className="buttons_div">
-            <button id="Sav_button" type="button" class="btn btn">
+            <button id="Sav_button" type="button" className="btn btn">
               <i>
                 <IoMdPrint />
               </i>
               Save
             </button>
-            <button id="downlod_btn" type="button" class="btn btn">
+            <button id="downlod_btn" type="button" className="btn btn">
               <i>
                 <FaCloudDownloadAlt />
               </i>
               Downlod Invoice
             </button>
-            <button id="sen_invoice" type="button" class="btn btn">
+            <button id="sen_invoice" type="button" className="btn btn">
               <IoIosSend />
               Send Invoice
             </button>

@@ -48,7 +48,7 @@ function Signin() {
 
             <div className="rember_forgatepass">
               <div>
-                <input class="form-check-input cursor-pointer" type="checkbox" />
+                <input className="form-check-input cursor-pointer" type="checkbox" />
                 Remember me
               </div>
               <Link>
@@ -57,7 +57,7 @@ function Signin() {
               </Link>
             </div>
 
-            <button type="button" class="btn btn" id="login_btn">
+            <button type="button" className="btn btn" id="login_btn">
               Log in
             </button>
 

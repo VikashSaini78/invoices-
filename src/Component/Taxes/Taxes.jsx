@@ -190,7 +190,7 @@ function Taxes() {
             </div>
 
             <div className="delet_icon-boxtaxes">
-              <i class="fa-solid fa-trash"></i>
+              <i className="fa-solid fa-trash"></i>
             </div>
             <div className="taxes_pcolom">
               <h6>Confirm Delete</h6>

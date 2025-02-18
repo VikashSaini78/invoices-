@@ -12,15 +12,15 @@ function Payment() {
 
            <div>
             <p>Payments</p>
-            <span><i class="fa-solid fa-chevron-right"></i>Payments
+            <span><i className="fa-solid fa-chevron-right"></i>Payments
           </span>
            </div>
        </div>
        <div className='button_search-payment'>
-       <button type="button" class="btn btn"><i class="fa-solid fa-plus" ></i> Add invoice</button>
+       <button type="button" className="btn btn"><i className="fa-solid fa-plus" ></i> Add invoice</button>
 
        <div>
-       <input type="search" class="form-control" placeholder='Search for name or designation...'/>
+       <input type="search" className="form-control" placeholder='Search for name or designation...'/>
        <span onClick={()=>{setpaymenticon(!paymenticon)}}>
        <BsThreeDotsVertical />
        </span>
@@ -47,7 +47,7 @@ function Payment() {
                   <div className="payment_text">
                <h6 className="payment_text-all"> All</h6> <h6>Paid</h6> <h6>Pending</h6>
                   </div>
-                  <table class="table table-hover">
+                  <table className="table table-hover">
                 
                     <thead>
                     
@@ -74,10 +74,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_paid-id">Paid </p>
+                        <p className="status_paid-id">Paid </p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
 
@@ -92,10 +92,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_failed-id">Failed</p>
+                        <p className="status_failed-id">Failed</p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
                       <tr >
@@ -109,10 +109,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_pending-id">Pending</p>
+                        <p className="status_pending-id">Pending</p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
                       <tr >
@@ -126,10 +126,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_paid-id">Paid </p>
+                        <p className="status_paid-id">Paid </p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
                       <tr >
@@ -143,10 +143,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_paid-id">Paid </p>
+                        <p className="status_paid-id">Paid </p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
                       <tr >
@@ -160,10 +160,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_failed-id">Failed</p>
+                        <p className="status_failed-id">Failed</p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
                       <tr >
@@ -177,10 +177,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_paid-id">Paid </p>
+                        <p className="status_paid-id">Paid </p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
                       <tr >
@@ -194,10 +194,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_pending-id">Pending</p>
+                        <p className="status_pending-id">Pending</p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
                       <tr >
@@ -211,10 +211,10 @@ function Payment() {
                         <td>Google Pay</td>
                         <td>$1200.00</td>
                         <td >
-                        <p class="status_failed-id">Failed</p>
+                        <p className="status_failed-id">Failed</p>
                         </td>
                         <td>
-                          <p class="action_td-id"><i class="fa-solid fa-ellipsis"></i></p>
+                          <p className="action_td-id"><i className="fa-solid fa-ellipsis"></i></p>
                         </td>
                       </tr>
 

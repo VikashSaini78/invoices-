@@ -12,20 +12,20 @@ function ProductList() {
             <div>
               <p>product</p>
               <span>
-                <i class="fa-solid fa-chevron-right"></i>Product List
+                <i className="fa-solid fa-chevron-right"></i>Product List
               </span>
             </div>
           </div>
 
           <div className="button_search-product">
-            <button type="button" class="btn btn">
-              <i class="fa-solid fa-plus"></i> Add product
+            <button type="button" className="btn btn">
+              <i className="fa-solid fa-plus"></i> Add product
             </button>
 
             <div>
               <input
                 type="search"
-                class="form-control"
+                className="form-control"
                 placeholder="Search for Result"
               />
               <span>
@@ -36,11 +36,11 @@ function ProductList() {
         </div>
 
         <div className="product_list-table">
-          <table class="table table-striped table-sm">
+          <table className="table table-striped table-sm">
             <thead>
               <tr>
                 <th>
-                  <input class="form-check-input" type="checkbox" />
+                  <input className="form-check-input" type="checkbox" />
                 </th>
                 <th>PRODUCT NAME</th>
                 <th>CATEGORY</th> 
@@ -53,10 +53,10 @@ function ProductList() {
             <tbody>
               <tr>
                 <td>
-                  <input class="form-check-input" type="checkbox" />
+                  <input className="form-check-input" type="checkbox" />
                 </td>
                 <td>
-                  <div class="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img src="./media/tshart.png" alt="tshart Image" />
                     <h6 className="mb-0">World's most expensive t-shirt</h6>
                   </div>
@@ -64,23 +64,23 @@ function ProductList() {
                 <td>Fashion</td>
                 <td> 65 / 125</td>
                 <td>
-                  <i class="fa-regular fa-star"></i>
+                  <i className="fa-regular fa-star"></i>
                   3.5
                 </td>
                 <td>$742.00</td>
                 <td>
-                  <p class="action_product">
-                    <i class="fa-solid fa-ellipsis"></i>
+                  <p className="action_product">
+                    <i className="fa-solid fa-ellipsis"></i>
                   </p>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                  <input class="form-check-input" type="checkbox" />
+                  <input className="form-check-input" type="checkbox" />
                 </td>
                 <td>
-                  <div class="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img src="./media/tshart.png" alt="tshart Image" />
                     <h6 className="mb-0">World's most expensive t-shirt</h6>
                   </div>
@@ -90,18 +90,19 @@ function ProductList() {
                 <td>3.5</td>
                 <td>$742.00</td>
                 <td>
-                  <p class="action_product">
-                    <i class="fa-solid fa-ellipsis"></i>
+                  <p className="action_product">
+                    <i className="fa-solid fa-ellipsis"></i>
                   </p>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                  <input class="form-check-input" type="checkbox" />
+                  <input className="form-check-input" type="checkbox" />
                 </td>
                 <td>
-                  <div class="d-flex align-items-center">
+                  <div className
+                  ="d-flex align-items-center">
                     <img src="./media/tshart.png" alt="tshart Image" />
                     <h6 className="mb-0">World's most expensive t-shirt</h6>
                   </div>
@@ -111,18 +112,18 @@ function ProductList() {
                 <td>3.5</td>
                 <td>$742.00</td>
                 <td>
-                  <p class="action_product">
-                    <i class="fa-solid fa-ellipsis"></i>
+                  <p className="action_product">
+                    <i className="fa-solid fa-ellipsis"></i>
                   </p>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                  <input class="form-check-input" type="checkbox" />
+                  <input className="form-check-input" type="checkbox" />
                 </td>
                 <td>
-                  <div class="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img src="./media/tshart.png" alt="tshart Image" />
                     <h6 className="mb-0">World's most expensive t-shirt</h6>
                   </div>
@@ -132,18 +133,18 @@ function ProductList() {
                 <td>3.5</td>
                 <td>$742.00</td>
                 <td>
-                  <p class="action_product">
-                    <i class="fa-solid fa-ellipsis"></i>
+                  <p className="action_product">
+                    <i className="fa-solid fa-ellipsis"></i>
                   </p>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                  <input class="form-check-input" type="checkbox" />
+                  <input className="form-check-input" type="checkbox" />
                 </td>
                 <td>
-                  <div class="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img src="./media/tshart.png" alt="tshart Image" />
                     <h6 className="mb-0">World's most expensive t-shirt</h6>
                   </div>
@@ -153,18 +154,18 @@ function ProductList() {
                 <td>3.5</td>
                 <td>$742.00</td>
                 <td>
-                  <p class="action_product">
-                    <i class="fa-solid fa-ellipsis"></i>
+                  <p className="action_product">
+                    <i className="fa-solid fa-ellipsis"></i>
                   </p>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                  <input class="form-check-input" type="checkbox" />
+                  <input className="form-check-input" type="checkbox" />
                 </td>
                 <td>
-                  <div class="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img src="./media/tshart.png" alt="tshart Image" />
                     <h6 className="mb-0">World's most expensive t-shirt</h6>
                   </div>
@@ -174,18 +175,18 @@ function ProductList() {
                 <td>3.5</td>
                 <td>$742.00</td>
                 <td>
-                  <p class="action_product">
-                    <i class="fa-solid fa-ellipsis"></i>
+                  <p className="action_product">
+                    <i className="fa-solid fa-ellipsis"></i>
                   </p>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                  <input class="form-check-input" type="checkbox" />
+                  <input className="form-check-input" type="checkbox" />
                 </td>
                 <td>
-                  <div class="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img src="./media/tshart.png" alt="tshart Image" />
                     <h6 className="mb-0">World's most expensive t-shirt</h6>
                   </div>
@@ -195,8 +196,8 @@ function ProductList() {
                 <td>3.5</td>
                 <td>$742.00</td>
                 <td>
-                  <p class="action_product">
-                    <i class="fa-solid fa-ellipsis"></i>
+                  <p className="action_product">
+                    <i className="fa-solid fa-ellipsis"></i>
                   </p>
                 </td>
               </tr>

@@ -36,11 +36,19 @@ function Navbar() {
                   : "w-auto  mb-2"
               } flex justify-center items-center mt-3`}
             >
-              <img
+            <Link to={"/"}
+               onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+            >
+            <img
                 className={`${admin ? "next-logo" : "admin_panal-logo"}`}
                 src={admin ? "./media/logo.webp" : "./media/response_info.jpg"}
                 alt={admin ? "Next Logo" : "Admin Panel Logo"}
               />
+            </Link>
 
               <div
                 className="admin_close-btn"
@@ -158,7 +166,7 @@ function Navbar() {
                         setlist(!list);
                       }}
                     >
-                      Products <i class="fa-solid fa-angle-down"></i>
+                      Products <i className="fa-solid fa-angle-down"></i>
                     </li>
 
                     {list && (
@@ -177,7 +185,7 @@ function Navbar() {
                         setreport(!report);
                       }}
                     >
-                      Report <i class="fa-solid fa-angle-down"></i>
+                      Report <i className="fa-solid fa-angle-down"></i>
                     </li>
 
                     {report && (
@@ -199,7 +207,7 @@ function Navbar() {
                         settransaction(!Transaction);
                       }}
                     >
-                      Transaction <i class="fa-solid fa-angle-down"></i>
+                      Transaction <i className="fa-solid fa-angle-down"></i>
                     </li>
 
                     {Transaction && (
@@ -214,7 +222,8 @@ function Navbar() {
                 </div>
                 )
               </div>
-            )}
+            )
+            }
 
             {/* Authentication  */}
 
@@ -391,7 +400,7 @@ function Navbar() {
               <div className="navbar">
                 <div className="navbar_icon">
                   <i
-                    class="fa-solid fa-bars"
+                    className="fa-solid fa-bars"
                     onClick={() => {
                       setadmin(!admin);
                     }}
@@ -401,16 +410,16 @@ function Navbar() {
                     <input type="search" placeholder="Search" />
                   </div>
                 </div>
-                <i id="nav_icons" class="fa-solid fa-magnifying-glass"></i>
-
+                <i id="nav_icons" className="fa-solid fa-magnifying-glass"></i>
+ 
                 <div className="nav_bellfrofile">
                   <i
-                    class="fa-regular fa-bell"
+                    className="fa-regular fa-bell"
                     onClick={() => {
                       setNotifications(!Notifications);
                     }}
                   >
-                    <span class="translate-middle badge rounded-pill bg-danger">
+                    <span className="translate-middle badge rounded-pill bg-danger">
                       4
                     </span>
                   </i>
@@ -421,8 +430,9 @@ function Navbar() {
                       setvalue(!value);
                     }}
                   >
-                    <img src="./media/avatar.jpg" alt="" /> Calvin.D{" "}
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <img src="./media/avatar.jpg" alt="" />
+                     <p className="calvind_box"> Calvin.D <i className="fa-solid fa-chevron-down"></i></p>
+                    
                   </ul>
                 </div>
 
@@ -446,7 +456,7 @@ function Navbar() {
                             <pre>48 MIN AGO</pre>
                           </p>
                         </div>
-                        <input class="form-check-input" type="checkbox" />
+                        <input className="form-check-input" type="checkbox" />
                       </div>
                     </div>
 
@@ -462,7 +472,7 @@ function Navbar() {
                             <pre>48 MIN AGO</pre>
                           </p>
                         </div>
-                        <input class="form-check-input" type="checkbox" />
+                        <input className="form-check-input" type="checkbox" />
                       </div>
                     </div>
                     <div className="notfication_member-show">
@@ -477,23 +487,7 @@ function Navbar() {
                             <pre>48 MIN AGO</pre>
                           </p>
                         </div>
-                        <input class="form-check-input" type="checkbox" />
-                      </div>
-                    </div>
-
-                    <div className="notfication_member-show">
-                      <div className="notfication_member-show-1">
-                        <img src="./media/ntotifaction.jpg" alt="not" />
-
-                        <div className="noti_text-text">
-                          <h6>Angela Berner</h6>{" "}
-                          <p>
-                            Answered to your comment on the cash flow forecast's
-                            graph
-                            <pre>48 MIN AGO</pre>
-                          </p>
-                        </div>
-                        <input class="form-check-input" type="checkbox" />
+                        <input className="form-check-input" type="checkbox" />
                       </div>
                     </div>
 
@@ -509,7 +503,23 @@ function Navbar() {
                             <pre>48 MIN AGO</pre>
                           </p>
                         </div>
-                        <input class="form-check-input" type="checkbox" />
+                        <input className="form-check-input" type="checkbox" />
+                      </div>
+                    </div>
+
+                    <div className="notfication_member-show">
+                      <div className="notfication_member-show-1">
+                        <img src="./media/ntotifaction.jpg" alt="not" />
+
+                        <div className="noti_text-text">
+                          <h6>Angela Berner</h6>{" "}
+                          <p>
+                            Answered to your comment on the cash flow forecast's
+                            graph
+                            <pre>48 MIN AGO</pre>
+                          </p>
+                        </div>
+                        <input className="form-check-input" type="checkbox" />
                       </div>
                     </div>
                   </div>
@@ -521,20 +531,20 @@ function Navbar() {
               {value && (
                 <div className="nav_profile-text">
                   <li>
-                    <i class="fa-regular fa-user"></i> Profile
+                    <i className="fa-regular fa-user"></i> Profile
                   </li>
                   <li>
-                    <i class="fa-solid fa-wallet"></i> My Wallet
+                    <i className="fa-solid fa-wallet"></i> My Wallet
                   </li>
                   <li>
-                    <i class="fa-solid fa-gear"></i> Setting
+                    <i className="fa-solid fa-gear"></i> Setting
                   </li>
                   <li>
-                    <i class="fa-solid fa-lock"></i> Look Screen
+                    <i className="fa-solid fa-lock"></i> Look Screen
                   </li>
                   <hr />
                   <div className="nav_log-out">
-                    <i class="fa-solid fa-power-off"></i> Log out
+                    <i className="fa-solid fa-power-off"></i> Log out
                   </div>
                 </div>
               )}

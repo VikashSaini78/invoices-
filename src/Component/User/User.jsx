@@ -15,23 +15,23 @@ function User() {
                                 
                                            <div>
                                             <p>product</p>
-                                            <span><i class="fa-solid fa-chevron-right"></i>Product List</span>
+                                            <span><i className="fa-solid fa-chevron-right"></i>Product List</span>
                                            </div>
                                    
                                            </div>
                                 
                                        <div className='button_search-user'>
-                                       <button type="button" class="btn btn"><i class="fa-solid fa-plus" ></i> Add New</button>
+                                       <button type="button" className="btn btn"><i className="fa-solid fa-plus" ></i> Add New</button>
                                 
                                        <div>
-                                       <input type="search" class="form-control" placeholder='Search for Result'/>
+                                       <input type="search" className="form-control" placeholder='Search for Result'/>
                                        <span><BsThreeDotsVertical /></span>
                                        </div>
                                       </div>
                                 
 
                                 <div className="user_table">
-                                <table class="table table-hover">
+                                <table className="table table-hover">
                 
                 <thead>
                 
@@ -56,13 +56,13 @@ function User() {
                     <td>309-300-9739</td>
                     <td>12 Arl, 2022</td>
                     <td >
-                    <p class="status_failed-id">Failed</p>
+                    <p className="status_failed-id">Failed</p>
                     </td>
                     <td>
                       <div className="use_table-action">
-                      <p class="action_eye"><AiOutlineEye /></p>
-                      <p class="action_edit"><MdOutlineModeEdit /></p>
-                      <p class="action_file"><FaFileDownload /></p>
+                      <p className="action_eye"><AiOutlineEye /></p>
+                      <p className="action_edit"><MdOutlineModeEdit /></p>
+                      <p className="action_file"><FaFileDownload /></p>
                       </div>
                     </td>
                     

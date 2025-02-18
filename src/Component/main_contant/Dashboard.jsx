@@ -130,7 +130,7 @@ function Dashboard() {
             <h5>DASHBORD</h5>
             <div>
               <span>Dashboard</span>
-              <i class="fa-solid fa-chevron-right"></i>
+              <i className="fa-solid fa-chevron-right"></i>
               <p>Dashboard</p>
             </div>
           </div>
@@ -147,7 +147,7 @@ function Dashboard() {
                       Quickly understand who your best customers little and
                       motivation to pay thair bills.
                     </p>
-                    <button type="button" class="btn btn">
+                    <button type="button" className="btn btn">
                       Warch Tutorial
                     </button>
                   </span>
@@ -166,7 +166,7 @@ function Dashboard() {
                       
                       <p>Clients Added</p>
                       <span>
-                        <button type="button" class="btn btn">
+                        <button type="button" className="btn btn">
                           1.15%
                         </button>
                          <p> since last week </p>
@@ -182,7 +182,7 @@ function Dashboard() {
                       <h5>634</h5>
                       <p>Clients Added</p>
                       <span>
-                        <button type="button" class="btn btn">
+                        <button type="button" className="btn btn">
                           1.15%
                         </button>
                        <p> since last week</p>
@@ -203,7 +203,7 @@ function Dashboard() {
                       <h5>512</h5>
                       <p className="Invoice_sent">Invoice Sent</p>
                       <span>
-                        <button type="button" class="btn btn">
+                        <button type="button" className="btn btn">
                           1.15%
                         </button>
                         <p>since last week</p>
@@ -217,50 +217,6 @@ function Dashboard() {
             </div>
           </div>
 
-          {/* graph */}
-
-          {/* <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-8">
-                <div className="Activity_div">
-                  <div className="Payment_Activity">
-                    <h6>Payment Activity</h6>
-                    <div className="activity_buttons">
-                      <span>ALL</span> <span>1M</span> <span>6M</span>{" "}
-                      <span id="active">1Y</span>
-                    </div> 
-                  </div>
-                  <div className="activity_incoms">
-                    <h5>$23,590.00</h5>
-                    <div className="activity_incoms-span">
-                      <h6>$584k</h6>
-                      <span>Incomes</span>
-                    </div>{" "}
-                    <div className="activity_incoms-span">
-                      <h6>$324k</h6>
-                      <span>Expenses</span>
-                    </div>
-                  </div>
-
-                  <div className="payment_chart">
-                    <ResponsiveContainer>
-                      <BarChart data={Array} width={500} height={500}>
-                        <XAxis dataKey={"name"} />
-                        <YAxis />
-                        <Tooltip />
-                        <Bar dataKey="income" fill="#1a7c87" />
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">2</div>
-
-              <div></div>
-            </div>
-          </div> */}
-
-          {/* actibity form  */}
 
           <div className="container-fluid">
             <div className="row">
@@ -268,23 +224,23 @@ function Dashboard() {
                 <div className="Quick_form">
                   <div className="Quick_text">
                     <h6>Quick Invoice</h6>
-                    <p><i class="fa-solid fa-plus"></i></p>
+                    <p><i className="fa-solid fa-plus"></i></p>
                   </div>
                   <div className="quick_lable">
                     <div className="quick_lable-input">
-                      <label class="form-label">Customer Name</label>
+                      <label className="form-label">Customer Name</label>
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Enter Name"
                       />
                     </div>
                     <div className="quick_lable-input">
                       {" "}
-                      <label class="form-label">Customer Email</label>
+                      <label className="form-label">Customer Email</label>
                       <input
                         type="Email"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Enter Email"
                       />
                     </div>
@@ -293,7 +249,7 @@ function Dashboard() {
                   <div className="quick_textarea">
                     <label for="floatingTextarea2">Customer Address</label>
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       placeholder="Company Address"
                       id="floatingTextarea2"
                     ></textarea>
@@ -326,10 +282,11 @@ function Dashboard() {
                     <h6>$755.96</h6>
                   </div>
                   <div className="Sub_Total-button">
-                    <button id="btn2" type="button" class="btn btn">
+                    <button id="btn2" type="button" className="btn btn">
                       Warch Tutorial
                     </button>
-                    <button id="btn1" type="button" class="btn btn">
+                    <button id="btn1" type="button" className
+                    ="btn btn">
                       Warch Tutorial
                     </button>
                   </div>
@@ -397,7 +354,7 @@ function Dashboard() {
 
                   {/* 1 */}
                   <div className="salary_pay">
-                    <i class="fa-brands fa-paypal"></i>
+                    <i className="fa-brands fa-paypal"></i>
                     <div className="payment_date">
                       {/* <p> */}
                         <b>Salary Paym..</b> <br /> 20 mar, 202..
@@ -407,7 +364,7 @@ function Dashboard() {
                   </div>
                   {/* 2 */}
                   <div className="Online_Pro">
-                    <i class="fa-solid fa-microchip"></i>
+                    <i className="fa-solid fa-microchip"></i>
                     <div className="payment_date">
                      
                         <b>Online Pro..</b> <br /> 20 Sep, 202..
@@ -420,7 +377,7 @@ function Dashboard() {
 
                   {/* 3 */}
                   <div className="Maintenanc">
-                    <i class="fa-solid fa-camera-retro"></i>
+                    <i className="fa-solid fa-camera-retro"></i>
                     <div className="payment_date">
                       
                         <b>Maintenanc..</b> <br /> 25 oct. 202..
@@ -432,7 +389,7 @@ function Dashboard() {
                   {/* 4 */}
 
                   <div className="Bus_Bookin">
-                    <i class="fa-solid fa-bus"></i>
+                    <i className="fa-solid fa-bus"></i>
                     <div className="payment_date">
                       
                         <b>Bus Bookin..</b> <br /> 21 Bov, 202..
@@ -444,7 +401,7 @@ function Dashboard() {
                   {/* 5 */}
 
                   <div className="Flight_Book">
-                    <i class="fa-brands fa-telegram"></i>
+                    <i className="fa-brands fa-telegram"></i>
                     <div className="payment_date">
                      
                         <b>Flight Book...</b> <br /> 20 Sep, 202..
@@ -456,7 +413,7 @@ function Dashboard() {
                   {/* 6 */}
 
                   <div className="Office_Rent">
-                    <i class="fa-solid fa-house-user"></i>
+                    <i className="fa-solid fa-house-user"></i>
                     <div className="payment_date">
                       
                         <b>Office Rent..</b> <br /> 20 Sep, 202..
@@ -466,243 +423,7 @@ function Dashboard() {
                   </div>
                 </div>
               </div>
-{/* 
-              <div className="col-md-6">
-                <div className="Revenue_map">
-                  <div className="Revenue_text">
-                    <h6>Sales Revenue </h6>
-                    <span
-                      onClick={() => {
-                        setrevebue(!revebue);
-                      }}
-                    >
-                      <h6>Sort By : </h6>
-                      <p>Years</p>
-                      <i className="fa-solid fa-angle-down"></i>
-                    </span>
-                  </div>
 
-                  <div className="map-countris_div">
-                    <div className="Map_div"></div>
-
-
-
-
-                    <div className="Countrie_div">
-                      <table class="table table-sm">
-                        <thead>
-                          <tr>
-                            <th>COUNTRIE</th>
-                            <th>ORDER</th>
-                            <th>EARNING</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><div className="countrie_img-div"><img src="./media/us.svg" alt=""/> Us </div></td>
-                            <td>6253	</td>
-                            <td>$26,524</td>
-                          </tr>
-
-                          <tr>
-                            <td><div className="countrie_img-div"><img src="./media/us.svg" alt=""/> Us </div></td>
-                            <td>6253	</td>
-                            <td>$26,524</td>
-                          </tr>
-
-                          <tr>
-                            <td><div className="countrie_img-div"><img src="./media/us.svg" alt=""/> Us </div></td>
-                            <td>6253	</td>
-                            <td>$26,524</td>
-                          </tr>
-
-                          <tr>
-                            <td><div className="countrie_img-div"><img src="./media/us.svg" alt=""/> Us </div></td>
-                            <td>6253	</td>
-                            <td>$26,524</td>
-                          </tr>
-
-                          <tr>
-                            <td><div className="countrie_img-div"><img src="./media/us.svg" alt=""/> Us </div></td>
-                            <td>6253	</td>
-                            <td>$26,524</td>
-                          </tr>
-
-                          <tr>
-                            <td><div className="countrie_img-div"><img src="./media/us.svg" alt=""/> Us </div></td>
-                            <td>6253	</td>
-                            <td>$26,524</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="Invoice_List">
-                  <div className="Invoice_text">
-                    <h6>Invoice List </h6>
-                    <span>
-                      <h6>Sort By : </h6>
-                      <p>Weekly</p>
-                      <i className="fa-solid fa-angle-down"></i>
-                    </span>
-                  </div>
-                  <table class="table table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th>
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                           
-                          />
-                        </th>
-                        <th>Invoice ID</th>
-                        <th>Client</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr >
-                        <td>
-                          <input class="form-check-input" type="checkbox" />
-                        </td>
-                        <td>Lec-2152</td>
-                        <td>
-                          <div className="img_text-table">
-                           
-                            <img src="./media/clint1.jpg" alt="Client Image" />
-                            Donald Risher
-                          </div>
-                        </td>
-                        <td>20 Sep, 2022</td>
-                        <td >
-                          <p class="status_td">Paid </p>
-                        </td>
-                        <td>
-                          <p class="action_td"><i class="fa-solid fa-ellipsis"></i></p>
-                        </td>
-                      </tr>
-
-                      <tr >
-                        <td>
-                          <input class="form-check-input" type="checkbox" />
-                        </td>
-                        <td>Lec-2152</td>
-                        <td>
-                          <div className="img_text-table">
-                           
-                            <img src="./media/clint1.jpg" alt="Client Image" />
-                            Donald Risher
-                          </div>
-                        </td>
-                        <td>20 Sep, 2022</td>
-                        <td >
-                          <p class="status_td">Paid </p>
-                        </td>
-                        <td>
-                          <p class="action_td"><i class="fa-solid fa-ellipsis"></i></p>
-                        </td>
-                      </tr>
-
-                      <tr >
-                        <td>
-                          <input class="form-check-input" type="checkbox" />
-                        </td>
-                        <td>Lec-2152</td>
-                        <td>
-                          <div className="img_text-table">
-                           
-                            <img src="./media/clint1.jpg" alt="Client Image" />
-                            Donald Risher
-                          </div>
-                        </td>
-                        <td>20 Sep, 2022</td>
-                        <td >
-                          <p class="status_td">Paid </p>
-                        </td>
-                        <td>
-                          <p class="action_td"><i class="fa-solid fa-ellipsis"></i></p>
-                        </td>
-                      </tr>
-
-                      <tr >
-                        <td>
-                          <input class="form-check-input" type="checkbox" />
-                        </td>
-                        <td>Lec-2152</td>
-                        <td>
-                          <div className="img_text-table">
-                           
-                            <img src="./media/clint1.jpg" alt="Client Image" />
-                            Donald Risher
-                          </div>
-                        </td>
-                        <td>20 Sep, 2022</td>
-                        <td >
-                          <p class="status_td">Paid </p>
-                        </td>
-                        <td>
-                          <p class="action_td"><i class="fa-solid fa-ellipsis"></i></p>
-                        </td>
-                      </tr>
-
-                      <tr >
-                        <td>
-                          <input class="form-check-input" type="checkbox" />
-                        </td>
-                        <td>Lec-2152</td>
-                        <td>
-                          <div className="img_text-table">
-                           
-                            <img src="./media/clint1.jpg" alt="Client Image" />
-                            Donald Risher
-                          </div>
-                        </td>
-                        <td>20 Sep, 2022</td>
-                        <td >
-                          <p class="status_td">Paid </p>
-                        </td>
-                        <td>
-                          <p class="action_td"><i class="fa-solid fa-ellipsis"></i></p>
-                        </td>
-                      </tr>
-
-                      <tr >
-                        <td>
-                          <input class="form-check-input" type="checkbox" />
-                        </td>
-                        <td>Lec-2152</td>
-                        <td>
-                          <div className="img_text-table">
-                           
-                            <img src="./media/clint1.jpg" alt="Client Image" />
-                            Donald Risher
-                          </div>
-                        </td>
-                        <td>20 Sep, 2022</td>
-                        <td >
-                          <p class="status_td">Paid </p>
-                        </td>
-                        <td>
-                          <p class="action_td"><i class="fa-solid fa-ellipsis"></i></p>
-                        </td>
-                      </tr>
-
-                      
-
-                 
-                    </tbody>
-                  </table>
-                </div>
-
-              </div> */}
-            
-          
             
             </div>
           </div>

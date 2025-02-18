@@ -12,8 +12,6 @@
 }
 .admin_panal-logo{
     width: 150px;
-    /* height: 100px; */
-    /* background-color: aqua; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -467,19 +465,36 @@ cursor: pointer;
 /* Scrollbar size */
 
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 3px;
     height: 300px; 
 }
 
-/* Scrollbar thumb */
 ::-webkit-scrollbar-thumb {
     background: #c7c7c7; 
     border-radius: 5px;
 }
 
-/* Scrollbar thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #909090; 
     width: 6px; 
+} */
+
+.sidebar::-webkit-scrollbar {
+    width: 5px; 
 }
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #909090;
+}
+.sidebar:hover::-webkit-scrollbar-thumb {
+    width: 6px;
+} 

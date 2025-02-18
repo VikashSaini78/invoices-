@@ -361,7 +361,9 @@ cursor:pointer;
     }
     #nav_icons{
       display: block;
-    }
+      position: relative;
+      left: 75px;
+    } 
     .admin_close-btn{
       display: block;
       color: black;
@@ -372,12 +374,35 @@ cursor:pointer;
       
     }
     .nav_notifications-showbr {
+      width: 100%;
       position: absolute;
-      right: 39px;
-      top: 50px;
+      /* margin: auto; */
+      left: 0;
+      right: 0;
+      top: 52px;
      
   }
+  .calvind_box{
+    display: none;
+  }
+  .ul_calvind-text img{
+   width: 42px;
+   height: 42px;
+  }
 
+  .noti_text-text {
+    width: 283px;
+    margin: auto;
+    padding: 10px;
+}
+.nav_profile-text {
+  width: 100%;
+
+}
+
+.nav_profile-text li{
+  padding: 5px;
+}
 
 
      } 

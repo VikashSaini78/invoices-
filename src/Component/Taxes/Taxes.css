@@ -281,7 +281,8 @@ body {
 
 .adit_model-container {
   width: 340px;
-  background: #000;
+  padding: 5px;
+  background: #ffffff;
 }
 
 
@@ -314,7 +315,6 @@ body {
   align-items: center;
   gap: 10px;
   padding: 15px;
-  /* background-color: yellowgreen; */
 }
 
 .edit_button {

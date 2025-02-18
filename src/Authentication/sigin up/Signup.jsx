@@ -20,7 +20,6 @@ function Signup() {
 
     const onsubmitvalue = async (e) => {
       e.preventDefault();
-      // console.log({ name, number, password });
 
        const data = { name, number, password }
        fetch("api/signupdata", {
