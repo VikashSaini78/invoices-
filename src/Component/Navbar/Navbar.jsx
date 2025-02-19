@@ -6,6 +6,8 @@ import { IoMdClose } from "react-icons/io";
 import Service from "../../Service";
 import { Link } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
+import { GrFormDown } from "react-icons/gr";
+   
 
 function Navbar() {
   const [value, setvalue] = useState("");
@@ -21,6 +23,35 @@ function Navbar() {
   const [table, settable] = useState("");
   const [Apexcharts, setApexcharts] = useState("");
   const [Notifications, setNotifications] = useState("");
+  const [isDown, setIsDown] = useState(false);
+  const [auth, setauth] = useState(false);
+  const [mst,setsmt] = useState(false);
+  const [ent, setent] = useState(false);
+  const [rep, setrep] = useState(false);
+  const [uti, setuti] = useState(false);
+
+  const handleClick = () => {
+    setIsDown(!isDown);
+
+  };
+  const autoClick = () => {
+    setauth(!auth);
+  };
+  const mstclick = () => {
+    setsmt(!mst);
+  };
+  const entclick = () => {
+    setent(!ent);
+  };
+  const  repclick = () => {
+    setrep(!rep);
+  };
+  const uticlick = () => {
+    setuti(!uti);
+  };
+
+ 
+  
 
   return (
     <>
@@ -32,9 +63,7 @@ function Navbar() {
             <div
               className={`${
                 admin
-                  ? " w-7 m-auto h-2 flex justify-center items-center"
-                  : "w-auto  mb-2"
-              } flex justify-center items-center mt-3`}
+                  ? " w-7 m-auto h-2 flex justify-center items-center": "w-auto"} flex justify-center items-center mt-2`}
             >
             <Link to={"/"}
                onClick={() => {
@@ -67,7 +96,7 @@ function Navbar() {
                 <p className={`${admin ? "hidden" : "block"}`}>E Tour</p>
               </div>
               <Link to={"/"}>
-                <div className="das_menu">
+                <div className={`das_menu ${admin ? "mt-2" : ""}`}>
                   <i
                     className={`fa-solid fa-house ${admin ? "m-auto" : ""}`}
                   ></i>
@@ -86,10 +115,12 @@ function Navbar() {
 
             {/* <div className= "paragraph"><p className={`${admin ? "hidden" : "block"}`}>page</p></div> */}
 
-            <div
+             <div onClick= {handleClick}>
+             <div
               className="das_management"
               onClick={() => {
                 setliitem(!liitem);
+               
               }}
             >
               <i
@@ -100,10 +131,12 @@ function Navbar() {
               <p className={`${admin ? "hidden" : "block"}`}>
                 Invoices Manag..{" "}
               </p>
-              <pre className={`${admin ? "hidden" : "block"}`}>
-                <MdKeyboardArrowRight />
-              </pre>
+              <pre onClick={handleClick} className={`${admin ? "hidden" : "block"}`}>
+            {isDown ? <GrFormDown /> : <MdKeyboardArrowRight />}
+           </pre>
             </div>
+             </div>
+           
 
             {/* Main Das Management */}
 
@@ -223,10 +256,12 @@ function Navbar() {
                 )
               </div>
             )
+            
             }
 
             {/* Authentication  */}
-
+            
+             <div onClick={autoClick}>
             <div
               className="das_Authentication"
               onClick={() => {
@@ -237,9 +272,11 @@ function Navbar() {
                 className={`fa-solid fa-gear ${admin ? "m-auto mt-2" : ""}`}
               ></i>{" "}
               <p className={`${admin ? "hidden" : "block"}`}>Authentication</p>
-              <pre className={`${admin ? "hidden" : "block"}`}>
-                <MdKeyboardArrowRight />
-              </pre>
+           
+               <pre className={`${admin ? "hidden" : "block"}`}>
+            {!auth ? <MdKeyboardArrowRight />:<GrFormDown />  }
+           </pre>
+            </div>
             </div>
 
             {Authentication && (
@@ -262,6 +299,7 @@ function Navbar() {
 
             {/* Components */}
 
+          <div onClick={mstclick}>
             <div
               className="comp_bootstap"
               onClick={() => {
@@ -271,8 +309,9 @@ function Navbar() {
               <i className={`fa-solid fa-pen-nib ${admin ? "m-auto" : ""}`}></i>{" "}
               <p className={`${admin ? "hidden" : "block"}`}> Master </p>
               <pre className={`${admin ? "hidden" : "block"}`}>
-                <MdKeyboardArrowRight />
+              {!mst ? <MdKeyboardArrowRight />:<GrFormDown /> }
               </pre>
+            </div>
             </div>
 
             {Bootstrap && (
@@ -294,6 +333,7 @@ function Navbar() {
 
             {/* Advance UI */}
 
+           <div onClick={entclick}>
             <div
               className="das_advance"
               onClick={() => {
@@ -305,8 +345,9 @@ function Navbar() {
               ></i>{" "}
               <p className={`${admin ? "hidden" : "block"}`}>Entries</p>
               <pre className={`${admin ? "hidden" : "block"}`}>
-                <MdKeyboardArrowRight />
-              </pre>
+            {!ent ? <MdKeyboardArrowRight />:<GrFormDown />}
+           </pre>
+            </div>
             </div>
 
             {Advance && (
@@ -320,6 +361,8 @@ function Navbar() {
 
             {/* Tables */}
 
+
+            <div onClick={repclick}>
             <div
               className="das_tables"
               onClick={() => {
@@ -331,8 +374,9 @@ function Navbar() {
               ></i>{" "}
               <p className={`${admin ? "hidden" : "block"}`}>Reports </p>
               <pre className={`${admin ? "hidden" : "block"}`}>
-                <MdKeyboardArrowRight />
+              {!rep ? <MdKeyboardArrowRight />:<GrFormDown /> }
               </pre>
+            </div>
             </div>
 
             {table && (
@@ -352,6 +396,9 @@ function Navbar() {
             )}
 
             {/* Apexcharts */}
+
+            <div onClick={uticlick}>
+
             <div
               onClick={() => {
                 setApexcharts(!Apexcharts);
@@ -365,8 +412,10 @@ function Navbar() {
               ></i>{" "}
               <p className={`${admin ? "hidden" : "block"}`}>Utility</p>
               <pre className={`${admin ? "hidden" : "block"}`}>
-                <MdKeyboardArrowRight />
+              {!uti ? <MdKeyboardArrowRight />:<GrFormDown /> }
               </pre>
+            </div>
+            
             </div>
 
             {Apexcharts && (

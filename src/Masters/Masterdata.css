@@ -7,6 +7,8 @@
 }
 .Columname-inputcolom{
   display: grid;
+  width: 45%;
+  /* background-color: yellowgreen; */
 }
 .Columname-inputcolom input{
     width: 250px;
@@ -31,6 +33,15 @@
    font-size: 13px;
    padding: 6px;
    color: white;
+}
+
+.input_text-labalname{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input_text-labalname label{
+  font-size: 14px;
 }
 
 @media only screen and (max-width: 768px){

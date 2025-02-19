@@ -335,6 +335,7 @@ gap: 2px;
 .Quick_text p i{
     font-size: 10px;
     padding: 3px;
+    margin: auto;
 }
 .Quick_text p:hover{
 background-color: blue;
@@ -846,13 +847,23 @@ font-size: 12px;
     margin-bottom: 27px;
 }
 
+.payment_date {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 27px;
+}
+.Professiona_div1 img {
+    width: 98px;
+    height: 125px;
+    padding: 2px;
+    margin: auto;
+}
  
 }
 
-/* @media only screen and (max-width: 448px){
 
-   }
-  */
 
    
 
