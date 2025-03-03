@@ -13,6 +13,9 @@ import Addinvoice from "./Component/Add invoice/Addinvoice";
 import InvoicesDetails from "./Component/Invoices Details/InvoicesDetails";
 import MasterData from "./Masters/MasterData";
 import Getdata from "./Masters/Getdata";
+import Addproduct from "./Component/Bagfolder/Addproduct";
+import Updatedata from "./Masters/Updatedta";
+import Deletdata from "./Masters/Deletdata";
 
 function Service() {
   return (
@@ -30,6 +33,9 @@ function Service() {
         <Route path="/user" element={<User />} />
         <Route path="/masterdata" element={<MasterData/>} />
         <Route path="/getdata" element={<Getdata/>} />
+        <Route path="/addproduct" element={<Addproduct/>} />
+        <Route path="/updatedata" element={<Updatedata/>} />
+        <Route path="/deletdata" element={<Deletdata/>} />
       </Routes>
       <Footer />
     </>

@@ -2,8 +2,9 @@
     width: 96%;
     margin: auto;
     margin-top: 10px;
-    display: flex;
+    /* display: flex; */
     gap: 50px;
+    /* background-color: yellowgreen; */
 }
 .Columname-inputcolom{
   display: grid;
@@ -16,6 +17,7 @@
     font-size: 13px;
     padding: 6px;
     margin-top: 10px;
+    border: 1px solid rgb(214, 214, 214);
 }
 .Columname-inputcolom select{
  /* color: rgb(165, 165, 165); */
@@ -48,6 +50,9 @@
   .Columname-inputcolom{
     width: 95%;
     margin: auto;
+  }
+  .input_text-labalname{
+    display: inline;
   }
   .Columname-inputcolom input{
     width: 100%;
