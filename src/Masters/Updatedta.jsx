@@ -1,127 +1,113 @@
-import React, { useState } from "react";
-import "./Masterdata.css";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const Updatedata = () => {
-  const [formData, setFormData] = useState({
-    TableName: "",
-    WhereCondition: "",
-    "*": ""
-  });
+const UpdateData = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const initialData = location.state?.responseData || {};
+  const [editableData, setEditableData] = useState(initialData);
 
-  const [responseData, setResponseData] = useState(null);
-  const [error, setError] = useState(null);
+  useEffect(() => {
+    console.log("Received Data for Update:", editableData);
+  }, [editableData]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditableData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
-    setResponseData(null);
+  const handleSaveChanges = async () => {
+    if (!editableData || Object.keys(editableData).length === 0) {
+      alert("No data to update.");
+      return;
+    }
 
-    console.log("Submitting Data:", formData);
+    if (!editableData.ID) {
+      alert("Error: ID field is missing.");
+      return;
+    }
 
-    const data = new URLSearchParams();
-    data.append("SecurityKey", "abcd");
-    data.append("TableName", formData.TableName || "");
-    data.append("WhereCondition", formData.WhereCondition || "");
-    data.append("*", formData["*"] || "");
+    const updateData = new URLSearchParams();
+    updateData.append("SecurityKey", "abcd");
+    updateData.append("TableName", "masterdata");
+    updateData.append("ID", editableData.ID);
 
-    console.log("Data being sent:", data.toString());
+    Object.entries(editableData).forEach(([key, value]) => {
+      updateData.append(key, value?.toString() || "");
+    });
+
+    const updateUrl = "http://etour.responseinfoway.com/restapi/updatedata.aspx";
 
     try {
-      const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
-      const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
+      console.log("Sending Update Request:", updateData.toString());
 
-      const response = await fetch(proxyUrl + apiUrl, {
+      const response = await fetch(updateUrl, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: data.toString(),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: updateData.toString(),
       });
 
-      console.log("Full Response:", response);
+      const textResponse = await response.text();
+      console.log("Raw Update Response:", textResponse);
 
       if (!response.ok) {
         throw new Error(`HTTP Error! Status: ${response.status}`);
       }
 
-      const responseText = await response.text();
-      console.log("Raw Server Response:", responseText);
-
       try {
-        const jsonData = JSON.parse(responseText);
-        console.log("Parsed Response Data (JSON):", jsonData);
-        setResponseData(jsonData);
+        const jsonResponse = JSON.parse(textResponse);
+        console.log("Parsed JSON Response:", jsonResponse);
+
+        if (jsonResponse.status === "success") {
+          alert("Data updated successfully!");
+          navigate("/selectdata");
+        } else {
+          alert("Failed to update data: " + (jsonResponse.message || "Unknown error"));
+        }
       } catch (error) {
-        console.warn("Response is not JSON. Displaying raw text.");
-        setResponseData(responseText);
+        alert("Update successful, but response is not in JSON format.");
+        navigate("/selectdata");
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
-      setError("Failed to fetch data. Please try again.");
+      console.error("Error updating data:", error);
+      alert(`Failed to update data: ${error.message}`);
     }
   };
 
+  // List of fields to hide (they will be submitted but not displayed)
+  const hiddenFields = ["ID", "Active", "MaxCompanies", "CreationDate", "OTP", "PwdLinkValidity"];
+
   return (
-    <div className="masdata_container">
-      <form className="Columname-inputcolom" onSubmit={handleSubmit}>
-        <h5 className="fw-bold mb-2 m-auto">Master Data</h5>
+    <div className="update-container">
+      <h1>Update Data</h1>
 
-        <div className="input_text-labalname">
-          <label>Table Name</label>
-          <input
-            type="text"
-            name="TableName"
-            placeholder="Enter Table Name"
-            value={formData.TableName}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <form>
+        {/* Hidden Fields (included in form submission but not visible) */}
+        {hiddenFields.map((key) => (
+          <input key={key} type="hidden" name={key} value={editableData[key] || ""} />
+        ))}
 
-        <div className="input_text-labalname">
-          <label>Where Condition</label>
-          <input
-            type="text"
-            name="WhereCondition"
-            placeholder="Enter Where Condition"
-            value={formData.WhereCondition}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        {/* Visible Input Fields (excluding hidden fields) */}
+        {Object.keys(editableData)
+          .filter((key) => !hiddenFields.includes(key)) // Exclude hidden fields
+          .map((key) => (
+            <div key={key} className="input-group">
+              <label>{key}</label>
+              <input
+                type="text"
+                name={key}
+                value={editableData[key] || ""}
+                onChange={handleInputChange}
+              />
+            </div>
+          ))}
 
-        <div className="input_text-labalname">
-          <label>Field Name</label>
-          <input
-            type="text"
-            name="*"
-            placeholder="Enter Field Name"
-            value={formData["*"]}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <button type="submit">Submit</button>
+        <button type="button" className="save-changebtn" onClick={handleSaveChanges}>
+          Save Changes
+        </button>
       </form>
-
-      {error && <p className="error-message">{error}</p>}
-
-      {responseData && (
-        <div className="response-container">
-          <pre>
-            {typeof responseData === "string"
-              ? responseData
-              : JSON.stringify(responseData, null, 2)}
-          </pre>
-        </div>
-      )}
     </div>
   );
 };
 
-export default Updatedata;
+export default UpdateData;

@@ -318,9 +318,21 @@ function Navbar() {
               <>
                 <div className={`${admin ? "hidden" : "block"}`}>
                   <div className="bootstrap_list-item">
+                     
+                  <Link to={"/masterdata"}>
+                      <li>Master data</li>
+                    </Link>
+                    <Link to={"/selectdata"}>
+                      <li>Select data</li>
+                    </Link>
+                    {/* <Link to={"/deletdata"}>
+                      <li>Delet data</li>
+                    </Link> */}
+
                     <Link to={"/payment"}>
                       <li> Services</li>
                     </Link>
+                  
                     <li>Vehicle Type</li>
                     <li>Vehicles</li>
                     <li>Ledger</li>
