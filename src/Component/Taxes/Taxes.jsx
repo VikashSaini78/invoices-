@@ -221,7 +221,7 @@ function Taxes() {
         </div>
       </div>
 
-      {/* Edit model */}
+      {/* Edit model */} 
 
       <div
         className="modal fade"

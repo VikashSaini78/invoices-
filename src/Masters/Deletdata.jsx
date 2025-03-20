@@ -113,3 +113,4 @@ const Deletdata = () => {
 };
 
 export default Deletdata;
+

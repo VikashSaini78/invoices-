@@ -1,35 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./selectdata.css";
 
 const Selectdata = () => {
-  const [formData, setFormData] = useState({
-    TableName: "",
-    WhereCondition: "",
-    "*": "*",
-  });
-
-  const [responseData, setResponseData] = useState(null);
+  const [responseData, setResponseData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [deleteId, setDeleteId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const recordsPerPage = 5;
+  const hiddenColumns = ["ID", "OTP", "PwdResetString", "PwdLinkValidity","Password"];
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    applyFilter(searchQuery);
+  }, [responseData, searchQuery]);
+
+  const fetchData = async () => {
     setError(null);
-    setResponseData(null);
+    setResponseData([]);
 
-    console.log("Submitting Data:", formData);
+    console.log("Fetching Data...");
 
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
-    data.append("TableName", formData.TableName || "");
-    data.append("WhereCondition", formData.WhereCondition || "");
-    data.append("*", formData["*"] || "");
+    data.append("TableName", "masterdata");
+    data.append("WhereCondition", "All");
+    data.append("*", "*");
 
     try {
       const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
@@ -48,10 +50,11 @@ const Selectdata = () => {
       }
 
       const jsonData = await response.json();
-      console.log("Parsed Response Data:", jsonData);
+      console.log("Fetched Response Data:", jsonData);
 
       if (jsonData.Response) {
         setResponseData(jsonData.Response);
+        setFilteredData(jsonData.Response);
       } else {
         setError("No data found.");
       }
@@ -61,15 +64,37 @@ const Selectdata = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this record?")) return;
+  const applyFilter = (query) => {
+    if (!query) {
+      setFilteredData(responseData);
+    } else {
+      const lowerQuery = query.toLowerCase();
+      const filtered = responseData.filter((item) =>
+        Object.values(item).some(
+          (value) =>
+            value &&
+            value.toString().toLowerCase().includes(lowerQuery)
+        )
+      );
+      setFilteredData(filtered);
+    }
+    setCurrentPage(1);
+  };
+
+  const confirmDelete = (id) => {
+    setDeleteId(id);
+  };
+
+  const handleDelete = async () => {
+    if (!deleteId) return;
 
     const deleteData = new URLSearchParams();
     deleteData.append("SecurityKey", "abcd");
-    deleteData.append("TableName", formData.TableName);
-    deleteData.append("WhereCondition", `ID=${id}`);
+    deleteData.append("TableName", "masterdata");
+    deleteData.append("WhereCondition", `ID=${deleteId}`);
 
-    const deleteUrl = "http://etour.responseinfoway.com/restapi/deletedata.aspx";
+    const deleteUrl =
+      "http://etour.responseinfoway.com/restapi/deletedata.aspx";
 
     try {
       const response = await fetch(deleteUrl, {
@@ -85,9 +110,13 @@ const Selectdata = () => {
       const textResponse = await response.text();
       console.log("Delete Response:", textResponse);
 
-      if (textResponse.toLowerCase().includes("deleted") || textResponse.toLowerCase().includes("success")) {
-        alert("Data deleted successfully!");
-        setResponseData((prevData) => prevData.filter((item) => item.ID !== id));
+      if (
+        textResponse.toLowerCase().includes("deleted") ||
+        textResponse.toLowerCase().includes("success")
+      ) {
+        setResponseData((prevData) =>
+          prevData.filter((item) => item.ID !== deleteId)
+        );
       } else {
         throw new Error(`API responded with failure: ${textResponse}`);
       }
@@ -98,51 +127,78 @@ const Selectdata = () => {
 
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const currentRecords = responseData ? responseData.slice(firstIndex, lastIndex) : [];
-  const totalPages = responseData ? Math.ceil(responseData.length / recordsPerPage) : 1;
+  const currentRecords = filteredData.slice(firstIndex, lastIndex);
+  const totalPages = Math.ceil(filteredData.length / recordsPerPage);
 
   return (
     <div className="masdata_container">
-      <form className="Columname-inputcolom" onSubmit={handleSubmit}>
-        <h5 className="fw-bold mb-2 m-auto">Select Data</h5>
-        <div className="input_text-labalname">
-          <label>Table Name</label>
-          <input type="text" name="TableName" placeholder="Enter Table Name" value={formData.TableName} onChange={handleChange} required />
-        </div>
-        <div className="input_text-labalname">
-          <label>Where Condition</label>
-          <input type="text" name="WhereCondition" placeholder="Enter mobileno=8000000000, or All" value={formData.WhereCondition} onChange={handleChange} required />
-        </div>
-        <button className="selectdat-submit_btn" type="submit">Submit</button>
-      </form>
-
       {error && <p className="error-message">{error}</p>}
 
-      {responseData && responseData.length > 0 && (
+      {/* Search Filter */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
+      {filteredData.length > 0 && (
         <div className="response-container">
           <h5>Response Data:</h5>
+
           <div className="table-wrapper">
             <table className="data-table">
               <thead>
                 <tr>
-                  {Object.keys(responseData[0]).map((key) => (
-                    <th key={key}>{key}</th>
-                  ))}
+                  {Object.keys(filteredData[0])
+                    .filter((key) => !hiddenColumns.includes(key))
+                    .map((key) => (
+                      <th
+                        key={key}
+                        className={
+                          key === "MaxCompanies" ? "max-companies-column" : ""
+                        }
+                      >
+                        {key}
+                      </th>
+                    ))}
                   <th>Actions</th>
                 </tr>
               </thead>
+
               <tbody>
                 {currentRecords.map((item, index) => (
                   <tr key={index}>
-                    {Object.values(item).map((value, i) => (
-                      <td key={i}>{value !== null ? value.toString() : "N/A"}</td>
-                    ))}
+                    {Object.entries(item)
+                      .filter(([key]) => !hiddenColumns.includes(key))
+                      .map(([key, value], i) => (
+                        <td
+                          key={i}
+                          className={
+                            key === "MaxCompanies" ? "max-companies-column" : ""
+                          }
+                        >
+                          {value !== null ? value.toString() : "N/A"}
+                        </td>
+                      ))}
                     <td>
                       <div className="seletdata_edit-delet-btn">
+                      <button className="selet_reset-pass">
+                            Resetpass..
+                          </button>
                         <Link to="/updatedata" state={{ responseData: item }}>
-                          <button className="selet_edit-btn"><i className="fa-solid fa-pen-to-square"></i></button>
+                          <button className="selet_edit-btn">
+                            <i className="fa-solid fa-pen-to-square"></i>
+                          </button>
                         </Link>
-                        <button className="select_delete-btn" onClick={() => handleDelete(item.ID)}>
+                        <button
+                          className="select_delete-btn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteConfirmationModal"
+                          onClick={() => confirmDelete(item.ID)}
+                        >
                           <i className="fa-solid fa-trash"></i>
                         </button>
                       </div>
@@ -151,27 +207,55 @@ const Selectdata = () => {
                 ))}
               </tbody>
             </table>
+          </div>
 
-            <nav aria-label="Page navigation example">
-              <ul className="pagination justify-content-center">
-                <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                  <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
-                </li>
-                {[...Array(totalPages)].map((_, i) => (
-                  <li key={i} className={`page-item ${currentPage === i + 1 ? "active" : ""}`}>
-                    <button className="page-link" onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>
-                  </li>
-                ))}
-                <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-                  <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)}>Next</button>
-                </li>
-              </ul>
-            </nav>
+          {/* Pagination Controls */}
+          <div className="select_pagination">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
+
+      {/* Delete Confirmation Modal */}
+      <div className="modal fade" id="deleteConfirmationModal">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="close_topbutton-taxes">
+              <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div className="delet_icon-boxtaxes">
+              <i className="fa-solid fa-trash"></i>
+            </div>
+            <div className="taxes_pcolom">
+              <h6>Confirm Delete</h6>
+              <p>Are you sure you want to delete?</p>
+            </div>
+            <div className="close_bottombutton-taxes">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" className="delete_button" data-bs-dismiss="modal" onClick={handleDelete}>Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Selectdata;
+  

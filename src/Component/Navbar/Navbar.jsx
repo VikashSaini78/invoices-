@@ -320,10 +320,22 @@ function Navbar() {
                   <div className="bootstrap_list-item">
                      
                   <Link to={"/masterdata"}>
-                      <li>Master data</li>
+                      <li
+                       onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >Master data</li>
                     </Link>
                     <Link to={"/selectdata"}>
-                      <li>Select data</li>
+                      <li
+                       onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >Select data</li>
                     </Link>
                     {/* <Link to={"/deletdata"}>
                       <li>Delet data</li>

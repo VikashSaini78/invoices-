@@ -2,7 +2,7 @@ body{
     overflow-x: hidden;
 }
 .masdata_container{
-    width: 96%;
+    width: 95%;
     margin: auto;
     margin-top: 10px;
     /* display: flex; */
@@ -15,12 +15,13 @@ body{
   /* background-color: yellowgreen; */
 }
 .Columname-inputcolom input{
-    width: 250px;
+    /* width: 250px; */
     outline: none;
     font-size: 13px;
     padding: 6px;
     margin-top: 10px;
     border: 1px solid rgb(214, 214, 214);
+  
 }
 .Columname-inputcolom select{
  /* color: rgb(165, 165, 165); */
@@ -44,9 +45,19 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* background: #000; */
 }
+
+
 .input_text-labalname label{
   font-size: 14px;
+}
+
+.selet_reset-pass{
+  background-color: teal;
+  padding: 5px;
+  color: white;
+  font-weight: 400;
 }
 
 .masterdata_submit-btn{
@@ -74,8 +85,10 @@ body{
   color: white;
   margin: auto;
 }
+  
+
 .update-container{
-  width: 40%;
+  width: 35%;
   margin: 20px;
 }
 .input-group{
@@ -107,12 +120,24 @@ border-radius: 3px;
 
 
 
-.response-container{
-    max-width: 900px;
+  .response-container {
+    max-width: 100%;
+    /* max-width: 900px; */
     font-size: 13px;
-    overflow-x: scroll;
-  
-  }
+    overflow-x: auto; 
+    line-height: 1.4; 
+}
+
+/* Custom scrollbar */
+.response-container::-webkit-scrollbar {
+    width: 3px; 
+    height: 3px; 
+}
+
+.response-container::-webkit-scrollbar-thumb {
+    background-color: rgb(248, 249, 250); /* Color of the scrollbar */
+}
+
   
 
 .data-table {
@@ -127,7 +152,7 @@ border-radius: 3px;
   padding: 8px;
   text-align: left;
 }
-
+ 
 .data-table th {
   background-color: #f2f2f2;
   font-weight: bold;
@@ -139,15 +164,18 @@ border-radius: 3px;
   /* background: #000; */
 }
 .selet_edit-btn{
-  width: 60px;
+  width: 50px;
   /* padding: 3px; */
+  padding: 5px;
   background-color:rgb(32, 145, 235);
+  /* color: #2091eb; */
   color: white;
 }
 .select_delete-btn{
-  width: 60px;
-  /* padding: 3px; */
+  width: 50px;
+ /* border-radius: 10px; */
   background-color:rgb(187, 9, 9);
+  /* color: red; */
   color: white;
 }
 
@@ -155,8 +183,76 @@ border-radius: 3px;
  font-size: 14px;
  font-weight: 400;
 }
-.page-item:focus{
-   box-shadow: none;
+
+.pagination{
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+}
+.pagination button:focus{
+  box-shadow: none;
+}
+
+.paginavigation_container{
+  margin-bottom: 40px;
+}
+/* delet model  */
+
+.modal-body{
+  font-size: 14px;
+}
+.close_topbutton-taxes {
+  padding: 5px;
+  display: flex;
+  justify-content: end;
+}
+
+.close_topbutton-taxes button:focus {
+  box-shadow: none;
+}
+
+.modal-header h6{
+  margin: auto;
+  font-weight: bold;
+}
+
+ .modal-footer button {
+  width: 70px;  
+  font-size: 13px;
+ }
+ .modal-footer button:focus{
+ box-shadow: none;
+ }
+  
+
+/* Ensure MaxCompanies column width is fixed */
+th.max-companies-column,
+td.max-companies-column {
+  width: 20px !important;
+  min-width: 20px !important;
+  max-width: 65px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  padding: 2px;
+}
+
+.search-container{
+  width: 100%;
+  /* background-color: palegoldenrod; */
+  display: flex;
+  justify-content: end;
+  font-size: 13px;
+}
+  
+.search-container input{
+  width: 220px;
+  padding: 6px;
+  outline: none;
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 4px;
 }
 
 @media only screen and (max-width: 768px){
@@ -191,4 +287,10 @@ border-radius: 3px;
     overflow-x: scroll;
   
   }
+  
+.input_text-labalname select{
+  width: 100%;
+
+}
+
 }
