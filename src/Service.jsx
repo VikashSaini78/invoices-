@@ -14,8 +14,9 @@ import InvoicesDetails from "./Component/Invoices Details/InvoicesDetails";
 import MasterData from "./Masters/MasterData";
 import Getdata from "./Masters/Getdata";
 import Updatedata from "./Masters/Updatedta";
-import Deletdata from "./Masters/Deletdata";
+// import Deletdata from "./Masters/Deletdata";
 import Selectdata from "./Masters/Selectdata";
+import Resetpass from "./Masters/Resetpass";
 
 function Service() {
   return (
@@ -34,8 +35,9 @@ function Service() {
         <Route path="/masterdata" element={<MasterData/>} />
         <Route path="/getdata" element={<Getdata/>} />
         <Route path="/updatedata" element={<Updatedata/>} />
-        <Route path="/deletdata" element={<Deletdata/>} />
+        {/* <Route path="/deletdata" element={<Deletdata/>} /> */}
         <Route path="/selectdata" element={<Selectdata/>} />
+        <Route path="/resetpass/:id" element={<Resetpass/>} />
       </Routes>
       <Footer />
     </>

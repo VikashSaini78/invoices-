@@ -285,8 +285,7 @@ function Dashboard() {
                     <button id="btn2" type="button" className="btn btn">
                       Warch Tutorial
                     </button>
-                    <button id="btn1" type="button" className
-                    ="btn btn">
+                    <button id="btn1" type="button" className="btn btn">
                       Warch Tutorial
                     </button>
                   </div>
@@ -333,6 +332,8 @@ function Dashboard() {
       </AreaChart>
     </ResponsiveContainer>
   </div>
+
+
   <div className="Received_Amount">
     <p>Received Amount</p>
     <p>Due Amount</p>

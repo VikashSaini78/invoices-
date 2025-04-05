@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 import "../Admin_panal/Admin_panal.css";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -7,7 +7,6 @@ import Service from "../../Service";
 import { Link } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 import { GrFormDown } from "react-icons/gr";
-   
 
 function Navbar() {
   const [value, setvalue] = useState("");
@@ -25,33 +24,99 @@ function Navbar() {
   const [Notifications, setNotifications] = useState("");
   const [isDown, setIsDown] = useState(false);
   const [auth, setauth] = useState(false);
-  const [mst,setsmt] = useState(false);
+  const [mst, setsmt] = useState(false);
   const [ent, setent] = useState(false);
   const [rep, setrep] = useState(false);
   const [uti, setuti] = useState(false);
 
-  const handleClick = () => {
-    setIsDown(!isDown);
+  const notificationRef = useRef(null);
+  const profileRef = useRef(null);
+  const sidebarRef = useRef(null);
 
-  };
-  const autoClick = () => {
-    setauth(!auth);
-  };
-  const mstclick = () => {
-    setsmt(!mst);
-  };
-  const entclick = () => {
-    setent(!ent);
-  };
-  const  repclick = () => {
-    setrep(!rep);
-  };
-  const uticlick = () => {
-    setuti(!uti);
-  };
 
- 
+  const handleClick = () => {setIsDown(!isDown);};
+  const autoClick = () => {setauth(!auth);};
+  const mstclick = () => {setsmt(!mst);};
+  const entclick = () => {setent(!ent);};
+  const repclick = () => {setrep(!rep);};
+  const uticlick = () => {setuti(!uti);};
+
+  // outside click-to-close
+
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (
+  //       notificationRef.current &&
+  //       !notificationRef.current.contains(event.target)
+  //     ) {
+  //       setNotifications(false);
+  //     }
+
+  //     if (profileRef.current && !profileRef.current.contains(event.target)) {
+  //       setvalue(false);
+  //     }
+      
+  //   };
+
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Close notifications
+
+      if (
+        notificationRef.current &&
+        !notificationRef.current.contains(event.target)
+      ) {
+        setNotifications(false);
+      }
+
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setvalue(false);
+      }
+      
+      if (
+        notificationRef.current &&
+        !notificationRef.current.contains(event.target)
+      ) {
+        setNotifications(false);
+      }
   
+      // Close profile
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setvalue(false);
+      }
+  
+      // Close sidebar if clicked outside AND on mobile screen
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        window.innerWidth <= 750 &&
+        !event.target.closest(".admin_close-btn") // allow clicking the close icon
+      ) {
+        setadmin(true); // This means collapsed sidebar
+      }
+    };
+  
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  // auto close the menu when the screen is resized
+
+  useEffect(() => {
+    if (window.innerWidth <= 750) {
+      setadmin(true); 
+    }
+  }, []);
+  
+
 
   return (
     <>
@@ -59,25 +124,32 @@ function Navbar() {
 
       <div className="nav_dashbord">
         <div className="dashbord">
-          <div className={`sidebar ${admin ? "collapsed" : ""} bg-white`}>
+          {/* <div className={`sidebar ${admin ? "collapsed" : ""} bg-white`}> */}
+          <div ref={sidebarRef} className={`sidebar ${admin ? "collapsed" : ""} bg-white`}>
+
             <div
               className={`${
                 admin
-                  ? " w-7 m-auto h-2 flex justify-center items-center": "w-auto"} flex justify-center items-center mt-2`}
+                  ? " w-7 m-auto h-2 flex justify-center items-center"
+                  : "w-auto"
+              } flex justify-center items-center mt-2`}
             >
-            <Link to={"/"}
-               onClick={() => {
-                          if (window.innerWidth <= 750) {
-                            setadmin(!admin);
-                          }
-                        }}
-            >
-            <img
-                className={`${admin ? "next-logo" : "admin_panal-logo"}`}
-                src={admin ? "./media/logo.webp" : "./media/response_info.jpg"}
-                alt={admin ? "Next Logo" : "Admin Panel Logo"}
-              />
-            </Link>
+              <Link
+                to={"/"}
+                onClick={() => {
+                  if (window.innerWidth <= 750) {
+                    setadmin(!admin);
+                  }
+                }}
+              >
+                <img
+                  className={`${admin ? "next-logo" : "admin_panal-logo"}`}
+                  src={
+                    admin ? "./media/logo.webp" : "./media/response_info.jpg"
+                  }
+                  alt={admin ? "Next Logo" : "Admin Panel Logo"}
+                />
+              </Link>
 
               <div
                 className="admin_close-btn"
@@ -100,43 +172,43 @@ function Navbar() {
                   <i
                     className={`fa-solid fa-house ${admin ? "m-auto" : ""}`}
                   ></i>
-                  <p className={`${admin ? "hidden" : "block"}`}
-                  onClick={() => {
-                          if (window.innerWidth <= 750) {
-                            setadmin(!admin);
-                          }
-                        }}
-                  >Dashboard</p>
+                  <p
+                    className={`${admin ? "hidden" : "block"}`}
+                    onClick={() => {
+                      if (window.innerWidth <= 750) {
+                        setadmin(!admin);
+                      }
+                    }}
+                  >
+                    Dashboard
+                  </p>
                 </div>
               </Link>
             </div>
 
-            {/* page */}
-
-            {/* <div className= "paragraph"><p className={`${admin ? "hidden" : "block"}`}>page</p></div> */}
-
-             <div onClick= {handleClick}>
-             <div
-              className="das_management"
-              onClick={() => {
-                setliitem(!liitem);
-               
-              }}
-            >
-              <i
-                className={`fa-solid fa-file-invoice ${
-                  admin ? "m-auto mt-2" : ""
-                }`}
-              ></i>{" "}
-              <p className={`${admin ? "hidden" : "block"}`}>
-                Invoices Manag..{" "}
-              </p>
-              <pre onClick={handleClick} className={`${admin ? "hidden" : "block"}`}>
-            {isDown ? <GrFormDown /> : <MdKeyboardArrowRight />}
-           </pre>
+            <div onClick={handleClick}>
+              <div
+                className="das_management"
+                onClick={() => {
+                  setliitem(!liitem);
+                }}
+              >
+                <i
+                  className={`fa-solid fa-file-invoice ${
+                    admin ? "m-auto mt-2" : ""
+                  }`}
+                ></i>{" "}
+                <p className={`${admin ? "hidden" : "block"}`}>
+                  Invoices Manag..{" "}
+                </p>
+                <pre
+                  onClick={handleClick}
+                  className={`${admin ? "hidden" : "block"}`}
+                >
+                  {isDown ? <GrFormDown /> : <MdKeyboardArrowRight />}
+                </pre>
+              </div>
             </div>
-             </div>
-           
 
             {/* Main Das Management */}
 
@@ -159,39 +231,47 @@ function Navbar() {
                     </Link>
                     <Link to={"/addinvoice"}>
                       <li
-                      onClick={() => {
+                        onClick={() => {
                           if (window.innerWidth <= 750) {
                             setadmin(!admin);
                           }
                         }}
-                      >Add Invoice</li>
+                      >
+                        Add Invoice
+                      </li>
                     </Link>
                     <Link to={"/invoicedetails"}>
                       <li
-                      onClick={() => {
+                        onClick={() => {
                           if (window.innerWidth <= 750) {
                             setadmin(!admin);
                           }
                         }}
-                      >Invoice Details</li>
+                      >
+                        Invoice Details
+                      </li>
                     </Link>
                     <Link to={"/taxes"}>
                       <li
-                      onClick={() => {
+                        onClick={() => {
                           if (window.innerWidth <= 750) {
                             setadmin(!admin);
                           }
                         }}
-                      >Taxes</li>
+                      >
+                        Taxes
+                      </li>
                     </Link>
                     <Link to={"/payment"}>
                       <li
-                      onClick={() => {
+                        onClick={() => {
                           if (window.innerWidth <= 750) {
                             setadmin(!admin);
                           }
                         }}
-                      >Payments</li>
+                      >
+                        Payments
+                      </li>
                     </Link>
 
                     <li
@@ -255,28 +335,27 @@ function Navbar() {
                 </div>
                 )
               </div>
-            )
-            
-            }
+            )}
 
             {/* Authentication  */}
-            
-             <div onClick={autoClick}>
-            <div
-              className="das_Authentication"
-              onClick={() => {
-                setAuthentication(!Authentication);
-              }}
-            >
-              <i
-                className={`fa-solid fa-gear ${admin ? "m-auto mt-2" : ""}`}
-              ></i>{" "}
-              <p className={`${admin ? "hidden" : "block"}`}>Authentication</p>
-           
-               <pre className={`${admin ? "hidden" : "block"}`}>
-            {!auth ? <MdKeyboardArrowRight />:<GrFormDown />  }
-           </pre>
-            </div>
+
+            <div onClick={autoClick}>
+              <div
+                className="das_Authentication"
+                onClick={() => {
+                  setAuthentication(!Authentication);
+                }}
+              >
+                <i
+                  className={`fa-solid fa-gear ${admin ? "m-auto mt-2" : ""}`}
+                ></i>{" "}
+                <p className={`${admin ? "hidden" : "block"}`}>
+                  Authentication
+                </p>
+                <pre className={`${admin ? "hidden" : "block"}`}>
+                  {!auth ? <MdKeyboardArrowRight /> : <GrFormDown />}
+                </pre>
+              </div>
             </div>
 
             {Authentication && (
@@ -297,54 +376,56 @@ function Navbar() {
               </div>
             )}
 
-            {/* Components */}
+            {/* masterdata */}
 
-          <div onClick={mstclick}>
-            <div
-              className="comp_bootstap"
-              onClick={() => {
-                setbootstrap(!Bootstrap);
-              }}
-            >
-              <i className={`fa-solid fa-pen-nib ${admin ? "m-auto" : ""}`}></i>{" "}
-              <p className={`${admin ? "hidden" : "block"}`}> Master </p>
-              <pre className={`${admin ? "hidden" : "block"}`}>
-              {!mst ? <MdKeyboardArrowRight />:<GrFormDown /> }
-              </pre>
-            </div>
+            <div onClick={mstclick}>
+              <div
+                className="comp_bootstap"
+                onClick={() => {
+                  setbootstrap(!Bootstrap);
+                }}
+              >
+                <i
+                  className={`fa-solid fa-pen-nib ${admin ? "m-auto" : ""}`}
+                ></i>{" "}
+                <p className={`${admin ? "hidden" : "block"}`}> Master </p>
+                <pre className={`${admin ? "hidden" : "block"}`}>
+                  {!mst ? <MdKeyboardArrowRight /> : <GrFormDown />}
+                </pre>
+              </div>
             </div>
 
             {Bootstrap && (
               <>
                 <div className={`${admin ? "hidden" : "block"}`}>
                   <div className="bootstrap_list-item">
-                     
-                  <Link to={"/masterdata"}>
+                    <Link to={"/masterdata"}>
                       <li
-                       onClick={() => {
+                        onClick={() => {
                           if (window.innerWidth <= 750) {
                             setadmin(!admin);
                           }
                         }}
-                      >Master data</li>
+                      >
+                        Master data
+                      </li>
                     </Link>
                     <Link to={"/selectdata"}>
                       <li
-                       onClick={() => {
+                        onClick={() => {
                           if (window.innerWidth <= 750) {
                             setadmin(!admin);
                           }
                         }}
-                      >Select data</li>
+                      >
+                        Select data
+                      </li>
                     </Link>
-                    {/* <Link to={"/deletdata"}>
-                      <li>Delet data</li>
-                    </Link> */}
 
                     <Link to={"/payment"}>
                       <li> Services</li>
                     </Link>
-                  
+
                     <li>Vehicle Type</li>
                     <li>Vehicles</li>
                     <li>Ledger</li>
@@ -355,23 +436,23 @@ function Navbar() {
               </>
             )}
 
-            {/* Advance UI */}
+            {/* Entries */}
 
-           <div onClick={entclick}>
-            <div
-              className="das_advance"
-              onClick={() => {
-                setadvance(!Advance);
-              }}
-            >
-              <i
-                className={`fa-solid fa-book ${admin ? "m-auto mt-2" : ""}`}
-              ></i>{" "}
-              <p className={`${admin ? "hidden" : "block"}`}>Entries</p>
-              <pre className={`${admin ? "hidden" : "block"}`}>
-            {!ent ? <MdKeyboardArrowRight />:<GrFormDown />}
-           </pre>
-            </div>
+            <div onClick={entclick}>
+              <div
+                className="das_advance"
+                onClick={() => {
+                  setadvance(!Advance);
+                }}
+              >
+                <i
+                  className={`fa-solid fa-book ${admin ? "m-auto mt-2" : ""}`}
+                ></i>{" "}
+                <p className={`${admin ? "hidden" : "block"}`}>Entries</p>
+                <pre className={`${admin ? "hidden" : "block"}`}>
+                  {!ent ? <MdKeyboardArrowRight /> : <GrFormDown />}
+                </pre>
+              </div>
             </div>
 
             {Advance && (
@@ -383,24 +464,23 @@ function Navbar() {
               </div>
             )}
 
-            {/* Tables */}
-
+            {/* Reports  */}
 
             <div onClick={repclick}>
-            <div
-              className="das_tables"
-              onClick={() => {
-                settable(!table);
-              }}
-            >
-              <i
-                className={`fa-regular fa-file ${admin ? "m-auto mt-2" : ""}`}
-              ></i>{" "}
-              <p className={`${admin ? "hidden" : "block"}`}>Reports </p>
-              <pre className={`${admin ? "hidden" : "block"}`}>
-              {!rep ? <MdKeyboardArrowRight />:<GrFormDown /> }
-              </pre>
-            </div>
+              <div
+                className="das_tables"
+                onClick={() => {
+                  settable(!table);
+                }}
+              >
+                <i
+                  className={`fa-regular fa-file ${admin ? "m-auto mt-2" : ""}`}
+                ></i>{" "}
+                <p className={`${admin ? "hidden" : "block"}`}>Reports </p>
+                <pre className={`${admin ? "hidden" : "block"}`}>
+                  {!rep ? <MdKeyboardArrowRight /> : <GrFormDown />}
+                </pre>
+              </div>
             </div>
 
             {table && (
@@ -419,27 +499,25 @@ function Navbar() {
               </div>
             )}
 
-            {/* Apexcharts */}
+            {/* Utility */}
 
             <div onClick={uticlick}>
-
-            <div
-              onClick={() => {
-                setApexcharts(!Apexcharts);
-              }}
-              className="das_Apexcharts"
-            >
-              <i
-                className={`fa-regular fa-window-restore ${
-                  admin ? "m-auto mt-2" : ""
-                }`}
-              ></i>{" "}
-              <p className={`${admin ? "hidden" : "block"}`}>Utility</p>
-              <pre className={`${admin ? "hidden" : "block"}`}>
-              {!uti ? <MdKeyboardArrowRight />:<GrFormDown /> }
-              </pre>
-            </div>
-            
+              <div
+                onClick={() => {
+                  setApexcharts(!Apexcharts);
+                }}
+                className="das_Apexcharts"
+              >
+                <i
+                  className={`fa-regular fa-window-restore ${
+                    admin ? "m-auto mt-2" : ""
+                  }`}
+                ></i>{" "}
+                <p className={`${admin ? "hidden" : "block"}`}>Utility</p>
+                <pre className={`${admin ? "hidden" : "block"}`}>
+                  {!uti ? <MdKeyboardArrowRight /> : <GrFormDown />}
+                </pre>
+              </div>
             </div>
 
             {Apexcharts && (
@@ -458,9 +536,11 @@ function Navbar() {
               <i className={`${admin ? "m-auto mt-2" : ""}`}>
                 <IoIosLogOut />
               </i>
-              <p className={`${admin ? "hidden" : "block"} cursor-pointer`}>
-                Log Out
-              </p>
+              <Link to={"/"}>
+                <p className={`${admin ? "hidden" : "block"} cursor-pointer`}>
+                  Log Out
+                </p>
+              </Link>
             </div>
           </div>
         </div>
@@ -475,7 +555,7 @@ function Navbar() {
                   <i
                     className="fa-solid fa-bars"
                     onClick={() => {
-                      setadmin(!admin); 
+                      setadmin(!admin);
                     }}
                   ></i>
 
@@ -484,7 +564,7 @@ function Navbar() {
                   </div>
                 </div>
                 <i id="nav_icons" className="fa-solid fa-magnifying-glass"></i>
- 
+
                 <div className="nav_bellfrofile">
                   <i
                     className="fa-regular fa-bell"
@@ -504,15 +584,20 @@ function Navbar() {
                     }}
                   >
                     <img src="./media/avatar.jpg" alt="" />
-                     <p className="calvind_box"> Calvin.D <i className="fa-solid fa-chevron-down"></i></p>
-                    
+                    <p className="calvind_box">
+                      {" "}
+                      Calvin.D <i className="fa-solid fa-chevron-down"></i>
+                    </p>
                   </ul>
                 </div>
 
                 {/* Notifications */}
 
                 {Notifications && (
-                  <div className="nav_notifications-showbr">
+                  <div
+                    ref={notificationRef}
+                    className="nav_notifications-showbr"
+                  >
                     <div className="nav_not-4">
                       <h6> Notifications</h6>
                       <span>4 New</span>{" "}
@@ -600,19 +685,19 @@ function Navbar() {
               </div>
             </div>
 
-            <div className="nav-profile_div">
+            <div className="nav-profile_div" ref={profileRef}>
               {value && (
                 <div className="nav_profile-text">
-                  <li>
+                  <li className="mt-2">
                     <i className="fa-regular fa-user"></i> Profile
                   </li>
-                  <li>
+                  <li className="mt-2">
                     <i className="fa-solid fa-wallet"></i> My Wallet
                   </li>
-                  <li>
+                  <li className="mt-2">
                     <i className="fa-solid fa-gear"></i> Setting
                   </li>
-                  <li>
+                  <li className="mt-2">
                     <i className="fa-solid fa-lock"></i> Look Screen
                   </li>
                   <hr />
@@ -622,11 +707,9 @@ function Navbar() {
                 </div>
               )}
             </div>
-            <>
-              {/* <div onClick={()=>{setadmin(!admin)}}> */}
 
+            <>
               <Service />
-              {/* </div> */}
             </>
           </div>
         </div>

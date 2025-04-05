@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { IoSettingsSharp } from "react-icons/io5";
 import "./selectdata.css";
 
 const Selectdata = () => {
@@ -9,9 +10,18 @@ const Selectdata = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteId, setDeleteId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [recordsPerPage, setRecordsPerPage] = useState(10);
 
-  const recordsPerPage = 5;
-  const hiddenColumns = ["ID", "OTP", "PwdResetString", "PwdLinkValidity","Password"];
+  // const recordsPerPage = 9;
+  const hiddenColumns = [
+    "ID",
+    "OTP",
+    "PwdResetString",
+    "PwdLinkValidity",
+    "Password",
+    "Active",
+  ];
 
   useEffect(() => {
     fetchData();
@@ -23,6 +33,7 @@ const Selectdata = () => {
 
   const fetchData = async () => {
     setError(null);
+    setLoading(true);
     setResponseData([]);
 
     console.log("Fetching Data...");
@@ -60,7 +71,9 @@ const Selectdata = () => {
       }
     } catch (error) {
       console.error("Error fetching data:", error);
-      setError("Failed to fetch data. Please try again.");
+      setError("Failed to fetch data. Please reference this page.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,8 +85,7 @@ const Selectdata = () => {
       const filtered = responseData.filter((item) =>
         Object.values(item).some(
           (value) =>
-            value &&
-            value.toString().toLowerCase().includes(lowerQuery)
+            value && value.toString().toLowerCase().includes(lowerQuery)
         )
       );
       setFilteredData(filtered);
@@ -125,6 +137,96 @@ const Selectdata = () => {
     }
   };
 
+  const toggleStatus = async (id) => {
+    const itemToUpdate = responseData.find((item) => item.ID === id);
+    if (!itemToUpdate) return;
+
+    const currentStatus = itemToUpdate.Active?.toString().toLowerCase();
+    const newStatus = currentStatus === "true" ? "false" : "true";
+
+    // Update local state optimistically
+    setResponseData((prevData) =>
+      prevData.map((item) =>
+        item.ID === id ? { ...item, Active: newStatus } : item
+      )
+    );
+
+    const requestBody = new URLSearchParams();
+    requestBody.append("SecurityKey", "abcd");
+    requestBody.append("TableName", "masterdata");
+    requestBody.append("WhereCondition", `ID=${id}`);
+    requestBody.append("Active", newStatus);
+
+    try {
+      const response = await fetch(
+        "http://etour.responseinfoway.com/restapi/updatedata.aspx",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Accept: "application/json",
+          },
+          body: requestBody.toString(),
+        }
+      );
+
+      const text = await response.text();
+      console.log("📥 Raw Response Text:", text);
+
+      let result;
+      try {
+        result = JSON.parse(text);
+      } catch (e) {
+        console.warn("⚠ JSON parse fail");
+      }
+
+      if (result?.Response?.[0]?.Status === "Ok") {
+        console.log("Status updated");
+
+        // ⬇Optional: Refresh latest data from API
+        fetchLatestData(); 
+      } else {
+        console.error(" Failed to update:", result);
+      }
+    } catch (error) {
+      console.error(" API error:", error);
+    }
+  };
+
+  const fetchLatestData = async () => {
+    try {
+      const res = await fetch(
+        "http://etour.responseinfoway.com/restapi/getalldata.aspx",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            SecurityKey: "abcd",
+            TableName: "masterdata",
+          }),
+        }
+      );
+      const text = await res.text();
+      const result = JSON.parse(text);
+      if (result?.Response) {
+        setResponseData(result.Response);
+      }
+    } catch (err) {
+      console.error("Error fetching data", err);
+    }
+  };
+
+  // date
+
+  const formatDate = (value) => {
+    if (!value) return "N/A";
+    const dateOnly = value.split("T")[0]; // remove time
+    const [year, month, day] = dateOnly.split("-");
+    return `${day}-${month}-${year}`;
+  };
+
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const currentRecords = filteredData.slice(firstIndex, lastIndex);
@@ -132,10 +234,25 @@ const Selectdata = () => {
 
   return (
     <div className="masdata_container">
+      {loading && <p className="loading-message">Loading data...</p>}
       {error && <p className="error-message">{error}</p>}
 
       {/* Search Filter */}
       <div className="search-container">
+        <div className="records-per-page-container">
+          <label htmlFor="recordsPerPage">Records Per Page:</label>
+          <select
+            id="recordsPerPage"
+            value={recordsPerPage}
+            onChange={(e) => setRecordsPerPage(Number(e.target.value))}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+
         <input
           type="text"
           placeholder="Search..."
@@ -143,10 +260,13 @@ const Selectdata = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
+      {!loading && filteredData.length === 0 && !error && (
+        <p className="no-data-message">No data available.</p>
+      )}
 
       {filteredData.length > 0 && (
         <div className="response-container">
-          <h5>Response Data:</h5>
+          {/* <h5>Response Data:</h5> */}
 
           <div className="table-wrapper">
             <table className="data-table">
@@ -161,9 +281,10 @@ const Selectdata = () => {
                           key === "MaxCompanies" ? "max-companies-column" : ""
                         }
                       >
-                        {key}
+                        {key.charAt(0).toUpperCase() + key.slice(1)}
                       </th>
                     ))}
+                  <th>Active Sta..</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -180,14 +301,37 @@ const Selectdata = () => {
                             key === "MaxCompanies" ? "max-companies-column" : ""
                           }
                         >
-                          {value !== null ? value.toString() : "N/A"}
+                          {value !== null
+                            ? key.toLowerCase().includes("date")
+                              ? formatDate(value.toString())
+                              : value.toString()
+                            : "N/A"}
                         </td>
                       ))}
                     <td>
+                      {/*  */}
+
+                      <div className="form-check form-switch">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          checked={
+                            item.Active?.toString().toLowerCase() === "true"
+                          }
+                          onChange={() => toggleStatus(item.ID)}
+                        />
+                      </div>
+
+                      {/*  */}
+                    </td>
+                    <td>
                       <div className="seletdata_edit-delet-btn">
-                      <button className="selet_reset-pass">
-                            Resetpass..
+                        <Link to={`/resetpass/${item.ID}`}>
+                          <button className="selet_reset-pass">
+                            <IoSettingsSharp />
+                            {/* Resetpass.. */}
                           </button>
+                        </Link>
                         <Link to="/updatedata" state={{ responseData: item }}>
                           <button className="selet_edit-btn">
                             <i className="fa-solid fa-pen-to-square"></i>
@@ -210,7 +354,7 @@ const Selectdata = () => {
           </div>
 
           {/* Pagination Controls */}
-          <div className="select_pagination">
+          <div className="select_pagination mt-4">
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
@@ -218,7 +362,7 @@ const Selectdata = () => {
               Previous
             </button>
             <span>
-              Page {currentPage} of {totalPages}
+              &nbsp; {currentPage} of {totalPages}
             </span>
             <button
               onClick={() =>
@@ -226,7 +370,7 @@ const Selectdata = () => {
               }
               disabled={currentPage === totalPages}
             >
-              Next
+              &nbsp; Next
             </button>
           </div>
         </div>
@@ -237,7 +381,11 @@ const Selectdata = () => {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="close_topbutton-taxes">
-              <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
             </div>
             <div className="delet_icon-boxtaxes">
               <i className="fa-solid fa-trash"></i>
@@ -247,8 +395,23 @@ const Selectdata = () => {
               <p>Are you sure you want to delete?</p>
             </div>
             <div className="close_bottombutton-taxes">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" className="delete_button" data-bs-dismiss="modal" onClick={handleDelete}>Delete</button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              {/* <a href="/selectdata"> */}
+              <button
+                type="button"
+                className="delete_button"
+                data-bs-dismiss="modal"
+                onClick={handleDelete}
+              >
+                Delete
+              </button>
+              {/* </a> */}
             </div>
           </div>
         </div>
@@ -258,4 +421,3 @@ const Selectdata = () => {
 };
 
 export default Selectdata;
-  

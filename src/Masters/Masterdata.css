@@ -2,6 +2,7 @@
     width: auto;
     margin: auto;
     margin-top: 10px;
+    margin-bottom: 70px;
     /* display: flex; */
     gap: 50px;
     /* background-color: yellowgreen; */
@@ -83,6 +84,7 @@
 .update-container{
   width: 40%;
   margin: 20px;
+
 }
 .input-group{
   position: static;

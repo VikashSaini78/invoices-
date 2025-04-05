@@ -42,11 +42,12 @@
 
 }
 
-.dot_dot {
+.dot_dot { 
     font-size: 20px;
     margin: 0;
     padding: 0;
 }
+
 
 .dashbord_text-div h6 {
     width: 90%;
@@ -54,6 +55,7 @@
     padding: 10px;
     font-size: 13px;
     cursor: pointer;
+    
 
 
 }
@@ -83,6 +85,7 @@
 
 }
 
+
 .das_management p {
     font-size: 13px;
     /* margin: auto; */
@@ -106,9 +109,11 @@
 }
 
 .management_list-items {
-    width: 85%;
+    width: 81%;
     margin: auto;
     font-size: 13px;
+    /* background-color: yellowgreen; */
+    margin-right: 10px;
 
 }
 
@@ -133,22 +138,25 @@
 
 
 .das_Authentication {
-    display: flex;
-    align-items: center;
-    /* background-color: yellowgreen; */
     color: gray;
+    display: flex;
     width: 90%;
+    /* background-color: aqua; */
+    align-items: center;
     margin: auto;
 }
 
+
 .das_Authentication p {
     font-size: 13px;
+   
 }
 
 .das_Authentication i {
     font-size: 13px;
-    padding: 9px;
+    padding: 7px;
     /* margin: auto; */
+   
 }
 
 .das_Authentication:hover {
@@ -178,15 +186,20 @@
 
 .comp_bootstap i {
     font-size: 13px;
-    padding: 9px;
+    padding: 7px;
+  margin-top: 1px;
 }
+
+
 
 .bootstrap_list-item li {
     padding: 5px;
     color: gray;
-    width: 90%;
+    width: 81%;
     margin: auto;
     font-size: 13px;
+    /* background-color: yellowgreen; */
+    margin-right: 10px;
 }
 
 .bootstrap_list-item li:hover {
@@ -213,8 +226,9 @@
 }
 
 .das_advance i {
-    padding: 8px;
+    padding: 7px;
     font-size: 13px;
+    margin-top: 2px;
 }
 
 .das_advance:hover {
@@ -225,9 +239,11 @@
 .advance_list-item li {
     padding: 5px;
     color: gray;
-    width: 90%;
+    width: 81%;
     margin: auto;
     font-size: 13px;
+    margin-right: 10px;
+    /* background: #000; */
 }
 
 .advance_list-item li:hover {
@@ -257,7 +273,7 @@
 }
 
 .das_tables i {
-    padding: 9px;
+    padding: 7px;
     font-size: 13px;
 
 }
@@ -265,9 +281,11 @@
 .tables_list-items li {
     padding: 5px;
     color: gray;
-    width: 90%;
+    width: 81%;
     margin: auto;
     font-size: 13px;
+    margin-right: 10px;
+    /* background: #000; */
 }
 
 .tables_list-items li:hover {
@@ -298,15 +316,17 @@
 
 .das_Apexcharts i {
     font-size: 13px;
-    padding: 9px;
+    padding: 5px;
+    margin-top: 6px;
 }
 
 .Apexcharts_list-item li {
     padding: 5px;
     color: gray;
-    width: 90%;
+    width: 81%;
     margin: auto;
     font-size: 13px;
+    margin-right: 10px;
 }
 
 .Apexcharts_list-item li:hover {
@@ -324,6 +344,7 @@
     color: rgb(219, 10, 10);
     width: 90%;
     margin: auto;
+
 }
 
 .das_logout p {
@@ -334,130 +355,10 @@
 
 .das_logout i {
     font-size: 15px;
-    padding: 9px;
+    padding: 4px;
     cursor: pointer;
+    margin-top: 2px;
 }
-
-
-/* das_Icons */
-
-.das_Icons {
-    display: flex;
-    align-items: center;
-    color: gray;
-    width: 90%;
-    margin: auto;
-}
-
-.das_Icons:hover {
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-}
-
-.das_Icons p {
-    font-size: 13px;
-}
-
-.das_Icons i {
-    padding: 9px;
-    font-size: 13px;
-}
-
-.icons_list-items li {
-    padding: 5px;
-    color: gray;
-    width: 90%;
-    margin: auto;
-    font-size: 13px;
-}
-
-.icons_list-items li:hover {
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-}
-
-
-
-/* maps  */
-
-
-.das_maps {
-    display: flex;
-    align-items: center;
-    color: gray;
-    width: 90%;
-    margin: auto;
-}
-
-.das_maps:hover {
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-}
-
-.das_maps p {
-    font-size: 13px;
-}
-
-.das_maps i {
-    padding: 9px;
-    font-size: 13px;
-}
-
-.map_list-items li {
-    padding: 5px;
-    color: gray;
-    width: 90%;
-    margin: auto;
-    font-size: 13px;
-}
-
-.map_list-items li:hover {
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-}
-
-/* multi level */
-
-
-
-
-.das_multi-lavel {
-    display: flex;
-    align-items: center;
-    color: gray;
-    width: 90%;
-    margin: auto;
-}
-
-.das_multi-lavel:hover {
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-}
-
-.das_multi-lavel p {
-    font-size: 13px;
-}
-
-.das_multi-lavel i {
-    padding: 9px;
-    font-size: 13px;
-}
-
-.multi_list-item li {
-    padding: 5px;
-    color: gray;
-    width: 90%;
-    margin: auto;
-    font-size: 13px;
-}
-
-.multi_list-item li:hover {
-    color: rgb(52, 151, 135);
-    cursor: pointer;
-}
-
-/* das_invoice-div */
-
 
 
 .das_invoice-div {

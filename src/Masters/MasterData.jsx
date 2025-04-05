@@ -8,7 +8,7 @@ const MasterData = () => {
     emailid: "",
     mobileno: "",
     Address: "",
-    active: "false", // Default to "false" (string)
+    active: "false",
     CreationDate: "",
     Password: "",
     otp: "",
@@ -22,6 +22,9 @@ const MasterData = () => {
   // Get the current date in YYYY-MM-DD format
   const getCurrentDate = () => new Date().toISOString().split("T")[0];
 
+  // const getCurrentDate = () => new Date().toISOString().slice(0, 10);
+
+  
   useEffect(() => {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -29,12 +32,13 @@ const MasterData = () => {
       otp: generateOTP(),
     }));
   }, []);
+  
 
   const handleChange = (e) => {
     const { name, type, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value, // Handles text input and select dropdown
+      [name]: value,
     });
   };
 
@@ -79,7 +83,6 @@ const MasterData = () => {
       alert("Successfully submitted!");
 
       // Reset form fields properly
-      
     } catch (error) {
       console.error(error);
       alert("Successfully submitted!");
@@ -90,7 +93,7 @@ const MasterData = () => {
       emailid: "",
       mobileno: "",
       Address: "",
-      active: "false", // Reset to "false"
+      active: "false", 
       Password: "",
       PwdResetstring: "",
       PwdLinkValidity: "",
@@ -167,13 +170,13 @@ const MasterData = () => {
         </div>
 
         {/* Active Field as a Select Dropdown */}
-        <div className="input_text-labalname">
+        {/* <div className="input_text-labalname">
           <label>Active</label>
           <select name="active" value={formData.active} onChange={handleChange}>
             <option value="true">True</option>
             <option value="false">False</option>
           </select>
-        </div>
+        </div> */}
 
         {/* Pwd Reset String */}
         <div className="input_text-labalname">

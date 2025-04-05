@@ -8,6 +8,7 @@ body{
 .Dashboard_container{
     width: 100%;
     height: auto;
+    margin-bottom: 50px;
     background-color: rgb(237, 238, 238);
 
 }
@@ -490,7 +491,7 @@ font-size: 12px;
    .Recent_Transaction{
     margin-top: 20px;
     width: 100%;
-    height: 74vh;
+    height: auto;
     background-color: rgb(255, 255, 255);
     padding: 10px;
     /* overflow: scroll;
