@@ -11,12 +11,15 @@ import Signin from "./Authentication/Sign_in/Signin";
 import Signup from "./Authentication/sigin up/Signup";
 import Addinvoice from "./Component/Add invoice/Addinvoice";
 import InvoicesDetails from "./Component/Invoices Details/InvoicesDetails";
-import MasterData from "./Masters/MasterData";
-import Getdata from "./Masters/Getdata";
-import Updatedata from "./Masters/Updatedta";
+import MasterData from "./Masters/Master/MasterData";
+import Getdata from "./Masters/Master/Getdata";
+import Updatedata from "./Masters/Master/Updatedta";
 // import Deletdata from "./Masters/Deletdata";
-import Selectdata from "./Masters/Selectdata";
-import Resetpass from "./Masters/Resetpass";
+import Selectdata from "./Masters/Master/Selectdata";
+import Resetpass from "./Masters/Master/Resetpass";
+import Users from "./Masters/Master/Users";
+import Compney from "./Masters/Companey/Compney";
+// import Compney from "./Companey/Compney";
 
 function Service() {
   return (
@@ -25,8 +28,8 @@ function Service() {
         <Route path="/invoicedetails" element={<InvoicesDetails/>} />
         <Route path="/addinvoice" element={<Addinvoice />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Signin />} />
+        <Route path="/home" element={<Dashboard />} />
         <Route path="/invoice" element={<Invoice />} />
         <Route path="/product" element={<ProductList />} />
         <Route path="/taxes" element={<Taxes />} />
@@ -35,9 +38,11 @@ function Service() {
         <Route path="/masterdata" element={<MasterData/>} />
         <Route path="/getdata" element={<Getdata/>} />
         <Route path="/updatedata" element={<Updatedata/>} />
-        {/* <Route path="/deletdata" element={<Deletdata/>} /> */}
+        <Route path="/users" element={<Users/>} />
         <Route path="/selectdata" element={<Selectdata/>} />
-        <Route path="/resetpass/:id" element={<Resetpass/>} />
+        <Route path="/resetpass/:id/:name" element={<Resetpass/>} />
+        <Route path="/compney" element={<Compney/>} />
+
       </Routes>
       <Footer />
     </>

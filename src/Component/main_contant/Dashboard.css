@@ -441,7 +441,9 @@ box-shadow: none;
     padding: 10px;
     margin-bottom: 10px;
    
+   
 }
+
 .Payment_Overview-chart{
     width: 100%;
     height: auto;
@@ -845,7 +847,7 @@ font-size: 12px;
     margin: auto;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    margin-bottom: 27px;
+    /* margin-bottom: 27px; */
 }
 
 .payment_date {

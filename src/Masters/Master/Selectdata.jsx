@@ -98,6 +98,7 @@ const Selectdata = () => {
   };
 
   const handleDelete = async () => {
+
     if (!deleteId) return;
 
     const deleteData = new URLSearchParams();
@@ -222,7 +223,7 @@ const Selectdata = () => {
 
   const formatDate = (value) => {
     if (!value) return "N/A";
-    const dateOnly = value.split("T")[0]; // remove time
+    const dateOnly = value.split("T")[0];
     const [year, month, day] = dateOnly.split("-");
     return `${day}-${month}-${year}`;
   };
@@ -326,12 +327,16 @@ const Selectdata = () => {
                     </td>
                     <td>
                       <div className="seletdata_edit-delet-btn">
-                        <Link to={`/resetpass/${item.ID}`}>
+                        {/* <Link to={`/resetpass/${item.ID}`}> */}
+                        <Link to={`/resetpass/${item.ID}/${item.Name}`}>
+
                           <button className="selet_reset-pass">
                             <IoSettingsSharp />
                             {/* Resetpass.. */}
                           </button>
                         </Link>
+                        {/* <Link to="/updatedata" state={{ responseData: item, masterId: item.ID }}> */}
+
                         <Link to="/updatedata" state={{ responseData: item }}>
                           <button className="selet_edit-btn">
                             <i className="fa-solid fa-pen-to-square"></i>

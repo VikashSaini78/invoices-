@@ -3,13 +3,15 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Resetpass() {
-  const { id } = useParams(); 
+  // const { id } = useParams(); 
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const { id, name } = useParams();
+
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -78,9 +80,11 @@ function Resetpass() {
   return (
     <div className="resetpassword">
       <div className="resetpass-container">
-        <div className="flex justify-center m-3 font-bold">
-          <h4>Reset Password</h4>
+        <div className="flex justify-center mt-3 font-bold">
+          <h4>Reset Password</h4> <br/>
         </div>
+        <h1 className="text-center mb-3">Name :- {name}</h1>
+    
         <div className="update-pass_input">
           {/* Password Field */}
           {/* <div > */}

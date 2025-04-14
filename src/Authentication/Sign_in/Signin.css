@@ -69,13 +69,14 @@
     margin: auto;
     display: flex;
     justify-content: end;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
     margin-top: 20px;
-    display: none;
+    cursor: pointer;
+    /* display: none; */
 }
 .heide_show i{
     position: relative;
-    bottom: 20px;
+    bottom: 44px;
     right: 7px;
 }
 

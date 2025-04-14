@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.compney_container{
+    width: 95%;
+    margin: auto;
+}
+.compney_form{
+    width: 45%;
+    /* background: #5c5c5c23; */
+    font-size: 14px;
+    text-align: center;
+    
+}
+.compney_input_div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.compney_input_div input{
+    width: 60%;
+    padding: 5px;
+    font-size: 13px;
+    outline: none;
+    border: 1px solid rgb(201, 201, 201);
+} 
+.compney_input_div select{
+    width: 60%;
+    padding: 5px;
+    font-size: 13px;
+    outline: none;
+    background-color: white;
+    border: 1px solid rgb(201, 201, 201);
+
+}
+
+.compney_form button{
+    background-color: rgb(0, 128, 128);
+    margin: 20px;
+    width: 120px;
+    padding: 5px;
+    color: white;
+}
+
+@media only screen and (max-width: 768px){
+    .compney_input_div{
+        display: grid;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        /* background: #000;
+        padding: 20px; */
+    }
+    label {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    .compney_form{
+        width: 100%;
+        /* background: #5c5c5c23; */
+        font-size: 14px;
+        text-align: center;
+        
+    }
+    .compney_input_div select{
+        width: 357px;
+ 
+    }
+
+    .compney_input_div input{
+        width: 357px;
+    }
+}  

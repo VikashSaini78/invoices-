@@ -103,14 +103,23 @@ body{
   
 
 .update-container{
+  background-color: white;
   width: 35%;
-  margin: 20px;
-  margin-bottom: 70px;
+  margin: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
 }
 .input-group{
+  width: 200px;
   position: static;
   display: flex;
+  margin: auto;
 }
+
 .input-labal{
   display: flex;
   justify-content: space-between;
@@ -123,13 +132,33 @@ body{
 }
 
 .update-container input{
-width: 100%;
+/* width: 100%; */
 outline: none;
 font-size: 13px;
 padding: 6px;
 margin: 7px;
 border: 1px solid gray;
 border-radius: 3px;
+}
+.input-group_max input{
+  width: 60px;
+  font-size: 13px;
+padding: 6px;
+margin: 0px;
+border: 1px solid gray;
+border-radius: 3px;
+margin-top: 6px;
+margin-bottom: 16px;
+}
+.input-group_max {
+  margin: auto;
+  width: 200px;
+  display: grid;
+  font-size: 14px
+  /* background: #000; */
+}
+.input-group_max label{
+  text-align: start;
 }
 
 /* selectdata table */
@@ -148,6 +177,10 @@ border-radius: 3px;
 .response-container::-webkit-scrollbar {
     width: 3px; 
     height: 3px; 
+}
+.response-container-user{
+  width: 60%;
+  font-size: 13px;
 }
 
 .response-container::-webkit-scrollbar-thumb {
@@ -347,6 +380,7 @@ td.max-companies-column {
   align-items: center;
  
 }
+
 .form-check-input{
 cursor: pointer;
 }
@@ -389,6 +423,10 @@ cursor: pointer;
     font-size: 13px;
     overflow-x: scroll;
   
+  }
+  .response-container-user{
+    width: 100%;
+    font-size: 13px;
   }
   
 .input_text-labalname select{

@@ -81,12 +81,14 @@
   color: white;
   margin: auto;
 }
-.update-container{
+/* .update-container{
+  background: #000;
   width: 40%;
   margin: 20px;
 
-}
+} */
 .input-group{
+  /* background: #000; */
   position: static;
   display: flex;
 }

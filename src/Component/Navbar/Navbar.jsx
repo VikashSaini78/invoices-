@@ -9,7 +9,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { GrFormDown } from "react-icons/gr";
 
 function Navbar() {
-  const [value, setvalue] = useState("");
+  const [value, setvalue] = useState ("");
   const [admin, setadmin] = useState(false);
 
   const [liitem, setliitem] = useState(false);
@@ -28,6 +28,7 @@ function Navbar() {
   const [ent, setent] = useState(false);
   const [rep, setrep] = useState(false);
   const [uti, setuti] = useState(false);
+ const [username, setUsername] = useState("");
 
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
@@ -115,8 +116,16 @@ function Navbar() {
       setadmin(true); 
     }
   }, []);
-  
 
+
+  // navbar name 
+  
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
 
   return (
     <>
@@ -167,7 +176,7 @@ function Navbar() {
                 {" "}
                 <p className={`${admin ? "hidden" : "block"}`}>E Tour</p>
               </div>
-              <Link to={"/"}>
+              <Link to={"/home"}>
                 <div className={`das_menu ${admin ? "mt-2" : ""}`}>
                   <i
                     className={`fa-solid fa-house ${admin ? "m-auto" : ""}`}
@@ -422,6 +431,30 @@ function Navbar() {
                       </li>
                     </Link>
 
+                    <Link to={"/users"}>
+                      <li
+                        onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >
+                        Users
+                      </li>
+                    </Link>
+
+                    <Link to={"/compney"}>
+                      <li
+                        onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >
+                        Compney
+                      </li>
+                    </Link>
+
                     <Link to={"/payment"}>
                       <li> Services</li>
                     </Link>
@@ -566,7 +599,7 @@ function Navbar() {
                 <i id="nav_icons" className="fa-solid fa-magnifying-glass"></i>
 
                 <div className="nav_bellfrofile">
-                  <i
+                  <i 
                     className="fa-regular fa-bell"
                     onClick={() => {
                       setNotifications(!Notifications);
@@ -584,10 +617,11 @@ function Navbar() {
                     }}
                   >
                     <img src="./media/avatar.jpg" alt="" />
-                    <p className="calvind_box">
-                      {" "}
-                      Calvin.D <i className="fa-solid fa-chevron-down"></i>
-                    </p>
+                    <h1 className="calvind_box">
+                     {username && <strong>{username}</strong>}
+
+                      <i className="fa-solid fa-chevron-down"></i>
+                    </h1>
                   </ul>
                 </div>
 
@@ -701,9 +735,11 @@ function Navbar() {
                     <i className="fa-solid fa-lock"></i> Look Screen
                   </li>
                   <hr />
+                  <Link to={"/"}>
                   <div className="nav_log-out">
                     <i className="fa-solid fa-power-off"></i> Log out
                   </div>
+                  </Link>
                 </div>
               )}
             </div>

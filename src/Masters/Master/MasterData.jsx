@@ -35,11 +35,11 @@ const MasterData = () => {
   
 
   const handleChange = (e) => {
-    const { name, type, value } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
-    });
+    }); 
   };
 
   const handleSubmit = async (e) => {
@@ -85,7 +85,7 @@ const MasterData = () => {
       // Reset form fields properly
     } catch (error) {
       console.error(error);
-      alert("Successfully submitted!");
+      alert("Successfully submited value!");
     }
     setFormData({
       TableName: "MasterData",
