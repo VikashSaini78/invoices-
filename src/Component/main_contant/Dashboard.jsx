@@ -8,57 +8,6 @@ import {
 import { AreaChart, Area, CartesianGrid } from "recharts";
 function Dashboard() {
 
-  // const Array = [
-  //   {
-  //     name: "jan",
-  //     income: 13,
-  //   },
-  //   {
-  //     name: "feb",
-  //     income: 25,
-  //   },
-  //   {
-  //     name: "mar.",
-  //     income: 52,
-  //   },
-  //   {
-  //     name: "apr.",
-  //     income: 57,
-  //   },
-  //   {
-  //     name: "may",
-  //     income: 94,
-  //   },
-  //   {
-  //     name: "jun",
-  //     income: 45,
-  //   },
-  //   {
-  //     name: "jul.",
-  //     income: 62,
-  //   },
-  //   {
-  //     name: "Aug.",
-  //     income: 52,
-  //   },
-  //   {
-  //     name: "Sep.",
-  //     income: 12,
-  //   },
-  //   {
-  //     name: "Oct",
-  //     income: 56,
-  //   },
-  //   {
-  //     name: "Nov",
-  //     income: 13,
-  //   },
-  //   {
-  //     name: "Dec",
-  //     income: 65,
-  //   },
-  // ];
-
   const data = [
     {
       name: "jan",

@@ -84,95 +84,14 @@ const UpdateData = () => {
     }
   };
 
-  const fieldLabels = {
-    emailid: "EmailId",
-    // Add more if needed
-  };
+  // const fieldLabels = {
+  //   emailid: "EmailId",
+  // };
 
-  const hiddenFields = [
-    "ID",
-    "CreationDate",
-    "OTP",
-    "PwdLinkValidity",
-    "PwdResetString",
-    "Password",
-    "Active",
-  ];
+
 
   return (
-    // <div className="update-container">
-    //   <h1>🔄 Update Data</h1>
-    //   <form>
-    //     {hiddenFields.map((key) => (
-    //       <input
-    //         key={key}
-    //         type="hidden"
-    //         name={key}
-    //         value={editableData[key] || ""}
-    //       />
-    //     ))}
-
-      
-    //     <div className="input-group">
-    //       <label>Name</label>
-    //       <input
-    //         type="text"
-    //         name="Name"
-    //         value={editableData.Name}
-    //         onChange={handleInputChange}
-    //       />
-    //     </div>
-
-    //     <div className="input-group">
-    //       <label>Address</label>
-    //       <input
-    //         type="text"
-    //         name="Address"
-    //         value={editableData.Address}
-    //         onChange={handleInputChange}
-    //       />
-    //     </div>
-
-    //     <div className="input-group">
-    //       <label>EmailID</label>
-    //       <input
-    //         type="text"
-    //         name="EmailID"
-    //         value={editableData.emailID}
-    //         onChange={handleInputChange}
-    //       />
-    //     </div>
-
-    //     <div className="input-group">
-    //       <label>MobileNo</label>
-    //       <input
-    //         type="text"
-    //         name="number"
-    //         value={editableData.MobileNo}
-    //         onChange={handleInputChange}
-    //       />
-    //     </div>
-
-    //     <div className="input-group">
-    //       <label>MaxCompanies</label>
-    //       <input className="MaxCompanies_input"
-    //         type="text"
-    //         name="MaxCompanies"
-    //         value={editableData.MaxCompanies}
-    //         onChange={handleInputChange}
-    //       />
-    //     </div>
-
-    //     <button
-    //       type="button"
-    //       className="save-changebtn"
-    //       onClick={handleSaveChanges}
-    //     >
-    //       ✅ Save Changes
-    //     </button>
-    //   </form>
-    // </div>
-    <div className="update-container">
+ <div className="update-container">
   <h1>🔄 Update Data</h1>
   <form>
     {/* Hidden fields written manually */}
@@ -201,15 +120,17 @@ const UpdateData = () => {
       />
     </div>
 
+  
     <div className="input-group">
-      <label>EmailID</label>
-      <input
-        type="text"
-        name="EmailID"
-        value={editableData.emailID}
-        onChange={handleInputChange}
-      />
-    </div>
+  <label>EmailID</label>
+  <input
+    type="text"
+    name="emailID"
+    value={editableData.emailID || ""}
+    onChange={handleInputChange}
+  />
+</div>
+
 
     <div className="input-group">
       <label>MobileNo</label>

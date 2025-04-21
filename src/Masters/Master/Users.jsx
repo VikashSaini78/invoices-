@@ -206,6 +206,7 @@ const toggleStatus = async (id) => {
    
       {loading && <p className="loading-message">Loading data...</p>}
       {error && <p className="error-message">{error}</p>}
+      <h5 className="text-center font-bold m-3">Users Data</h5>
 
       {/* Search Filter */}
       <div className="search-container">
@@ -232,7 +233,7 @@ const toggleStatus = async (id) => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
-      <h5>Users</h5>
+ 
 
       {!loading && filteredData.length === 0 && !error && (
         <p className="no-data-message">No data available.</p>

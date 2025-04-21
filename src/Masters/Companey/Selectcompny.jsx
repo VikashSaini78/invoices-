@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { IoSettingsSharp } from "react-icons/io5";
 import "../Master/selectdata.css";
+// import { BsThreeDotsVertical } from "react-icons/bs";
 
 const Selectcompny = () => {
   const [responseData, setResponseData] = useState([]);
@@ -12,16 +12,11 @@ const Selectcompny = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [recordsPerPage, setRecordsPerPage] = useState(10);
+  const [states, setStates] = useState([]);
 
-  // const recordsPerPage = 9;
-  const hiddenColumns = [
-    "ID",
-    "OTP",
-    "PwdResetString",
-    "PwdLinkValidity",
-    "Password",
-    "Active",
-  ];
+  // const [paymenticon, setpaymenticon] = useState("");
+
+  const hiddenColumns = ["StateCode", "MasterId", "CompID"];
 
   useEffect(() => {
     fetchData();
@@ -35,8 +30,6 @@ const Selectcompny = () => {
     setError(null);
     setLoading(true);
     setResponseData([]);
-
-    console.log("Fetching Data...");
 
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
@@ -56,16 +49,14 @@ const Selectcompny = () => {
         body: data.toString(),
       });
 
-      if (!response.ok) {
+      if (!response.ok)
         throw new Error(`HTTP Error! Status: ${response.status}`);
-      }
 
       const jsonData = await response.json();
-      console.log("Fetched Response Data:", jsonData);
-
       if (jsonData.Response) {
         setResponseData(jsonData.Response);
         setFilteredData(jsonData.Response);
+        console.log("📦 Response Data:", jsonData.Response);
       } else {
         setError("No data found.");
       }
@@ -84,8 +75,7 @@ const Selectcompny = () => {
       const lowerQuery = query.toLowerCase();
       const filtered = responseData.filter((item) =>
         Object.values(item).some(
-          (value) =>
-            value && value.toString().toLowerCase().includes(lowerQuery)
+          (val) => val && val.toString().toLowerCase().includes(lowerQuery)
         )
       );
       setFilteredData(filtered);
@@ -93,32 +83,28 @@ const Selectcompny = () => {
     setCurrentPage(1);
   };
 
-  const confirmDelete = (id) => {
-    setDeleteId(id);
-  };
+  const confirmDelete = (compId) => setDeleteId(compId);
 
   const handleDelete = async () => {
-
     if (!deleteId) return;
 
     const deleteData = new URLSearchParams();
     deleteData.append("SecurityKey", "abcd");
     deleteData.append("TableName", "company");
-    deleteData.append("WhereCondition", `ID=${deleteId}`);
-
-    const deleteUrl =
-      "http://etour.responseinfoway.com/restapi/deletedata.aspx";
+    deleteData.append("WhereCondition", `CompID=${deleteId}`);
 
     try {
-      const response = await fetch(deleteUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: deleteData.toString(),
-      });
+      const response = await fetch(
+        "http://etour.responseinfoway.com/restapi/deletedata.aspx",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: deleteData.toString(),
+        }
+      );
 
-      if (!response.ok) {
+      if (!response.ok)
         throw new Error(`API error! HTTP Status: ${response.status}`);
-      }
 
       const textResponse = await response.text();
       console.log("Delete Response:", textResponse);
@@ -128,120 +114,126 @@ const Selectcompny = () => {
         textResponse.toLowerCase().includes("success")
       ) {
         setResponseData((prevData) =>
-          prevData.filter((item) => item.ID !== deleteId)
+          prevData.filter((item) => item.CompID !== deleteId)
         );
+        setFilteredData((prevData) =>
+          prevData.filter((item) => item.CompID !== deleteId)
+
+        );
+        // alert("Data deleted successfully!")
       } else {
         throw new Error(`API responded with failure: ${textResponse}`);
       }
-    } catch (error) {
+      // alert("Data deleted falid!");
+    } 
+    catch (error) {
       console.error("Delete Error:", error);
     }
+    // alert("Data deleted successfully ✅");
+
   };
 
-  const toggleStatus = async (id) => {
-    const itemToUpdate = responseData.find((item) => item.ID === id);
-    if (!itemToUpdate) return;
 
-    const currentStatus = itemToUpdate.Active?.toString().toLowerCase();
-    const newStatus = currentStatus === "true" ? "false" : "true";
 
-    // Update local state optimistically
-    setResponseData((prevData) =>
-      prevData.map((item) =>
-        item.ID === id ? { ...item, Active: newStatus } : item
-      )
-    );
+  useEffect(() => {
+    fetchData();
+    fetchStates();
+  }, []);
 
-    const requestBody = new URLSearchParams();
-    requestBody.append("SecurityKey", "abcd");
-    requestBody.append("TableName", "company");
-    requestBody.append("WhereCondition", `ID=${id}`);
-    requestBody.append("Active", newStatus);
+  const fetchStates = async () => {
+    const data = new URLSearchParams();
+    data.append("SecurityKey", "abcd");
+    data.append("TableName", "gststates"); // ✅ Corrected here
+    data.append("WhereCondition", "All");
+    data.append("*", "*");
 
     try {
-      const response = await fetch(
-        "http://etour.responseinfoway.com/restapi/updatedata.aspx",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Accept: "application/json",
-          },
-          body: requestBody.toString(),
-        }
-      );
+      const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
+      const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
 
-      const text = await response.text();
-      console.log("📥 Raw Response Text:", text);
+      const response = await fetch(proxyUrl + apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: data.toString(),
+      });
 
-      let result;
-      try {
-        result = JSON.parse(text);
-      } catch (e) {
-        console.warn("⚠ JSON parse fail");
-      }
-
-      if (result?.Response?.[0]?.Status === "Ok") {
-        console.log("Status updated");
-
-        // ⬇Optional: Refresh latest data from API
-        fetchLatestData(); 
-      } else {
-        console.error(" Failed to update:", result);
+      const json = await response.json();
+      if (json.Response) {
+        setStates(json.Response);
+        console.log("✅ States fetched:", json.Response); // Debug here
       }
     } catch (error) {
-      console.error(" API error:", error);
+      console.error("Failed to fetch states:", error);
     }
   };
 
-  const fetchLatestData = async () => {
-    try {
-      const res = await fetch(
-        "http://etour.responseinfoway.com/restapi/getalldata.aspx",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams({
-            SecurityKey: "abcd",
-            TableName: "company",
-          }),
-        }
-      );
-      const text = await res.text();
-      const result = JSON.parse(text);
-      if (result?.Response) {
-        setResponseData(result.Response);
-      }
-    } catch (err) {
-      console.error("Error fetching data", err);
-    }
-  };
-
-  // date
-
-  const formatDate = (value) => {
-    if (!value) return "N/A";
-    const dateOnly = value.split("T")[0];
-    const [year, month, day] = dateOnly.split("-");
-    return `${day}-${month}-${year}`;
-  };
+  // console.log("🧾 Matching StateID:", id);
+  console.log("🧾 States List:", states);
 
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const currentRecords = filteredData.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(filteredData.length / recordsPerPage);
 
+  const getStateName = (id) => {
+    const match = states.find((state) => String(state.ID) === String(id));
+    return match ? match.State : id;
+  };
+
   return (
     <div className="masdata_container">
       {loading && <p className="loading-message">Loading data...</p>}
       {error && <p className="error-message">{error}</p>}
 
-      {/* Search Filter */}
-      <div className="search-container">
+      <div className="Payment_div">
+        <div className="payment_maintext">
+          <h6>Company</h6>
+
+          <div>
+            <p>Company</p>
+            <span>
+              <i className="fa-solid fa-chevron-right"></i>Company
+            </span>
+          </div>
+        </div>
+        <div className="button_search-payment">
+          <Link to={"/compney"}>
+            <button type="button" className="btn btn">
+              <i className="fa-solid fa-plus"></i> Add Company
+            </button>
+          </Link>
+          <div className="search-input_box">
+            <input
+              type="search"
+              className="form-control"
+              placeholder="Search for name or designation..."
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {/* <span onClick={()=>{setpaymenticon(!paymenticon)}}>
+             <BsThreeDotsVertical />
+             </span> */}
+          </div>
+        </div>
+
+        {/* {
+              paymenticon && (
+              
+                <div className='payment_three-icons'>
+              <ul>All</ul>
+              <ul>Last Week</ul>
+              <ul>Last Month</ul>
+              <ul>Last Year</ul>
+              
+              </div>
+              )
+            } */}
+      </div>
+
+      <div className="search-container mt-3">
         <div className="records-per-page-container">
-          <label htmlFor="recordsPerPage">Records Per Page:</label>
+          <label htmlFor="recordsPerPage">Records Per Page :</label>
           <select
             id="recordsPerPage"
             value={recordsPerPage}
@@ -253,22 +245,10 @@ const Selectcompny = () => {
             <option value="20">20</option>
           </select>
         </div>
-
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
       </div>
-      {!loading && filteredData.length === 0 && !error && (
-        <p className="no-data-message">No data available.</p>
-      )}
 
       {filteredData.length > 0 && (
         <div className="response-container">
-          {/* <h5>Response Data:</h5> */}
-
           <div className="table-wrapper">
             <table className="data-table">
               <thead>
@@ -276,80 +256,47 @@ const Selectcompny = () => {
                   {Object.keys(filteredData[0])
                     .filter((key) => !hiddenColumns.includes(key))
                     .map((key) => (
-                      <th
-                        key={key}
-                        className={
-                          key === "MaxCompanies" ? "max-companies-column" : ""
-                        }
-                      >
+                      <th key={key}>
                         {key.charAt(0).toUpperCase() + key.slice(1)}
                       </th>
                     ))}
-                  <th>Active Sta..</th>
+
                   <th>Actions</th>
                 </tr>
               </thead>
-
               <tbody>
                 {currentRecords.map((item, index) => (
                   <tr key={index}>
                     {Object.entries(item)
                       .filter(([key]) => !hiddenColumns.includes(key))
-                      .map(([key, value], i) => (
-                        <td
-                          key={i}
-                          className={
-                            key === "MaxCompanies" ? "max-companies-column" : ""
-                          }
-                        >
-                          {value !== null
-                            ? key.toLowerCase().includes("date")
-                              ? formatDate(value.toString())
-                              : value.toString()
-                            : "N/A"}
+                      .map(([key, val], i) => (
+                        <td key={i}>
+                          {key === "StateID"
+                            ? getStateName(val)
+                            : val?.toString() || "N/A"}
                         </td>
                       ))}
-                    <td>
-                      {/*  */}
 
-                      <div className="form-check form-switch">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          checked={
-                            item.Active?.toString().toLowerCase() === "true"
-                          }
-                          onChange={() => toggleStatus(item.ID)}
-                        />
-                      </div>
-
-                      {/*  */}
-                    </td>
                     <td>
                       <div className="seletdata_edit-delet-btn">
-                        {/* <Link to={`/resetpass/${item.ID}`}> */}
-                        <Link to={`/resetpass/${item.ID}/${item.Name}`}>
-
-                          <button className="selet_reset-pass">
-                            <IoSettingsSharp />
-                            {/* Resetpass.. */}
-                          </button>
-                        </Link> 
-                        {/* <Link to="/updatedata" state={{ responseData: item, masterId: item.ID }}> */}
-
-                        <Link to="/updatedata" state={{ responseData: item }}>
+                        <Link
+                          to="/compupdatedata"
+                          state={{ responseData: item }}
+                        >
                           <button className="selet_edit-btn">
                             <i className="fa-solid fa-pen-to-square"></i>
                           </button>
                         </Link>
-                        <button
+                  
+                       <button
                           className="select_delete-btn"
                           data-bs-toggle="modal"
                           data-bs-target="#deleteConfirmationModal"
-                          onClick={() => confirmDelete(item.ID)}
+                          onClick={() => confirmDelete(item.CompID)}
                         >
                           <i className="fa-solid fa-trash"></i>
                         </button>
+                 
                       </div>
                     </td>
                   </tr>
@@ -358,7 +305,6 @@ const Selectcompny = () => {
             </table>
           </div>
 
-          {/* Pagination Controls */}
           <div className="select_pagination mt-4">
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -367,7 +313,8 @@ const Selectcompny = () => {
               Previous
             </button>
             <span>
-              &nbsp; {currentPage} of {totalPages}
+              {" "}
+              {currentPage} of {totalPages}{" "}
             </span>
             <button
               onClick={() =>
@@ -375,7 +322,7 @@ const Selectcompny = () => {
               }
               disabled={currentPage === totalPages}
             >
-              &nbsp; Next
+              Next
             </button>
           </div>
         </div>
@@ -407,16 +354,15 @@ const Selectcompny = () => {
               >
                 Cancel
               </button>
-              {/* <a href="/selectdata"> */}
+              
               <button
                 type="button"
-                className="delete_button"
+                className="btn btn-danger"
                 data-bs-dismiss="modal"
-                onClick={handleDelete}
+                onClick={(e) => handleDelete(e)}
               >
                 Delete
               </button>
-              {/* </a> */}
             </div>
           </div>
         </div>
@@ -425,4 +371,4 @@ const Selectcompny = () => {
   );
 };
 
-export default Selectcompny;   
+export default Selectcompny;

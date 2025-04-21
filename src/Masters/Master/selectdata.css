@@ -290,9 +290,7 @@ td.max-companies-column {
 
 .search-container{
   width: 100%;
-  /* background-color: palegoldenrod; */
-  display: flex;
-  justify-content: space-between;
+  margin: auto;
   font-size: 13px;
 }
 #recordsPerPage{
@@ -441,6 +439,21 @@ cursor: pointer;
   width: auto;
  
 }
+/* .response-container {
+  width: 95%;
+  margin: auto;
+
+} */
+.search-container{
+  width: 95%;
+  margin: auto;
+  font-size: 13px;
+}
+.button_search-payment input {
+  width: 164px;
+  font-size: 11px;
+}
+
 
 
 }

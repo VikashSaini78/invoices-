@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoSettingsSharp } from "react-icons/io5";
 import "./selectdata.css";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 const Selectdata = () => {
   const [responseData, setResponseData] = useState([]);
@@ -12,6 +13,7 @@ const Selectdata = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [recordsPerPage, setRecordsPerPage] = useState(10);
+  const [paymenticon, setpaymenticon] = useState("");
 
   // const recordsPerPage = 9;
   const hiddenColumns = [
@@ -98,7 +100,6 @@ const Selectdata = () => {
   };
 
   const handleDelete = async () => {
-
     if (!deleteId) return;
 
     const deleteData = new URLSearchParams();
@@ -185,7 +186,7 @@ const Selectdata = () => {
         console.log("Status updated");
 
         // ⬇Optional: Refresh latest data from API
-        fetchLatestData(); 
+        fetchLatestData();
       } else {
         console.error(" Failed to update:", result);
       }
@@ -237,9 +238,81 @@ const Selectdata = () => {
     <div className="masdata_container">
       {loading && <p className="loading-message">Loading data...</p>}
       {error && <p className="error-message">{error}</p>}
+      {/* <h5 className="text-center font-bold m-3">Master Data</h5> */}
 
       {/* Search Filter */}
-      <div className="search-container">
+      {/* <div className="search-container"> */}
+      {/* <div className="records-per-page-container">
+          <label htmlFor="recordsPerPage">Records Per Page:</label>
+          <select
+            id="recordsPerPage"
+            value={recordsPerPage}
+            onChange={(e) => setRecordsPerPage(Number(e.target.value))}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </div> */}
+
+      {/* <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        /> */}
+      {/* </div> */}
+
+      <div className="Payment_div">
+        <div className="payment_maintext">
+          <h6>Master</h6>
+
+          <div>
+            <p>Master</p>
+            <span>
+              <i className="fa-solid fa-chevron-right"></i>Master
+            </span>
+          </div>
+        </div>
+        <div className="button_search-payment">
+          <Link to={"/masterdata"}>
+            <button type="button" className="btn btn">
+              <i className="fa-solid fa-plus"></i> Add Master
+            </button>
+          </Link>
+          <div className="search-input_box">
+            <input
+              type="search"
+              className="form-control"
+              placeholder="Search for name or designation..."
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {/* <span
+              onClick={() => {
+                setpaymenticon(!paymenticon);
+              }}
+            >
+              <BsThreeDotsVertical />
+            </span> */}
+          </div>
+        </div>
+
+        {/* {
+                    paymenticon && (
+                    
+                      <div className='payment_three-icons'>
+                    <ul>All</ul>
+                    <ul>Last Week</ul>
+                    <ul>Last Month</ul>
+                    <ul>Last Year</ul>
+                    
+                    </div>
+                    )
+                  } */}
+      </div>
+
+      <div className="search-container mt-3">
         <div className="records-per-page-container">
           <label htmlFor="recordsPerPage">Records Per Page:</label>
           <select
@@ -253,14 +326,8 @@ const Selectdata = () => {
             <option value="20">20</option>
           </select>
         </div>
-
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
       </div>
+
       {!loading && filteredData.length === 0 && !error && (
         <p className="no-data-message">No data available.</p>
       )}
@@ -329,7 +396,6 @@ const Selectdata = () => {
                       <div className="seletdata_edit-delet-btn">
                         {/* <Link to={`/resetpass/${item.ID}`}> */}
                         <Link to={`/resetpass/${item.ID}/${item.Name}`}>
-
                           <button className="selet_reset-pass">
                             <IoSettingsSharp />
                             {/* Resetpass.. */}

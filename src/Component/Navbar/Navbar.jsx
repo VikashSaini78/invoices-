@@ -42,28 +42,6 @@ function Navbar() {
   const repclick = () => {setrep(!rep);};
   const uticlick = () => {setuti(!uti);};
 
-  // outside click-to-close
-
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (
-  //       notificationRef.current &&
-  //       !notificationRef.current.contains(event.target)
-  //     ) {
-  //       setNotifications(false);
-  //     }
-
-  //     if (profileRef.current && !profileRef.current.contains(event.target)) {
-  //       setvalue(false);
-  //     }
-      
-  //   };
-
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -144,7 +122,7 @@ function Navbar() {
               } flex justify-center items-center mt-2`}
             >
               <Link
-                to={"/"}
+                to={"/home"}
                 onClick={() => {
                   if (window.innerWidth <= 750) {
                     setadmin(!admin);
@@ -174,7 +152,7 @@ function Navbar() {
             <div className="dashbord_text-div">
               <div className="paragraph">
                 {" "}
-                <p className={`${admin ? "hidden" : "block"}`}>E Tour</p>
+                <p className={`${admin ? "hidden" : "block"}`}>e-Tour</p>
               </div>
               <Link to={"/home"}>
                 <div className={`das_menu ${admin ? "mt-2" : ""}`}>
@@ -214,7 +192,7 @@ function Navbar() {
                   onClick={handleClick}
                   className={`${admin ? "hidden" : "block"}`}
                 >
-                  {isDown ? <GrFormDown /> : <MdKeyboardArrowRight />}
+                  {isDown ? <GrFormDown />:<MdKeyboardArrowRight />}
                 </pre>
               </div>
             </div>
@@ -370,7 +348,7 @@ function Navbar() {
             {Authentication && (
               <div className={`${admin ? "hidden" : "block"}`}>
                 <div className="management_list-items">
-                  <Link to={"/signin"}>
+                  <Link to={"/"}>
                     {" "}
                     <li>Sign In</li>
                   </Link>
@@ -379,8 +357,20 @@ function Navbar() {
                     <li>Sign Up</li>
                   </Link>
 
-                  <li>Password Reset</li>
-                  <li>Lock Screen</li>
+                  {/* <Link to={"/resetpass/:id/"}>
+                      <li
+                        onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >
+                      Password Reset
+                      </li>
+
+                    </Link> */}
+         
+                 <Link to={"/"}> <li>Lock Screen</li></Link>
                 </div>
               </div>
             )}
@@ -427,7 +417,7 @@ function Navbar() {
                           }
                         }}
                       >
-                        Select data
+                        Mas.Selectdata
                       </li>
                     </Link>
 
@@ -452,6 +442,17 @@ function Navbar() {
                         }}
                       >
                         Compney
+                      </li>
+                    </Link>
+                    <Link to={"/selectcompny"}>
+                      <li
+                        onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >
+                        Com.Selectdata
                       </li>
                     </Link>
 
