@@ -86,7 +86,7 @@ function Signup() {
            <i className="google_i"><FaGoogle/></i>
           </div>
 
-          <div className="Don_have">Don't have an account ? <Link to={"/signin"}><p>Signin</p></Link></div>
+          <div className="Don_have">Don't have an account ? <Link to={"/"}><p>Signin</p></Link></div>
           
         
      
