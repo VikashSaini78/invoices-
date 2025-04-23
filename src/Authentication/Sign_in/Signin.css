@@ -193,8 +193,14 @@ hr:not([size]) {
       justify-content: center;
       align-items: center;
     }
-  
-  
+    .rember_forgatepass div{
+      display: none;
+        }
+        .rember_forgatepass p{
+           /* background: #000; */
+         margin: 0;
+         padding: 0;
+            }
   
     .login_page {
       width: 96%;
@@ -204,14 +210,14 @@ hr:not([size]) {
     }
     .heide_show{
         position: relative;
-        bottom: 23px;
+        bottom: 0px;
         right: 0;
         left: 0;
         display: flex;
         justify-content: end;
 }
+    
      
-       
     
   }
   

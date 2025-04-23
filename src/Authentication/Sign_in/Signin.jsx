@@ -4,6 +4,9 @@ import "./Signin.css";
 import { BiHide } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function Signin() {
   const [username, setUsername] = useState("");
@@ -15,12 +18,12 @@ function Signin() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
+ 
   const handleLogin = async () => {
     setError("");
 
     if (!username || !password) {
-      alert("Please enter both username and password.");
+      toast.warn("Please enter both username and password.");
       return;
     }
 
@@ -69,16 +72,18 @@ function Signin() {
       
       
        else {
-        alert("Invalid username or password.");
+        toast.error("Invalid username or password please try again.");
       }
     } catch (err) {
       console.error("Login error:", err);
-      alert("Login failed. Please try again.");
+      toast.error("Login failed. Please try again.");
     }
   };
 
   return (
     <div className="sign_in-container">
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+
       <div className="signin_div">
         <div className="signin_logo">
           <img src="./media/response_info.jpg" alt="error" />

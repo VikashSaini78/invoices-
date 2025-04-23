@@ -143,7 +143,7 @@ const Selectcompny = () => {
   const fetchStates = async () => {
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
-    data.append("TableName", "gststates"); // ✅ Corrected here
+    data.append("TableName", "gststates");
     data.append("WhereCondition", "All");
     data.append("*", "*");
 
