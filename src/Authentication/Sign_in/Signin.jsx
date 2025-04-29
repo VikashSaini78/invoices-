@@ -64,11 +64,18 @@ function Signin() {
       // if (matchedUser) {
       //   navigate("/");
       // }
+      // if (matchedUser) {
+      //   const cleanUsername = matchedUser.Name?.trim() || matchedUser.MobileNo;
+      //   localStorage.setItem("username", cleanUsername); // ✅ Save username
+      //   navigate("/home");
+      // }
       if (matchedUser) {
         const cleanUsername = matchedUser.Name?.trim() || matchedUser.MobileNo;
-        localStorage.setItem("username", cleanUsername); // ✅ Save username
+        localStorage.setItem("username", cleanUsername);       // ✅ Save username
+        localStorage.setItem("userId", matchedUser.ID);        // ✅ Save user ID
         navigate("/home");
       }
+      
       
       
        else {
@@ -90,7 +97,7 @@ function Signin() {
         </div>
         <div className="login_page">
           <h6>Welcome Back !</h6>
-          <p>Login in to continue to e-tour.</p>
+          <p>Login in to continue to e tour.</p>
 
           <label className="form-label">Username</label>
           <input

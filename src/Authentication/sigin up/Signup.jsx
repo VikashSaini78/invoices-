@@ -73,7 +73,7 @@ function Signup() {
         {showPassword ? <i><BiHide /></i>: <i> <FaEye /></i>}
        </div>
 
-       <div className="rember_forgatepassup mt-3"><p>By registering you agree to the Invoika</p><Link>  <h6> Terms of Use</h6></Link></div>
+       <div className="rember_forgatepassup mt-3"><p>By registering you agree to the Invoika</p><Link to={"/home"}>  <h6> Terms of Use</h6></Link></div>
      
 
        <button type="submit" className="btn btn" id="login_btn">Sign Up</button>

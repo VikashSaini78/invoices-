@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CompUpdateData = () => {
   const location = useLocation();
@@ -22,7 +24,7 @@ const CompUpdateData = () => {
   const handleSaveChanges = async () => {
     if (!editableData.CompID || !editableData.Name) {
       console.error("Error: CompID and Name are required!");
-      alert("Error: CompID and Name are required.");
+      toast.warn("Error: CompID and Name are required.");
       return;
     }
   
@@ -72,7 +74,7 @@ const CompUpdateData = () => {
         jsonResponse = JSON.parse(textResponse);
       } catch (error) {
         console.warn("⚠ Response is not JSON. Assuming update was successful.");
-        alert("Update successful, but response format is unknown.");
+        toast.warn("Update successful, but response format is unknown.");
         navigate("/selectcompny", { state: { updatedItem: editableData } });
         return;
       }
@@ -82,7 +84,7 @@ const CompUpdateData = () => {
         alert("🎉 Data updated successfully!");
         navigate("/selectcompny", { state: { updatedItem: editableData } });
       } else {
-        alert("Update failed: " + (jsonResponse.message || "Unknown error"));
+        toast.error("Update failed: " + (jsonResponse.message || "Unknown error"));
       }
   
     } catch (error) {
@@ -94,6 +96,8 @@ const CompUpdateData = () => {
 
   return (
     <div className="update-container">
+    <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+
       <h1>🔄 Update Company</h1>
       <form>
         <div className="input-group">

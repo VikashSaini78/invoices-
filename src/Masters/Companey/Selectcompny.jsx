@@ -118,22 +118,17 @@ const Selectcompny = () => {
         );
         setFilteredData((prevData) =>
           prevData.filter((item) => item.CompID !== deleteId)
-
         );
         // alert("Data deleted successfully!")
       } else {
         throw new Error(`API responded with failure: ${textResponse}`);
       }
       // alert("Data deleted falid!");
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Delete Error:", error);
     }
     // alert("Data deleted successfully ✅");
-
   };
-
-
 
   useEffect(() => {
     fetchData();
@@ -143,7 +138,7 @@ const Selectcompny = () => {
   const fetchStates = async () => {
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
-    data.append("TableName", "gststates");
+    data.append("TableName", "gststates"); // ✅ Corrected here
     data.append("WhereCondition", "All");
     data.append("*", "*");
 
@@ -162,7 +157,7 @@ const Selectcompny = () => {
       const json = await response.json();
       if (json.Response) {
         setStates(json.Response);
-        console.log("✅ States fetched:", json.Response); // Debug here
+        // console.log("✅ States fetched:", json.Response); // Debug here
       }
     } catch (error) {
       console.error("Failed to fetch states:", error);
@@ -170,7 +165,7 @@ const Selectcompny = () => {
   };
 
   // console.log("🧾 Matching StateID:", id);
-  console.log("🧾 States List:", states);
+  // console.log("🧾 States List:", states);
 
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
@@ -182,6 +177,14 @@ const Selectcompny = () => {
     return match ? match.State : id;
   };
 
+  // img url
+
+  const getLogoUrl = (fileName) => {
+    if (!fileName || fileName === "null") return null;
+    return `http://etour.responseinfoway.com/companylogo/${fileName}`;
+  };
+
+  
   return (
     <div className="masdata_container">
       {loading && <p className="loading-message">Loading data...</p>}
@@ -192,7 +195,9 @@ const Selectcompny = () => {
           <h6>Company</h6>
 
           <div>
-            <p>Company</p>
+            <Link className="payment_breadcrumbs" to={"/selectdata"}>
+              <p>Master</p>
+            </Link>
             <span>
               <i className="fa-solid fa-chevron-right"></i>Company
             </span>
@@ -265,15 +270,32 @@ const Selectcompny = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentRecords.map((item, index) => (
+                {/* {currentRecords.map((item, index) => (
                   <tr key={index}>
                     {Object.entries(item)
                       .filter(([key]) => !hiddenColumns.includes(key))
                       .map(([key, val], i) => (
-                        <td key={i}>
-                          {key === "StateID"
-                            ? getStateName(val)
-                            : val?.toString() || "N/A"}
+                        <td>
+                          {key === "LogoPath" ? (
+                            // Display the logo as an image
+                            <img
+                              src={
+                                item.LogoPath
+                                  ? `http://etour.responseinfoway.com/Uploads/${item.LogoPath}`
+                                  : "https://via.placeholder.com/60x60?text=No+Logo"
+                              }
+                              alt="Logo"
+                              style={{
+                                width: "60px",
+                                height: "60px",
+                                objectFit: "contain",
+                              }}
+                            />
+                          ) : key === "StateID" ? (
+                            getStateName(val)
+                          ) : (
+                            val?.toString() || "N/A"
+                          )}
                         </td>
                       ))}
 
@@ -287,8 +309,8 @@ const Selectcompny = () => {
                             <i className="fa-solid fa-pen-to-square"></i>
                           </button>
                         </Link>
-                  
-                       <button
+
+                        <button
                           className="select_delete-btn"
                           data-bs-toggle="modal"
                           data-bs-target="#deleteConfirmationModal"
@@ -296,11 +318,71 @@ const Selectcompny = () => {
                         >
                           <i className="fa-solid fa-trash"></i>
                         </button>
-                 
                       </div>
                     </td>
                   </tr>
-                ))}
+                ))} */}
+                {currentRecords.map((item, index) => (
+  <tr key={index}>
+    {Object.entries(item)
+      .filter(([key]) => !hiddenColumns.includes(key))
+      .map(([key, val], i) => (
+        <td
+          key={i}
+          style={key === "Address" ? { width: "150px", } : {}}
+        >
+         {key === "LogoPath" ? (
+  getLogoUrl(item.LogoPath) ? (
+    <img
+      src={getLogoUrl(item.LogoPath)}
+      alt="Logo"
+      style={{
+        width: "60px",
+        height: "60px",
+        objectFit: "contain",
+      }}
+    />
+  ) : (
+    <img
+      src="https://via.placeholder.com/60x60?text=No+Logo"
+      alt="No Logo"
+      style={{
+        width: "60px",
+        height: "60px",
+        objectFit: "contain",
+      }}
+    />
+  )
+) : key === "StateID" ? (
+  getStateName(val)
+) : (
+  val?.toString() || "N/A"
+)}
+
+        </td>
+      ))}
+
+    <td>
+      <div className="seletdata_edit-delet-btn">
+        <Link to="/compupdatedata" state={{ responseData: item }}>
+          <button className="selet_edit-btn">
+            <i className="fa-solid fa-pen-to-square"></i>
+          </button>
+        </Link>
+
+        <button
+          className="select_delete-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteConfirmationModal"
+          onClick={() => confirmDelete(item.CompID)}
+        >
+          <i className="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    </td>
+  </tr>
+))}
+
               </tbody>
             </table>
           </div>
@@ -354,7 +436,7 @@ const Selectcompny = () => {
               >
                 Cancel
               </button>
-              
+
               <button
                 type="button"
                 className="btn btn-danger"

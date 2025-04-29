@@ -187,8 +187,6 @@ hr:not([size]) {
   @media only screen and (max-width: 768px) {
     .sign_in-container {
       width: 100%;
-      /* height: 93vh; */
-      /* background-color: palevioletred; */
       position: fixed;
       display: flex;
       justify-content: center;

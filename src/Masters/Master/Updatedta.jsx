@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UpdateData = () => {
   const location = useLocation();
@@ -19,7 +21,7 @@ const UpdateData = () => {
   const handleSaveChanges = async () => {
     if (!editableData.ID || !editableData.Name) {
       console.error("Error: ID and Name are required!");
-      alert("Error: ID and Name are required.");
+      toast.warn("Error: ID and Name are required.");
       return;
     }
 
@@ -66,16 +68,16 @@ const UpdateData = () => {
         jsonResponse = JSON.parse(textResponse);
       } catch (error) {
         console.warn("⚠ Response is not JSON. Assuming update was successful.");
-        alert("Update successful, but response format is unknown.");
+        toast.warn("Update successful, but response format is unknown.");
         navigate("/selectdata", { state: { updatedItem: editableData } });
         return;
       }
-
+ 
       if (jsonResponse?.Response?.[0]?.Status === "Ok") {
         alert("🎉 Data updated successfully!");
         navigate("/selectdata", { state: { updatedItem: editableData } });
       } else {
-        alert("Update failed: " + (jsonResponse.message || "Unknown error"));
+        toast.error("Update failed: " + (jsonResponse.message || "Unknown error"));
       }
     } catch (error) {
       console.error("Error updating data:", error);
@@ -92,6 +94,8 @@ const UpdateData = () => {
 
   return (
  <div className="update-container">
+ <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+
   <h1>🔄 Update Data</h1>
   <form>
     {/* Hidden fields written manually */}

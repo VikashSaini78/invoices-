@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Compney.css";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Compney() {
   const [formData, setFormData] = useState({
@@ -11,18 +13,36 @@ function Compney() {
     LogoPath: "",
     StateID: "",
   });
-  
 
   const [stateList, setStateList] = useState([]);
-  const naviget = useNavigate()
+  const naviget = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
+  // const handleChange = (e) => {
+  //   const { name, value, files } = e.target;
+
+  //   if (name === "LogoPath" && files.length > 0) {
+  //     const fileName = files[0].name;
+  //     console.log("Selected file name:", fileName); // 👈 Check yahan
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       LogoPath: fileName,
+  //     }));
+  //   }
+    
+  //   else {
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       [name]: value,
+  //     }));
+  //   }
+  // };
 
   useEffect(() => {
     const fetchStates = async () => {
@@ -45,8 +65,7 @@ function Compney() {
         });
 
         const result = await response.json();
-        console.log("Fetched States:", result);
-       
+        // console.log("Fetched States:", result);
 
         if (Array.isArray(result.Response)) {
           setStateList(result.Response); // ✅ load states into dropdown
@@ -62,61 +81,158 @@ function Compney() {
   }, []);
 
   // ⬇️ Submit form
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ 
+//   const handleSubmit = async (e) => {
+//   e.preventDefault();
 
-    const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
-    const insertApiUrl =
-      "http://etour.responseinfoway.com/restapi/insertdata.aspx";
+//   // Get logged-in userId from localStorage
+//   const loggedInUserId = localStorage.getItem("userId");
 
-    try {
-      const data = new URLSearchParams();
-      data.append("SecurityKey", "abcd");
-      data.append("TableName", "Company");
-      data.append("MasterId", "1151"); // static master ID
-      data.append("Name", formData.Name);
-      data.append("Address", formData.Address);
-      data.append("TelNo", formData.TelNo);
-      data.append("GstNo", formData.GstNo);
+//   // Check if loggedInUserId is null or undefined
+//   if (!loggedInUserId) {
+//     toast.error("User not logged in!");
+//     console.log("Error: No userId found in localStorage");
+//     return;
+//   }
+
+//   const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
+//   const insertApiUrl = "http://etour.responseinfoway.com/restapi/insertdata.aspx";
+
+//   try {
+//     const data = new FormData();
+//     data.append("SecurityKey", "abcd");
+//     data.append("TableName", "Company");
+//     data.append("MasterId", loggedInUserId); // Use dynamic user ID
+//     data.append("Name", formData.Name);
+//     data.append("Address", formData.Address);
+//     data.append("TelNo", formData.TelNo);
+//     data.append("GstNo", formData.GstNo);
+//     // data.append("LogoPath", "testimage.png");
+
+//     // If LogoPath is a file, append it correctly
+//     // if (formData.LogoPath) {
+//     //   data.append("LogoPath", formData.LogoPath);
+//     // }
+//     console.log("Data being sent:", formData.LogoPath); // 👈 Isme string hona chahiye
+
+//     data.append("LogoPath", formData.LogoPath);
+    
+    
+
+//     data.append("StateID", formData.StateID);
+
+//     const response = await fetch(proxyUrl + insertApiUrl, {
+//       method: "POST",
+//       body: data,
+//     });
+
+//     const responseText = await response.text();
+//     console.log("Insert Response:", responseText);
+
+//     if (!response.ok || responseText.includes('"Status":"Error"')) {
+//       throw new Error("API error");
+//     }
+
+//     toast.success("Successfully submitted!");
+//     naviget("/selectcompny");
+
+//     // Reset form after successful submission
+//     setFormData({
+//       Name: "",
+//       Address: "",
+//       TelNo: "",
+//       GstNo: "",
+//       LogoPath: "",
+//       StateID: "",
+//     });
+//   } catch (error) {
+//     console.error("Error during submission:", error);
+//     toast.error("Submit failed! Please check your data.");
+//   }
+// };
+
+const handleChange = (e) => {
+  const { name, value, files } = e.target;
+
+  if (name === "LogoPath" && files.length > 0) {
+    const file = files[0]; // 🛠️ Actual file object
+    console.log("Selected file:", file);
+    setFormData((prev) => ({
+      ...prev,
+      LogoPath: file, // ✅ store file object, not just name
+    }));
+  } else {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+};
+
+
+const proxyUrl = "https://corsproxy.io/?";   // ✅ better, newer proxy
+const insertApiUrl = "http://etour.responseinfoway.com/restapi/insertdata.aspx";
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const loggedInUserId = localStorage.getItem("userId");
+
+  if (!loggedInUserId) {
+    toast.error("User not logged in!");
+    return;
+  }
+
+  try {
+    const data = new FormData();
+    data.append("SecurityKey", "abcd");
+    data.append("TableName", "Company");
+    data.append("MasterId", loggedInUserId);
+    data.append("Name", formData.Name);
+    data.append("Address", formData.Address);
+    data.append("TelNo", formData.TelNo);
+    data.append("GstNo", formData.GstNo);
+
+    if (formData.LogoPath) {
       data.append("LogoPath", formData.LogoPath);
-      data.append("StateID", formData.StateID); // ✅ include StateCode
-
-      console.log("Sending data:", data.toString());
-
-      const response = await fetch(proxyUrl + insertApiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: data.toString(),
-      });
-
-      const responseText = await response.text();
-      console.log("Insert Response:", responseText);
-
-      if (!response.ok || responseText.includes('"Status":"Error"')) {
-        throw new Error("API error");
-      }
-
-      naviget("/selectcompny")
-      alert("Successfully submitted!");
-      console.clear();
-      setFormData({
-        Name: "",
-        Address: "",
-        TelNo: "",
-        GstNo: "",
-        LogoPath: "",
-       StateID: "",
-      }); // ✅ Clear form after submit
-    } catch (error) {
-      console.error("Error during submission:", error);
-      alert("Submit failed! Please check your data.");
     }
-  };
+
+    data.append("StateID", formData.StateID);
+
+    const response = await fetch(proxyUrl + insertApiUrl, {
+      method: "POST",
+      body: data,
+    });
+
+    const responseText = await response.text();
+    console.log("Insert Response:", responseText);
+
+    if (!response.ok || responseText.includes('"Status":"Error"')) {
+      throw new Error("API error");
+    }
+
+    toast.success("Successfully submitted!");
+    naviget("/selectcompny");
+
+    setFormData({
+      Name: "",
+      Address: "",
+      TelNo: "",
+      GstNo: "",
+      LogoPath: "",
+      StateID: "",
+    });
+  } catch (error) {
+    console.error("Error during submission:", error);
+    toast.error("Submit failed! Please check your data.");
+  }
+};
+
+  
 
   return (
     <div className="compney_container">
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <form className="compney_form" onSubmit={handleSubmit}>
         <h5 className="text-center font-bold m-3">Company Data</h5>
 
@@ -171,9 +287,8 @@ function Compney() {
         <div className="compney_input_div">
           <label>LogoPath</label>
           <input
-            type="text"
+            type="file"
             name="LogoPath"
-            value={formData.LogoPath}
             onChange={handleChange}
             placeholder="LogoPath"
             required
@@ -182,7 +297,8 @@ function Compney() {
 
         <div className="compney_input_div">
           <label>State</label>
-          <select className="cursor-pointer"
+          <select
+            className="cursor-pointer"
             name="StateID"
             value={formData.StateID}
             onChange={handleChange}
@@ -192,16 +308,10 @@ function Compney() {
             {stateList.map((state) => (
               <option key={state.ID} value={state.ID}>
                 {state.State}
-               
               </option>
-              
-            ))
-            }
-          
+            ))}
           </select>
-          
         </div>
-        
 
         <button type="submit">Submit</button>
       </form>
@@ -210,3 +320,4 @@ function Compney() {
 }
 
 export default Compney;
+

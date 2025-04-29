@@ -9,7 +9,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { GrFormDown } from "react-icons/gr";
 
 function Navbar() {
-  const [value, setvalue] = useState ("");
+  const [value, setvalue] = useState("");
   const [admin, setadmin] = useState(false);
 
   const [liitem, setliitem] = useState(false);
@@ -28,20 +28,31 @@ function Navbar() {
   const [ent, setent] = useState(false);
   const [rep, setrep] = useState(false);
   const [uti, setuti] = useState(false);
- const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
+  const [userId, setUserId] = useState("");
 
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
   const sidebarRef = useRef(null);
 
-
-  const handleClick = () => {setIsDown(!isDown);};
-  const autoClick = () => {setauth(!auth);};
-  const mstclick = () => {setsmt(!mst);};
-  const entclick = () => {setent(!ent);};
-  const repclick = () => {setrep(!rep);};
-  const uticlick = () => {setuti(!uti);};
-
+  const handleClick = () => {
+    setIsDown(!isDown);
+  };
+  const autoClick = () => {
+    setauth(!auth);
+  };
+  const mstclick = () => {
+    setsmt(!mst);
+  };
+  const entclick = () => {
+    setent(!ent);
+  };
+  const repclick = () => {
+    setrep(!rep);
+  };
+  const uticlick = () => {
+    setuti(!uti);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -57,19 +68,19 @@ function Navbar() {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setvalue(false);
       }
-      
+
       if (
         notificationRef.current &&
         !notificationRef.current.contains(event.target)
       ) {
         setNotifications(false);
       }
-  
+
       // Close profile
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setvalue(false);
       }
-  
+
       // Close sidebar if clicked outside AND on mobile screen
       if (
         sidebarRef.current &&
@@ -80,29 +91,36 @@ function Navbar() {
         setadmin(true); // This means collapsed sidebar
       }
     };
-  
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
+
   // auto close the menu when the screen is resized
 
   useEffect(() => {
     if (window.innerWidth <= 750) {
-      setadmin(true); 
+      setadmin(true);
     }
   }, []);
 
+  // navbar name
 
-  // navbar name 
-  
+  // useEffect(() => {
+  //   const storedUsername = localStorage.getItem("username");
+  //   if (storedUsername) {
+  //     setUsername(storedUsername);
+  //   }
+  // }, []);
+
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
+    const storedUserId = localStorage.getItem("userId");
+
+    if (storedUsername) setUsername(storedUsername);
+    if (storedUserId) setUserId(storedUserId);
   }, []);
 
   return (
@@ -112,8 +130,10 @@ function Navbar() {
       <div className="nav_dashbord">
         <div className="dashbord">
           {/* <div className={`sidebar ${admin ? "collapsed" : ""} bg-white`}> */}
-          <div ref={sidebarRef} className={`sidebar ${admin ? "collapsed" : ""} bg-white`}>
-
+          <div
+            ref={sidebarRef}
+            className={`sidebar ${admin ? "collapsed" : ""} bg-white`}
+          >
             <div
               className={`${
                 admin
@@ -152,7 +172,7 @@ function Navbar() {
             <div className="dashbord_text-div">
               <div className="paragraph">
                 {" "}
-                <p className={`${admin ? "hidden" : "block"}`}>e-Tour</p>
+                <p className={`${admin ? "hidden" : "block"}`}>e Tour</p>
               </div>
               <Link to={"/home"}>
                 <div className={`das_menu ${admin ? "mt-2" : ""}`}>
@@ -192,7 +212,7 @@ function Navbar() {
                   onClick={handleClick}
                   className={`${admin ? "hidden" : "block"}`}
                 >
-                  {isDown ? <GrFormDown />:<MdKeyboardArrowRight />}
+                  {isDown ? <GrFormDown /> : <MdKeyboardArrowRight />}
                 </pre>
               </div>
             </div>
@@ -369,8 +389,11 @@ function Navbar() {
                       </li>
 
                     </Link> */}
-         
-                 <Link to={"/"}> <li>Lock Screen</li></Link>
+
+                  <Link to={"/"}>
+                    {" "}
+                    <li>Lock Screen</li>
+                  </Link>
                 </div>
               </div>
             )}
@@ -398,7 +421,7 @@ function Navbar() {
               <>
                 <div className={`${admin ? "hidden" : "block"}`}>
                   <div className="bootstrap_list-item">
-                    <Link to={"/masterdata"}>
+                    {/* <Link to={"/masterdata"}>
                       <li
                         onClick={() => {
                           if (window.innerWidth <= 750) {
@@ -408,7 +431,7 @@ function Navbar() {
                       >
                         Master data
                       </li>
-                    </Link>
+                    </Link> */}
                     <Link to={"/selectdata"}>
                       <li
                         onClick={() => {
@@ -417,7 +440,7 @@ function Navbar() {
                           }
                         }}
                       >
-                        Mas.Selectdata
+                        Master data
                       </li>
                     </Link>
 
@@ -433,7 +456,7 @@ function Navbar() {
                       </li>
                     </Link>
 
-                    <Link to={"/compney"}>
+                    {/* <Link to={"/compney"}>
                       <li
                         onClick={() => {
                           if (window.innerWidth <= 750) {
@@ -443,7 +466,7 @@ function Navbar() {
                       >
                         Compney
                       </li>
-                    </Link>
+                    </Link> */}
                     <Link to={"/selectcompny"}>
                       <li
                         onClick={() => {
@@ -452,7 +475,7 @@ function Navbar() {
                           }
                         }}
                       >
-                        Com.Selectdata
+                        Compney
                       </li>
                     </Link>
 
@@ -600,7 +623,7 @@ function Navbar() {
                 <i id="nav_icons" className="fa-solid fa-magnifying-glass"></i>
 
                 <div className="nav_bellfrofile">
-                  <i 
+                  <i
                     className="fa-regular fa-bell"
                     onClick={() => {
                       setNotifications(!Notifications);
@@ -619,7 +642,8 @@ function Navbar() {
                   >
                     <img src="./media/avatar.jpg" alt="" />
                     <h1 className="calvind_box">
-                     {username && <strong>{username}</strong>}
+                      {username && <strong>{username}</strong>}
+                      {/* <p>your <strong>{userId}</strong></p> */}
 
                       <i className="fa-solid fa-chevron-down"></i>
                     </h1>
@@ -737,9 +761,9 @@ function Navbar() {
                   </li>
                   <hr />
                   <Link to={"/"}>
-                  <div className="nav_log-out">
-                    <i className="fa-solid fa-power-off"></i> Log out
-                  </div>
+                    <div className="nav_log-out">
+                      <i className="fa-solid fa-power-off"></i> Log out
+                    </div>
                   </Link>
                 </div>
               )}

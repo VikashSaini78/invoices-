@@ -12,7 +12,7 @@ const MasterData = () => {
     CreationDate: "",
     Password: "",
     otp: "",
-    PwdResetstring: "",
+    PwdResetstring: "Nvalue",
     PwdLinkValidity: "",
   });
 
@@ -179,7 +179,7 @@ const MasterData = () => {
         </div> */}
 
         {/* Pwd Reset String */}
-        <div className="input_text-labalname">
+        {/* <div className="input_text-labalname none">
           <label>Pwd Reset String</label>
           <input
             type="text"
@@ -188,7 +188,7 @@ const MasterData = () => {
             value={formData.PwdResetstring}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
         <button className="masterdata_submit-btn" type="submit">
           Submit

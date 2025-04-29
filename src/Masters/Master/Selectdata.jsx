@@ -269,7 +269,8 @@ const Selectdata = () => {
           <h6>Master</h6>
 
           <div>
-            <p>Master</p>
+                        <Link className="payment_breadcrumbs" to={"/selectcompny"}><p>Company</p></Link>
+            
             <span>
               <i className="fa-solid fa-chevron-right"></i>Master
             </span>
@@ -352,7 +353,7 @@ const Selectdata = () => {
                         {key.charAt(0).toUpperCase() + key.slice(1)}
                       </th>
                     ))}
-                  <th>Active Sta..</th>
+                  <th>Active</th>
                   <th>Actions</th>
                 </tr>
               </thead>
