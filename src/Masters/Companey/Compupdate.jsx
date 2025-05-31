@@ -8,7 +8,9 @@ const CompUpdateData = () => {
   const navigate = useNavigate();
   const initialData = location.state?.responseData || {};
   const [editableData, setEditableData] = useState(initialData);
+  const [logoFile, setLogoFile] = useState(null);
 
+ 
   useEffect(() => {
     console.log("Received Data for Update:", editableData);
   }, [editableData]);
@@ -38,7 +40,7 @@ const CompUpdateData = () => {
       SecurityKey: "abcd",
       TableName: "company",
       WhereCondition: whereCondition,
-    });
+    });                 
   
     // Append all other editable fields except ID
     Object.entries(editableData).forEach(([key, value]) => {
@@ -47,7 +49,7 @@ const CompUpdateData = () => {
       }
     });
   
-    console.log("✔ Final Data to Send:", updateData.toString());
+    console.log("Final Data to Send:", updateData.toString());
   
     const updateUrl = "http://etour.responseinfoway.com/restapi/updatedata.aspx";
   
@@ -84,7 +86,7 @@ const CompUpdateData = () => {
         alert("🎉 Data updated successfully!");
         navigate("/selectcompny", { state: { updatedItem: editableData } });
       } else {
-        toast.error("Update failed: " + (jsonResponse.message || "Unknown error"));
+        toast.error("Update failed: "+(jsonResponse.message || "Unknown error"));
       }
   
     } catch (error) {
@@ -93,6 +95,60 @@ const CompUpdateData = () => {
       navigate("/selectcompny", { state: { updatedItem: editableData } });
     }
   };
+  
+  
+  const handleFileChange = (e) => {
+  setLogoFile(e.target.files[0]);
+};
+
+// const handleSaveChanges = async () => {
+//   if (!editableData.CompID || !editableData.Name) {
+//     toast.warn("Error: CompID and Name are required.");
+//     return;
+//   }
+
+//   const whereCondition = `CompID=${editableData.CompID}`;
+
+//   const formData = new FormData();
+//   formData.append("SecurityKey", "abcd");
+//   formData.append("TableName", "company");
+//   formData.append("WhereCondition", whereCondition);
+
+//   Object.entries(editableData).forEach(([key, value]) => {
+//     if (value !== undefined && value !== null && key !== "CompID") {
+//       formData.append(key, value.toString());
+//     }
+//   });
+
+//   if (logoFile) {
+//     formData.append("LogoPath", logoFile); // 👈 Image file
+//   }
+
+//   try {
+//     const response = await fetch("http://etour.responseinfoway.com/restapi/updatedata.aspx", {
+//       method: "POST",
+//       body: formData,
+//     });
+
+//     const text = await response.text();
+//     console.log("✔ Raw Update Response:", text);
+
+//     const jsonResponse = JSON.parse(text);
+//     if (jsonResponse?.Response?.[0]?.Status === "Ok") {
+//       alert("🎉 Data updated successfully!");
+//       navigate("/selectcompny", { state: { updatedItem: editableData } });
+//     } else {
+//       toast.error("Update failed: " + (jsonResponse.message || "Unknown error"));
+//     }
+
+//   } catch (error) {
+//     console.error("Error updating data:", error);
+//     alert("Error updating data");
+//   }
+// };
+
+
+
 
   return (
     <div className="update-container">
@@ -143,13 +199,16 @@ const CompUpdateData = () => {
         <div className="input-group">
           <label>LogoPath</label>
           <input
-            type="text"
+            type="file"
             name="LogoPath"
-            value={editableData.LogoPath || ""}
+            value={editableData.logoFile}
             onChange={handleInputChange}
           />
         </div>
 
+
+
+   
         <button
           type="button"
           className="save-changebtn"

@@ -11,7 +11,6 @@ import { GrFormDown } from "react-icons/gr";
 function Navbar() {
   const [value, setvalue] = useState("");
   const [admin, setadmin] = useState(false);
-
   const [liitem, setliitem] = useState(false);
   const [list, setlist] = useState("");
   const [report, setreport] = useState("");
@@ -98,8 +97,8 @@ function Navbar() {
     };
   }, []);
 
-  // auto close the menu when the screen is resized
 
+  
   useEffect(() => {
     if (window.innerWidth <= 750) {
       setadmin(true);

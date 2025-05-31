@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../Master/selectdata.css";
-// import { BsThreeDotsVertical } from "react-icons/bs";
 
 const Selectcompny = () => {
   const [responseData, setResponseData] = useState([]);
@@ -14,27 +13,32 @@ const Selectcompny = () => {
   const [recordsPerPage, setRecordsPerPage] = useState(10);
   const [states, setStates] = useState([]);
 
-  // const [paymenticon, setpaymenticon] = useState("");
-
   const hiddenColumns = ["StateCode", "MasterId", "CompID"];
 
+  // Fetch company data and states once on mount
   useEffect(() => {
     fetchData();
+    fetchStates();
   }, []);
 
+  // Re-filter data when searchQuery or responseData changes
   useEffect(() => {
     applyFilter(searchQuery);
   }, [responseData, searchQuery]);
 
+  // Fetch company data
   const fetchData = async () => {
     setError(null);
     setLoading(true);
-    setResponseData([]);
+
+        const loggedInUserId = localStorage.getItem("userId");
+
 
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
     data.append("TableName", "company");
-    data.append("WhereCondition", "All");
+    // data.append("WhereCondition", "All");
+    data.append("WhereCondition",`MasterId=${loggedInUserId}`);
     data.append("*", "*");
 
     try {
@@ -43,16 +47,14 @@ const Selectcompny = () => {
 
       const response = await fetch(proxyUrl + apiUrl, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: data.toString(),
       });
 
-      if (!response.ok)
-        throw new Error(`HTTP Error! Status: ${response.status}`);
+      if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
 
       const jsonData = await response.json();
+
       if (jsonData.Response) {
         setResponseData(jsonData.Response);
         setFilteredData(jsonData.Response);
@@ -68,6 +70,36 @@ const Selectcompny = () => {
     }
   };
 
+  // Fetch states data
+  const fetchStates = async () => {
+    const data = new URLSearchParams();
+    data.append("SecurityKey", "abcd");
+    data.append("TableName", "gststates");
+    data.append("*", "*");
+
+    try {
+      const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
+      const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
+
+      const response = await fetch(proxyUrl + apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data.toString(),
+      });
+
+      if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+
+      const json = await response.json();
+
+      if (json.Response) {
+        setStates(json.Response);
+      }
+    } catch (error) {
+      console.error("Failed to fetch states:", error);
+    }
+  };
+
+  // Apply search filter on company data
   const applyFilter = (query) => {
     if (!query) {
       setFilteredData(responseData);
@@ -83,8 +115,10 @@ const Selectcompny = () => {
     setCurrentPage(1);
   };
 
+  // Set delete ID for confirmation modal
   const confirmDelete = (compId) => setDeleteId(compId);
 
+  // Handle delete request
   const handleDelete = async () => {
     if (!deleteId) return;
 
@@ -119,72 +153,33 @@ const Selectcompny = () => {
         setFilteredData((prevData) =>
           prevData.filter((item) => item.CompID !== deleteId)
         );
-        // alert("Data deleted successfully!")
       } else {
         throw new Error(`API responded with failure: ${textResponse}`);
       }
-      // alert("Data deleted falid!");
     } catch (error) {
       console.error("Delete Error:", error);
     }
-    // alert("Data deleted successfully ✅");
   };
 
-  useEffect(() => {
-    fetchData();
-    fetchStates();
-  }, []);
-
-  const fetchStates = async () => {
-    const data = new URLSearchParams();
-    data.append("SecurityKey", "abcd");
-    data.append("TableName", "gststates"); // ✅ Corrected here
-    data.append("WhereCondition", "All");
-    data.append("*", "*");
-
-    try {
-      const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
-      const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
-
-      const response = await fetch(proxyUrl + apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: data.toString(),
-      });
-
-      const json = await response.json();
-      if (json.Response) {
-        setStates(json.Response);
-        // console.log("✅ States fetched:", json.Response); // Debug here
-      }
-    } catch (error) {
-      console.error("Failed to fetch states:", error);
-    }
-  };
-
-  // console.log("🧾 Matching StateID:", id);
-  // console.log("🧾 States List:", states);
-
+  // Pagination calculations
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const currentRecords = filteredData.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(filteredData.length / recordsPerPage);
 
+  // Get state name by ID from fetched states
   const getStateName = (id) => {
     const match = states.find((state) => String(state.ID) === String(id));
     return match ? match.State : id;
   };
 
-  // img url
-
+  // Get logo URL or placeholder if not available
   const getLogoUrl = (fileName) => {
     if (!fileName || fileName === "null") return null;
-    return `http://etour.responseinfoway.com/companylogo/${fileName}`;
+    const cleanedPath = fileName.replace(/^~\//, "");
+    return `http://etour.responseinfoway.com/${cleanedPath}`;
   };
 
-  
   return (
     <div className="masdata_container">
       {loading && <p className="loading-message">Loading data...</p>}
@@ -216,24 +211,8 @@ const Selectcompny = () => {
               placeholder="Search for name or designation..."
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            {/* <span onClick={()=>{setpaymenticon(!paymenticon)}}>
-             <BsThreeDotsVertical />
-             </span> */}
           </div>
         </div>
-
-        {/* {
-              paymenticon && (
-              
-                <div className='payment_three-icons'>
-              <ul>All</ul>
-              <ul>Last Week</ul>
-              <ul>Last Month</ul>
-              <ul>Last Year</ul>
-              
-              </div>
-              )
-            } */}
       </div>
 
       <div className="search-container mt-3">
@@ -244,15 +223,15 @@ const Selectcompny = () => {
             value={recordsPerPage}
             onChange={(e) => setRecordsPerPage(Number(e.target.value))}
           >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
           </select>
         </div>
       </div>
 
-      {filteredData.length > 0 && (
+      {filteredData.length > 0 ? (
         <div className="response-container">
           <div className="table-wrapper">
             <table className="data-table">
@@ -265,32 +244,41 @@ const Selectcompny = () => {
                         {key.charAt(0).toUpperCase() + key.slice(1)}
                       </th>
                     ))}
-
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {/* {currentRecords.map((item, index) => (
+                {currentRecords.map((item, index) => (
                   <tr key={index}>
                     {Object.entries(item)
                       .filter(([key]) => !hiddenColumns.includes(key))
                       .map(([key, val], i) => (
-                        <td>
+                        <td
+                          key={i}
+                          style={key === "Address" ? { width: "150px" } : {}}
+                        >
                           {key === "LogoPath" ? (
-                            // Display the logo as an image
-                            <img
-                              src={
-                                item.LogoPath
-                                  ? `http://etour.responseinfoway.com/Uploads/${item.LogoPath}`
-                                  : "https://via.placeholder.com/60x60?text=No+Logo"
-                              }
-                              alt="Logo"
-                              style={{
-                                width: "60px",
-                                height: "60px",
-                                objectFit: "contain",
-                              }}
-                            />
+                            getLogoUrl(item.LogoPath) ? (
+                              <img
+                                src={getLogoUrl(item.LogoPath)}
+                                alt="Logo"
+                                style={{
+                                  width: "60px",
+                                  height: "60px",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            ) : (
+                              <img
+                                src="https://via.placeholder.com/60x60?text=No+Logo"
+                                alt="No Logo"
+                                style={{
+                                  width: "60px",
+                                  height: "60px",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            )
                           ) : key === "StateID" ? (
                             getStateName(val)
                           ) : (
@@ -301,10 +289,7 @@ const Selectcompny = () => {
 
                     <td>
                       <div className="seletdata_edit-delet-btn">
-                        <Link
-                          to="/compupdatedata"
-                          state={{ responseData: item }}
-                        >
+                        <Link to="/compupdatedata" state={{ responseData: item }}>
                           <button className="selet_edit-btn">
                             <i className="fa-solid fa-pen-to-square"></i>
                           </button>
@@ -321,68 +306,7 @@ const Selectcompny = () => {
                       </div>
                     </td>
                   </tr>
-                ))} */}
-                {currentRecords.map((item, index) => (
-  <tr key={index}>
-    {Object.entries(item)
-      .filter(([key]) => !hiddenColumns.includes(key))
-      .map(([key, val], i) => (
-        <td
-          key={i}
-          style={key === "Address" ? { width: "150px", } : {}}
-        >
-         {key === "LogoPath" ? (
-  getLogoUrl(item.LogoPath) ? (
-    <img
-      src={getLogoUrl(item.LogoPath)}
-      alt="Logo"
-      style={{
-        width: "60px",
-        height: "60px",
-        objectFit: "contain",
-      }}
-    />
-  ) : (
-    <img
-      src="https://via.placeholder.com/60x60?text=No+Logo"
-      alt="No Logo"
-      style={{
-        width: "60px",
-        height: "60px",
-        objectFit: "contain",
-      }}
-    />
-  )
-) : key === "StateID" ? (
-  getStateName(val)
-) : (
-  val?.toString() || "N/A"
-)}
-
-        </td>
-      ))}
-
-    <td>
-      <div className="seletdata_edit-delet-btn">
-        <Link to="/compupdatedata" state={{ responseData: item }}>
-          <button className="selet_edit-btn">
-            <i className="fa-solid fa-pen-to-square"></i>
-          </button>
-        </Link>
-
-        <button
-          className="select_delete-btn"
-          data-bs-toggle="modal"
-          data-bs-target="#deleteConfirmationModal"
-          onClick={() => confirmDelete(item.CompID)}
-        >
-          <i className="fa-solid fa-trash"></i>
-        </button>
-      </div>
-    </td>
-  </tr>
-))}
-
+                ))}
               </tbody>
             </table>
           </div>
@@ -408,6 +332,8 @@ const Selectcompny = () => {
             </button>
           </div>
         </div>
+      ) : (
+        !loading && <p className="no-data-message">No records found.</p>
       )}
 
       {/* Delete Confirmation Modal */}
@@ -441,7 +367,7 @@ const Selectcompny = () => {
                 type="button"
                 className="btn btn-danger"
                 data-bs-dismiss="modal"
-                onClick={(e) => handleDelete(e)}
+                onClick={handleDelete}
               >
                 Delete
               </button>
@@ -454,3 +380,4 @@ const Selectcompny = () => {
 };
 
 export default Selectcompny;
+

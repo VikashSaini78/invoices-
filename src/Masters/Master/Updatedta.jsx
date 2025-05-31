@@ -150,7 +150,7 @@ const UpdateData = () => {
       <label>MaxCompanies</label>
       <input
         // className="MaxCompanies_input"
-        type="text"
+        type="number"
         name="MaxCompanies"
         value={editableData.MaxCompanies}
         onChange={handleInputChange}

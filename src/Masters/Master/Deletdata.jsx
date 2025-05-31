@@ -23,7 +23,8 @@ function Compney() {
   //     ...prev,
   //     [name]: value,
   //   }));
-  // };
+  // };   
+       
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -39,7 +40,7 @@ function Compney() {
     else {
       setFormData((prev) => ({
         ...prev,
-        [name]: value,
+        [name]  : value,
       }));
     }
   };

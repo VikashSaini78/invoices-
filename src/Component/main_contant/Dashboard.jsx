@@ -1,13 +1,7 @@
 import "./Dashboard.css";
-import {
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-  Tooltip,
-} from "recharts";
+import { ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
 import { AreaChart, Area, CartesianGrid } from "recharts";
 function Dashboard() {
-
   const data = [
     {
       name: "jan",
@@ -105,50 +99,41 @@ function Dashboard() {
               </div>
 
               <div className="col-md-7">
-
-              
                 <div className="Professiona_div2">
                   <div className="overview_div">
                     <div className="overview_texts">
                       <h6>This Week's Overview</h6>
                       <h5>197</h5>
-                      
+
                       <p>Clients Added</p>
                       <span>
                         <button type="button" className="btn btn">
                           1.15%
                         </button>
-                         <p> since last week </p>
+                        <p> since last week </p>
                       </span>
-
-                    
                     </div>
 
-                    
                     <div className="overview_number">
-                    <pre>gh</pre>
-                  
+                      <pre>gh</pre>
+
                       <h5>634</h5>
                       <p>Clients Added</p>
                       <span>
                         <button type="button" className="btn btn">
                           1.15%
                         </button>
-                       <p> since last week</p>
+                        <p> since last week</p>
                       </span>
-
-
-                     
-                   
                     </div>
- 
+
                     <div className="overview_spantag">
                       <div className="overview_spantag-div">
                         <span>Sort by : </span>
                         <p>
                           Current Week<i className="fa-solid fa-angle-down"></i>
                         </p>
-                       </div>
+                      </div>
                       <h5>512</h5>
                       <p className="Invoice_sent">Invoice Sent</p>
                       <span>
@@ -157,8 +142,6 @@ function Dashboard() {
                         </button>
                         <p>since last week</p>
                       </span>
-                      
-                     
                     </div>
                   </div>
                 </div>
@@ -166,14 +149,15 @@ function Dashboard() {
             </div>
           </div>
 
-
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-5">
                 <div className="Quick_form">
                   <div className="Quick_text">
                     <h6>Quick Invoice</h6>
-                    <p><i className="fa-solid fa-plus"></i></p>
+                    <p>
+                      <i className="fa-solid fa-plus"></i>
+                    </p>
                   </div>
                   <div className="quick_lable">
                     <div className="quick_lable-input">
@@ -241,61 +225,57 @@ function Dashboard() {
                 </div>
               </div>
               <div className="col-md-4">
-             
                 <div className="Areachart_payment">
-         <div className="Sort_By-text">
-    <h6>Payment Overview</h6>
-    <div >
-      <h6>Sort By :</h6>
-      <p>
-        Monthly <i className="fa-solid fa-angle-down"></i>
-      </p>
-    </div>
-  </div>
+                  <div className="Sort_By-text">
+                    <h6>Payment Overview</h6>
+                    <div>
+                      <h6>Sort By :</h6>
+                      <p>
+                        Monthly <i className="fa-solid fa-angle-down"></i>
+                      </p>
+                    </div>
+                  </div>
 
-  <div style={{ width: "100%", height: 286, fontSize: "10px" }}>
-    <ResponsiveContainer>
-      <AreaChart
-        data={data}
-        margin={{
-          top: 10,
-          right: 5,
-          left: 0,
-          bottom: 30, // Increased bottom margin
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="name"
-          tick={{ angle: -30, textAnchor: "end" }} // Rotates labels for better visibility
-          tickMargin={10} // Adds extra margin for tick labels
-        />
-        <YAxis width={25} />
-        <Tooltip />
-        <Area
-          type="monotone"
-          dataKey="uv"
-          stroke="#8884d8"
-          fill="#8884d8"
-        />
-      </AreaChart>
-    </ResponsiveContainer>
-  </div>
+                  <div style={{ width: "100%", height: 286, fontSize: "10px" }}>
+                    <ResponsiveContainer>
+                      <AreaChart
+                        data={data}
+                        margin={{
+                          top: 10,
+                          right: 5,
+                          left: 0,
+                          bottom: 30, // Increased bottom margin
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis
+                          dataKey="name"
+                          tick={{ angle: -30, textAnchor: "end" }} // Rotates labels for better visibility
+                          tickMargin={10} // Adds extra margin for tick labels
+                        />
+                        <YAxis width={25} />
+                        <Tooltip />
+                        <Area
+                          type="monotone"
+                          dataKey="uv"
+                          stroke="#8884d8"
+                          fill="#8884d8"
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
 
-
-  <div className="Received_Amount">
-    <p>Received Amount</p>
-    <p>Due Amount</p>
-  </div>
-  <div className="amount_number">
-    <h6>$32,400.00</h6>
-    <h6>$45,070.00</h6>
-  </div>
-</div>
-
-
+                  <div className="Received_Amount">
+                    <p>Received Amount</p>
+                    <p>Due Amount</p>
+                  </div>
+                  <div className="amount_number">
+                    <h6>$32,400.00</h6>
+                    <h6>$45,070.00</h6>
+                  </div>
+                </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 mb-4">
                 <div className="Recent_Transaction">
                   <div className="Recent_Transactionh6">
                     <h6>Recent Transaction</h6>
@@ -307,18 +287,15 @@ function Dashboard() {
                     <i className="fa-brands fa-paypal"></i>
                     <div className="payment_date">
                       {/* <p> */}
-                        <b>Salary Paym..</b> <br /> 20 mar, 202..
-                    
+                      <b>Salary Paym..</b> <br /> 20 mar, 202..
                     </div>
                     <span>- $62.45</span>
                   </div>
-                  {/* 2 */}
+                  {/* 2 */} 
                   <div className="Online_Pro">
                     <i className="fa-solid fa-microchip"></i>
                     <div className="payment_date">
-                     
-                        <b>Online Pro..</b> <br /> 20 Sep, 202..
-                    
+                      <b>Online Pro..</b> <br /> 20 Sep, 202..
                     </div>
                     <span>- $62.45</span>
                   </div>
@@ -329,9 +306,7 @@ function Dashboard() {
                   <div className="Maintenanc">
                     <i className="fa-solid fa-camera-retro"></i>
                     <div className="payment_date">
-                      
-                        <b>Maintenanc..</b> <br /> 25 oct. 202..
-                    
+                      <b>Maintenanc..</b> <br /> 25 oct. 202..
                     </div>
                     <span>- $62.45</span>
                   </div>
@@ -341,9 +316,7 @@ function Dashboard() {
                   <div className="Bus_Bookin">
                     <i className="fa-solid fa-bus"></i>
                     <div className="payment_date">
-                      
-                        <b>Bus Bookin..</b> <br /> 21 Bov, 202..
-                     
+                      <b>Bus Bookin..</b> <br /> 21 Bov, 202..
                     </div>
                     <span>- $62.45</span>
                   </div>
@@ -353,9 +326,7 @@ function Dashboard() {
                   <div className="Flight_Book">
                     <i className="fa-brands fa-telegram"></i>
                     <div className="payment_date">
-                     
-                        <b>Flight Book...</b> <br /> 20 Sep, 202..
-                      
+                      <b>Flight Book...</b> <br /> 20 Sep, 202..
                     </div>
                     <span>- $62.45</span>
                   </div>
@@ -365,16 +336,12 @@ function Dashboard() {
                   <div className="Office_Rent">
                     <i className="fa-solid fa-house-user"></i>
                     <div className="payment_date">
-                      
-                        <b>Office Rent..</b> <br /> 20 Sep, 202..
-                     
+                      <b>Office Rent..</b> <br /> 20 Sep, 202..
                     </div>
                     <span>- $62.45</span>
                   </div>
                 </div>
               </div>
-
-            
             </div>
           </div>
         </div>

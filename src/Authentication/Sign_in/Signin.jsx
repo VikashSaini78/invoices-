@@ -61,20 +61,14 @@ function Signin() {
       );
       
 
-      // if (matchedUser) {
-      //   navigate("/");
-      // }
-      // if (matchedUser) {
-      //   const cleanUsername = matchedUser.Name?.trim() || matchedUser.MobileNo;
-      //   localStorage.setItem("username", cleanUsername); // ✅ Save username
-      //   navigate("/home");
-      // }
       if (matchedUser) {
         const cleanUsername = matchedUser.Name?.trim() || matchedUser.MobileNo;
         localStorage.setItem("username", cleanUsername);       // ✅ Save username
         localStorage.setItem("userId", matchedUser.ID);        // ✅ Save user ID
         navigate("/home");
       }
+
+
       
       
       

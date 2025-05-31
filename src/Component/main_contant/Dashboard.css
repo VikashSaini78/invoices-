@@ -496,6 +496,8 @@ font-size: 12px;
     height: auto;
     background-color: rgb(255, 255, 255);
     padding: 10px;
+    margin-bottom: 15px;
+    
     /* overflow: scroll;
     overflow-x: hidden; */
    }
@@ -776,7 +778,7 @@ font-size: 12px;
     overflow: scroll;
     overflow-y: hidden;
     margin-bottom: 20px;
-   }
+   } 
 
    .Top_header{
     width: 95%;

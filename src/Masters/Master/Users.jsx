@@ -10,7 +10,6 @@ const UaerTabel = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [recordsPerPage, setRecordsPerPage] = useState(10);
-  
 
   useEffect(() => {
     fetchData();
@@ -69,19 +68,19 @@ const UaerTabel = () => {
     setError(null);
     setLoading(true);
     setResponseData([]);
-  
+
     const loggedInUserId = localStorage.getItem("userId"); // ✅ get userId from localStorage
-  
+
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
     data.append("TableName", "masterdata");
     data.append("WhereCondition", `ID=${loggedInUserId}`); // ✅ filter for that specific ID
     data.append("*", "*");
-  
+
     try {
       const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
       const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
-  
+
       const response = await fetch(proxyUrl + apiUrl, {
         method: "POST",
         headers: {
@@ -89,12 +88,13 @@ const UaerTabel = () => {
         },
         body: data.toString(),
       });
-  
-      if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
-  
+
+      if (!response.ok)
+        throw new Error(`HTTP Error! Status: ${response.status}`);
+
       const jsonData = await response.json();
       console.log("Fetched Response Data:", jsonData);
-  
+
       if (jsonData.Response) {
         setResponseData(jsonData.Response);
         setFilteredData(jsonData.Response);
@@ -108,8 +108,6 @@ const UaerTabel = () => {
       setLoading(false);
     }
   };
-
-  
 
   const applyFilter = (query) => {
     if (!query) {
@@ -159,9 +157,9 @@ const UaerTabel = () => {
     }
   };
 
-//   togal 
+  //   togal
 
-const toggleStatus = async (id) => {
+  const toggleStatus = async (id) => {
     const itemToUpdate = responseData.find((item) => item.ID === id);
     if (!itemToUpdate) return;
 
@@ -208,7 +206,7 @@ const toggleStatus = async (id) => {
         console.log("Status updated");
 
         // ⬇Optional: Refresh latest data from API
-        fetchLatestData(); 
+        fetchLatestData();
       } else {
         console.error(" Failed to update:", result);
       }
@@ -242,7 +240,6 @@ const toggleStatus = async (id) => {
     }
   };
 
-
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const currentRecords = filteredData.slice(firstIndex, lastIndex);
@@ -250,44 +247,43 @@ const toggleStatus = async (id) => {
 
   return (
     <div className="masdata_container">
-   
       {loading && <p className="loading-message">Loading data...</p>}
       {error && <p className="error-message">{error}</p>}
 
-
       {/* Search Filter */}
-        <div className="Payment_div">
-              <div className="payment_maintext">
-                <h6>Users</h6>
-      
-                <div >
-                  
-                  <Link className="payment_breadcrumbs" to={"/selectdata"}><p>Master</p></Link>
-                  <span>
-                    <i className="fa-solid fa-chevron-right"></i>Users
-                  </span>
-                </div>
-              </div>
-              <div className="button_search-payment">
-                <Link to={"/masterdata"}>
-                  <button type="button" className="btn btn">
-                    <i className="fa-solid fa-plus"></i> Add New Users
-                  </button>
-                </Link>
-                <div className="search-input_box">
-                  <input
-                    type="search"
-                    className="form-control"
-                    placeholder="Search for name or designation..."
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                  {/* <span onClick={()=>{setpaymenticon(!paymenticon)}}>
+      <div className="Payment_div">
+        <div className="payment_maintext">
+          <h6>Users</h6>
+
+          <div>
+            <Link className="payment_breadcrumbs" to={"/selectdata"}>
+              <p>Master</p>
+            </Link>
+            <span>
+              <i className="fa-solid fa-chevron-right"></i>Users
+            </span>
+          </div>
+        </div>
+        <div className="button_search-payment">
+          <Link to={"/masterdata"}>
+            <button type="button" className="btn btn">
+              <i className="fa-solid fa-plus"></i> Add New Users
+            </button>
+          </Link>
+          <div className="search-input_box">
+            <input
+              type="search"
+              className="form-control"
+              placeholder="Search for name or designation..."
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {/* <span onClick={()=>{setpaymenticon(!paymenticon)}}>
                    <BsThreeDotsVertical />
                    </span> */}
-                </div>
-              </div>
-      
-              {/* {
+          </div>
+        </div>
+
+        {/* {
                     paymenticon && (
                     
                       <div className='payment_three-icons'>
@@ -299,7 +295,7 @@ const toggleStatus = async (id) => {
                     </div>
                     )
                   } */}
-            </div>
+      </div>
       {/* <div className="search-container">
         <div className="records-per-page-container">
           <label htmlFor="recordsPerPage">Records Per Page:</label>
@@ -324,7 +320,6 @@ const toggleStatus = async (id) => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div> */}
- 
 
       {!loading && filteredData.length === 0 && !error && (
         <p className="no-data-message">No data available.</p>
@@ -348,7 +343,7 @@ const toggleStatus = async (id) => {
                     <td>{item.MobileNo}</td>
                     <td>{item.Password}</td>
                     <td>
-                        {/* Toggle Switch for Active Status */}
+                      {/* Toggle Switch for Active Status */}
                       <div className="form-checku form-switch">
                         <input
                           className="form-check-input"
@@ -374,7 +369,9 @@ const toggleStatus = async (id) => {
             >
               Previous
             </button>
-            <span>&nbsp; {currentPage} of {totalPages}</span>
+            <span>
+              &nbsp; {currentPage} of {totalPages}
+            </span>
             <button
               onClick={() =>
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))

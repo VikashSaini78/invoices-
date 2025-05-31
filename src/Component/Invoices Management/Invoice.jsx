@@ -147,7 +147,7 @@ function Invoice() {
         <ul>Export to Excel</ul>
         </div>
           )
-        }
+        } 
 
 
        <div className='row'>
