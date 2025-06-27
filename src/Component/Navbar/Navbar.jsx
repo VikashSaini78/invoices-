@@ -97,22 +97,11 @@ function Navbar() {
     };
   }, []);
 
-
-  
   useEffect(() => {
     if (window.innerWidth <= 750) {
       setadmin(true);
     }
   }, []);
-
-  // navbar name
-
-  // useEffect(() => {
-  //   const storedUsername = localStorage.getItem("username");
-  //   if (storedUsername) {
-  //     setUsername(storedUsername);
-  //   }
-  // }, []);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -128,7 +117,6 @@ function Navbar() {
 
       <div className="nav_dashbord">
         <div className="dashbord">
-          {/* <div className={`sidebar ${admin ? "collapsed" : ""} bg-white`}> */}
           <div
             ref={sidebarRef}
             className={`sidebar ${admin ? "collapsed" : ""} bg-white`}
@@ -170,7 +158,6 @@ function Navbar() {
             {/* manu */}
             <div className="dashbord_text-div">
               <div className="paragraph">
-                {" "}
                 <p className={`${admin ? "hidden" : "block"}`}>e Tour</p>
               </div>
               <Link to={"/home"}>
@@ -203,9 +190,9 @@ function Navbar() {
                   className={`fa-solid fa-file-invoice ${
                     admin ? "m-auto mt-2" : ""
                   }`}
-                ></i>{" "}
+                ></i>
                 <p className={`${admin ? "hidden" : "block"}`}>
-                  Invoices Manag..{" "}
+                  Invoices Manag..
                 </p>
                 <pre
                   onClick={handleClick}
@@ -257,17 +244,7 @@ function Navbar() {
                         Invoice Details
                       </li>
                     </Link>
-                    <Link to={"/taxes"}>
-                      <li
-                        onClick={() => {
-                          if (window.innerWidth <= 750) {
-                            setadmin(!admin);
-                          }
-                        }}
-                      >
-                        Taxes
-                      </li>
-                    </Link>
+
                     <Link to={"/payment"}>
                       <li
                         onClick={() => {
@@ -354,7 +331,7 @@ function Navbar() {
               >
                 <i
                   className={`fa-solid fa-gear ${admin ? "m-auto mt-2" : ""}`}
-                ></i>{" "}
+                ></i>
                 <p className={`${admin ? "hidden" : "block"}`}>
                   Authentication
                 </p>
@@ -368,29 +345,13 @@ function Navbar() {
               <div className={`${admin ? "hidden" : "block"}`}>
                 <div className="management_list-items">
                   <Link to={"/"}>
-                    {" "}
                     <li>Sign In</li>
                   </Link>
                   <Link to={"/signup"}>
-                    {" "}
                     <li>Sign Up</li>
                   </Link>
 
-                  {/* <Link to={"/resetpass/:id/"}>
-                      <li
-                        onClick={() => {
-                          if (window.innerWidth <= 750) {
-                            setadmin(!admin);
-                          }
-                        }}
-                      >
-                      Password Reset
-                      </li>
-
-                    </Link> */}
-
                   <Link to={"/"}>
-                    {" "}
                     <li>Lock Screen</li>
                   </Link>
                 </div>
@@ -408,7 +369,7 @@ function Navbar() {
               >
                 <i
                   className={`fa-solid fa-pen-nib ${admin ? "m-auto" : ""}`}
-                ></i>{" "}
+                ></i>
                 <p className={`${admin ? "hidden" : "block"}`}> Master </p>
                 <pre className={`${admin ? "hidden" : "block"}`}>
                   {!mst ? <MdKeyboardArrowRight /> : <GrFormDown />}
@@ -420,17 +381,6 @@ function Navbar() {
               <>
                 <div className={`${admin ? "hidden" : "block"}`}>
                   <div className="bootstrap_list-item">
-                    {/* <Link to={"/masterdata"}>
-                      <li
-                        onClick={() => {
-                          if (window.innerWidth <= 750) {
-                            setadmin(!admin);
-                          }
-                        }}
-                      >
-                        Master data
-                      </li>
-                    </Link> */}
                     <Link to={"/selectdata"}>
                       <li
                         onClick={() => {
@@ -440,6 +390,18 @@ function Navbar() {
                         }}
                       >
                         Master data
+                      </li>
+                    </Link>
+
+                    <Link to={"/selectcompny"}>
+                      <li
+                        onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >
+                        Company
                       </li>
                     </Link>
 
@@ -455,7 +417,7 @@ function Navbar() {
                       </li>
                     </Link>
 
-                    {/* <Link to={"/compney"}>
+                    <Link to={"/taxes"}>
                       <li
                         onClick={() => {
                           if (window.innerWidth <= 750) {
@@ -463,18 +425,7 @@ function Navbar() {
                           }
                         }}
                       >
-                        Compney
-                      </li>
-                    </Link> */}
-                    <Link to={"/selectcompny"}>
-                      <li
-                        onClick={() => {
-                          if (window.innerWidth <= 750) {
-                            setadmin(!admin);
-                          }
-                        }}
-                      >
-                        Compney
+                        Taxes
                       </li>
                     </Link>
 
@@ -503,7 +454,7 @@ function Navbar() {
               >
                 <i
                   className={`fa-solid fa-book ${admin ? "m-auto mt-2" : ""}`}
-                ></i>{" "}
+                ></i>
                 <p className={`${admin ? "hidden" : "block"}`}>Entries</p>
                 <pre className={`${admin ? "hidden" : "block"}`}>
                   {!ent ? <MdKeyboardArrowRight /> : <GrFormDown />}
@@ -531,7 +482,7 @@ function Navbar() {
               >
                 <i
                   className={`fa-regular fa-file ${admin ? "m-auto mt-2" : ""}`}
-                ></i>{" "}
+                ></i>
                 <p className={`${admin ? "hidden" : "block"}`}>Reports </p>
                 <pre className={`${admin ? "hidden" : "block"}`}>
                   {!rep ? <MdKeyboardArrowRight /> : <GrFormDown />}
@@ -568,7 +519,7 @@ function Navbar() {
                   className={`fa-regular fa-window-restore ${
                     admin ? "m-auto mt-2" : ""
                   }`}
-                ></i>{" "}
+                ></i>
                 <p className={`${admin ? "hidden" : "block"}`}>Utility</p>
                 <pre className={`${admin ? "hidden" : "block"}`}>
                   {!uti ? <MdKeyboardArrowRight /> : <GrFormDown />}
@@ -639,10 +590,9 @@ function Navbar() {
                       setvalue(!value);
                     }}
                   >
-                    <img src="./media/avatar.jpg" alt="" />
+                    <img src="./media/profile_image.jpg" alt="" />
                     <h1 className="calvind_box">
                       {username && <strong>{username}</strong>}
-                      {/* <p>your <strong>{userId}</strong></p> */}
 
                       <i className="fa-solid fa-chevron-down"></i>
                     </h1>
@@ -658,14 +608,14 @@ function Navbar() {
                   >
                     <div className="nav_not-4">
                       <h6> Notifications</h6>
-                      <span>4 New</span>{" "}
+                      <span>4 New</span>
                     </div>
                     <div className="notfication_member-show">
                       <div className="notfication_member-show-1">
                         <img src="./media/ntotifaction.jpg" alt="not" />
 
                         <div className="noti_text-text">
-                          <h6>Angela Berner</h6>{" "}
+                          <h6>Angela Berner</h6>
                           <p>
                             Answered to your comment on the cash flow forecast's
                             graph
@@ -681,7 +631,7 @@ function Navbar() {
                         <img src="./media/ntotifaction.jpg" alt="not" />
 
                         <div className="noti_text-text">
-                          <h6>Angela Berner</h6>{" "}
+                          <h6>Angela Berner</h6>
                           <p>
                             Answered to your comment on the cash flow forecast's
                             graph
@@ -696,23 +646,7 @@ function Navbar() {
                         <img src="./media/ntotifaction.jpg" alt="not" />
 
                         <div className="noti_text-text">
-                          <h6>Angela Berner</h6>{" "}
-                          <p>
-                            Answered to your comment on the cash flow forecast's
-                            graph
-                            <pre>48 MIN AGO</pre>
-                          </p>
-                        </div>
-                        <input className="form-check-input" type="checkbox" />
-                      </div>
-                    </div>
-
-                    <div className="notfication_member-show">
-                      <div className="notfication_member-show-1">
-                        <img src="./media/ntotifaction.jpg" alt="not" />
-
-                        <div className="noti_text-text">
-                          <h6>Angela Berner</h6>{" "}
+                          <h6>Angela Berner</h6>
                           <p>
                             Answered to your comment on the cash flow forecast's
                             graph
@@ -728,7 +662,23 @@ function Navbar() {
                         <img src="./media/ntotifaction.jpg" alt="not" />
 
                         <div className="noti_text-text">
-                          <h6>Angela Berner</h6>{" "}
+                          <h6>Angela Berner</h6>
+                          <p>
+                            Answered to your comment on the cash flow forecast's
+                            graph
+                            <pre>48 MIN AGO</pre>
+                          </p>
+                        </div>
+                        <input className="form-check-input" type="checkbox" />
+                      </div>
+                    </div>
+
+                    <div className="notfication_member-show">
+                      <div className="notfication_member-show-1">
+                        <img src="./media/ntotifaction.jpg" alt="not" />
+
+                        <div className="noti_text-text">
+                          <h6>Angela Berner</h6>
                           <p>
                             Answered to your comment on the cash flow forecast's
                             graph
@@ -770,6 +720,14 @@ function Navbar() {
 
             <>
               <Service />
+
+              <footer>
+                <div className="footer_div">
+                  <p>2025 © &nbsp; &nbsp; e Tour.</p>
+                  <h6 className={admin ? "w-[25%]" : " w-[36%]" }>Design & Develop by Response Infoway</h6>
+
+                </div>
+              </footer>
             </>
           </div>
         </div>

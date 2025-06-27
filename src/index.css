@@ -11,94 +11,103 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 @tailwind base;
-@tailwind components;                                                                                         
+@tailwind components;
 @tailwind utilities;
 
-
-footer{
-  width: auto;
-  /* width:-webkit-fill-available; */
+.footer_div {
+  width: 100%;
   height: 10vh;
-  padding: 26px;
   background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
   color: rgb(83, 83, 83);
-  /* position: fixed;
-  bottom: 0; */
-  /* margin-top: 20px; */
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+}
 
- }
 
- .das_logo{
+
+
+
+.das_logo {
   width: 100%;
   /* background-color: yellowgreen; */
- }
- .das_logo img{
+}
+
+.das_logo img {
   width: 30px;
 
- }
+}
 
- .no-spinner::-webkit-inner-spin-button,
- .no-spinner::-webkit-outer-spin-button {
-     -webkit-appearance: none;
-     margin: 0;
- }
- 
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
 /*  */
 
-.Payment_div{
-width: 100%;
-height: auto;
-/* background-color: aqua; */
-margin: auto;
+.Payment_div {
+  width: 100%;
+  height: auto;
+  /* background-color: aqua; */
+  margin: auto;
 
 }
 
 
-.payment_maintext{
+.payment_maintext {
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
 
 }
-.payment_maintext h6{
+
+.payment_maintext h6 {
   font-weight: bold;
   color: rgb(80, 80, 80);
 }
-.payment_maintext div{
+
+.payment_maintext div {
   display: flex;
   font-size: 13px;
 }
+
 .payment_maintext div span {
   color: rgb(80, 80, 80);
 }
-.payment_maintext div i{
+
+.payment_maintext div i {
   padding: 5px;
   font-size: 9px;
 }
+
 .button_search-payment {
   margin-top: 10px;
   margin-top: 27px;
   display: flex;
   justify-content: space-between;
-  
+
 }
+
 .button_search-payment input {
   width: 230px;
   font-size: 11px;
-  
-}
-.button_search-payment input:focus {
-box-shadow: none;
-  
+
 }
 
-.button_search-payment button{
+.button_search-payment input:focus {
+  box-shadow: none;
+
+}
+
+.button_search-payment button {
   font-size: 12px;
   background-color: rgb(25, 122, 109);
   color: white;
@@ -106,7 +115,7 @@ box-shadow: none;
 
 /* payment_three-icons */
 
-.invoice_three-icons{
+.invoice_three-icons {
   width: 120px;
   height: 70px;
   background-color: #ffffff;
@@ -119,6 +128,7 @@ box-shadow: none;
   font-size: 12px;
 
 }
+
 /* 
 .invoice_three-icons ul:hover{
   background-color: #2a8383;
@@ -126,36 +136,44 @@ box-shadow: none;
 
 
 
-.button_search-payment button i{
+.button_search-payment button i {
   padding: 5px;
   font-size: 10px;
 }
-.button_search-payment button:focus{
-box-shadow: none;
+
+.button_search-payment button:focus {
+  box-shadow: none;
 }
-.button_search-payment button:hover{
+
+.button_search-payment button:hover {
   color: rgb(255, 255, 255)
 }
-.button_search-payment div{
+
+.button_search-payment div {
   display: flex;
   gap: 20px;
   cursor: pointer;
 }
-.button_search-payment div span{
+
+.button_search-payment div span {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30px;
- padding: 5px;
- background-color: rgb(210, 228, 228);
- color: rgb(6, 158, 158);
- font-size: 12px
+  padding: 5px;
+  background-color: rgb(210, 228, 228);
+  color: rgb(6, 158, 158);
+  font-size: 12px
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
   .Payment_div {
     width: 95%;
     margin: auto;
-}
+  }
+
+  .footer_div h6 {
+    width: auto;
+  }
 
 }

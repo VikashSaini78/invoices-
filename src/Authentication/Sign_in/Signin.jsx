@@ -23,7 +23,7 @@ function Signin() {
     setError("");
 
     if (!username || !password) {
-      toast.warn("Please enter both username and password.");
+      toast.warn("Please enter both Email id and password.");
       return;
     }
 
@@ -55,7 +55,7 @@ function Signin() {
       const matchedUser = result.Response.find(
         (user) =>
           (user.MobileNo?.toLowerCase() === username.toLowerCase() ||
-           user.Name?.toLowerCase() === username.toLowerCase()) &&
+           user.emailID?.toLowerCase() === username.toLowerCase()) &&
           user.Password === password &&
           (user.Active === "true" || user.Active === true || user.Active === "1" || user.Active === 1)
       );
@@ -63,11 +63,14 @@ function Signin() {
 
       if (matchedUser) {
         const cleanUsername = matchedUser.Name?.trim() || matchedUser.MobileNo;
-        localStorage.setItem("username", cleanUsername);       // ✅ Save username
-        localStorage.setItem("userId", matchedUser.ID);        // ✅ Save user ID
+        localStorage.setItem("username", cleanUsername);         // ✅ Save username
+        localStorage.setItem("userId", matchedUser.ID);          // ✅ Save user ID
+        localStorage.setItem("userType", matchedUser.usertype);    // ✅ Save usertype
+          // console.log(matchedUser.usertype);
+          
         navigate("/home");
       }
-
+ 
 
       
       

@@ -16,10 +16,14 @@ import Getdata from "./Masters/Master/Getdata";
 import Updatedata from "./Masters/Master/Updatedta";
 import Selectdata from "./Masters/Master/Selectdata";
 import Resetpass from "./Masters/Master/Resetpass";
-import Users from "./Masters/Master/Users";
+import Users from "./Masters/Master/Users/Users";
 import Compney from "./Masters/Companey/Compney";
 import Selectcompny from "./Masters/Companey/Selectcompny";
 import CompUpdateData from "./Masters/Companey/Compupdate";
+import Deletdata from "./Masters/Master/Deletdata";
+import NewUser from "./Masters/Master/Users/NewUser";
+import Updateuser from "./Masters/Master/Users/Updateuser";
+// import NewUser from "./Masters/Master/Users/NewUser";
 
 function Service() {
   return (
@@ -44,8 +48,11 @@ function Service() {
         <Route path="/compney" element={<Compney />} />
         <Route path="/selectcompny" element={<Selectcompny />} />
         <Route path="/compupdatedata" element={<CompUpdateData />} />
+         <Route path="/deletdata" element={<Deletdata/>} />
+         <Route path="/newusers" element={<NewUser/>} />
+         <Route path="/Updateuser" element={<Updateuser/>} />
       </Routes>
-      <Footer />
+      {/* <Footer/> */}
     </>
   );
 }

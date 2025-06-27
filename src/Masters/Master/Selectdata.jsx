@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoSettingsSharp } from "react-icons/io5";
 import "./selectdata.css";
-import { BsThreeDotsVertical } from "react-icons/bs";
+// import { BsThreeDotsVertical } from "react-icons/bs";
 
 const Selectdata = () => {
   const [responseData, setResponseData] = useState([]);
@@ -13,9 +13,12 @@ const Selectdata = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [recordsPerPage, setRecordsPerPage] = useState(10);
-  const [paymenticon, setpaymenticon] = useState("");
+  const [userId, setUserId] = useState(null);
+  // const [userId, setUserId] = useState("");
+  const [userType, setUserType] = useState(null);
+  const loginUserId = localStorage.getItem("userId") || "";
 
-  // const recordsPerPage = 9;
+  // const navigate = useNavigate();
   const hiddenColumns = [
     "ID",
     "OTP",
@@ -23,6 +26,7 @@ const Selectdata = () => {
     "PwdLinkValidity",
     "Password",
     "Active",
+    "usertype",
   ];
 
   useEffect(() => {
@@ -78,6 +82,28 @@ const Selectdata = () => {
       setLoading(false);
     }
   };
+
+useEffect(() => {
+  const storedUserType = localStorage.getItem("userType");
+  console.log("UserType from localStorage:", storedUserType);
+  setUserType(storedUserType);  // ✅ Fix: Set state properly
+
+  if (storedUserType === "9") {
+    fetchData(); // only fetch for admin
+  } else {
+    console.warn("Unauthorized User Type:", storedUserType);
+  }
+}, []);
+
+
+useEffect(() => {
+  const userType = localStorage.getItem("userType");
+  console.log("UserType from localStorage:", userType);
+  // You already handled this in the above useEffect
+}, []);
+
+
+
 
   const applyFilter = (query) => {
     if (!query) {
@@ -229,48 +255,37 @@ const Selectdata = () => {
     return `${day}-${month}-${year}`;
   };
 
+
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const currentRecords = filteredData.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(filteredData.length / recordsPerPage);
 
   return (
-    <div className="masdata_container">
+
+    <>
+      {/* <h1>  usertype:{userType}</h1> */}
+        <div>
+    {userType === "9" ? (
+      <div>
+        {loading && <p>Loading...</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {responseData.length > 0 ? (
+         <>
+           <div className="masdata_container">
       {loading && <p className="loading-message">Loading data...</p>}
       {error && <p className="error-message">{error}</p>}
-      {/* <h5 className="text-center font-bold m-3">Master Data</h5> */}
-
-      {/* Search Filter */}
-      {/* <div className="search-container"> */}
-      {/* <div className="records-per-page-container">
-          <label htmlFor="recordsPerPage">Records Per Page:</label>
-          <select
-            id="recordsPerPage"
-            value={recordsPerPage}
-            onChange={(e) => setRecordsPerPage(Number(e.target.value))}
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-          </select>
-        </div> */}
-
-      {/* <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        /> */}
-      {/* </div> */}
 
       <div className="Payment_div">
         <div className="payment_maintext">
           <h6>Master</h6>
+          {/* <h1>{userType}</h1> */}
 
           <div>
-                        <Link className="payment_breadcrumbs" to={"/selectcompny"}><p>Company</p></Link>
-            
+            <Link className="payment_breadcrumbs" to={"/selectcompny"}>
+              <p>Company</p>
+            </Link>
+
             <span>
               <i className="fa-solid fa-chevron-right"></i>Master
             </span>
@@ -289,28 +304,8 @@ const Selectdata = () => {
               placeholder="Search for name or designation..."
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            {/* <span
-              onClick={() => {
-                setpaymenticon(!paymenticon);
-              }}
-            >
-              <BsThreeDotsVertical />
-            </span> */}
           </div>
         </div>
-
-        {/* {
-                    paymenticon && (
-                    
-                      <div className='payment_three-icons'>
-                    <ul>All</ul>
-                    <ul>Last Week</ul>
-                    <ul>Last Month</ul>
-                    <ul>Last Year</ul>
-                    
-                    </div>
-                    )
-                  } */}
       </div>
 
       <div className="search-container mt-3">
@@ -335,8 +330,6 @@ const Selectdata = () => {
 
       {filteredData.length > 0 && (
         <div className="response-container">
-          {/* <h5>Response Data:</h5> */}
-
           <div className="table-wrapper">
             <table className="data-table">
               <thead>
@@ -357,7 +350,6 @@ const Selectdata = () => {
                   <th>Actions</th>
                 </tr>
               </thead>
-
               <tbody>
                 {currentRecords.map((item, index) => (
                   <tr key={index}>
@@ -369,6 +361,18 @@ const Selectdata = () => {
                           className={
                             key === "MaxCompanies" ? "max-companies-column" : ""
                           }
+                          style={
+                            key === "Address"
+                              ? { minWidth: "140px" }
+                              : key === "emailID"
+                              ? {
+                                  maxWidth: "160px",
+                                  overflow: "hidden",
+                                  textOverflow: "ellipsis",
+                                  whiteSpace: "nowrap",
+                                }
+                              : {}
+                          }
                         >
                           {value !== null
                             ? key.toLowerCase().includes("date")
@@ -378,8 +382,6 @@ const Selectdata = () => {
                         </td>
                       ))}
                     <td>
-                      {/*  */}
-
                       <div className="form-check form-switch">
                         <input
                           className="form-check-input"
@@ -390,20 +392,14 @@ const Selectdata = () => {
                           onChange={() => toggleStatus(item.ID)}
                         />
                       </div>
-
-                      {/*  */}
                     </td>
                     <td>
                       <div className="seletdata_edit-delet-btn">
-                        {/* <Link to={`/resetpass/${item.ID}`}> */}
                         <Link to={`/resetpass/${item.ID}/${item.Name}`}>
                           <button className="selet_reset-pass">
                             <IoSettingsSharp />
-                            {/* Resetpass.. */}
                           </button>
                         </Link>
-                        {/* <Link to="/updatedata" state={{ responseData: item, masterId: item.ID }}> */}
-
                         <Link to="/updatedata" state={{ responseData: item }}>
                           <button className="selet_edit-btn">
                             <i className="fa-solid fa-pen-to-square"></i>
@@ -474,7 +470,6 @@ const Selectdata = () => {
               >
                 Cancel
               </button>
-              {/* <a href="/selectdata"> */}
               <button
                 type="button"
                 className="delete_button"
@@ -483,12 +478,28 @@ const Selectdata = () => {
               >
                 Delete
               </button>
-              {/* </a> */}
             </div>
           </div>
         </div>
       </div>
     </div>
+         </>
+        ) : (
+          !loading && <p>No data to show.</p>
+        )}
+      </div>
+    ) : (
+      <p className="m-4">You are not authorized to view this data.</p>
+    )}
+  </div>
+
+
+
+{/*  */}
+ 
+    </>
+    
+    
   );
 };
 

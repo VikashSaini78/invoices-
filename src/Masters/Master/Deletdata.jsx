@@ -1,247 +1,105 @@
-import React, { useState, useEffect } from "react";
-import "./Compney.css";
-import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import React, { useState } from 'react'
 
-function Compney() {
-  const [formData, setFormData] = useState({
-    Name: "",
-    Address: "",
-    TelNo: "",
-    GstNo: "",
-    LogoPath: "",
-    StateID: "",
-  });
+// function Deletdata() {
+//  const[count,setcount] = useState(0)
 
-  const [stateList, setStateList] = useState([]);
-  const naviget = useNavigate();
+//  function incr(){
+//   setcount(count+1)
+//  }
+//  function decr(){
+//   if(count>0)
+//   setcount(count-1)
+//  }
+//   return (
+//     <div>
+//  {count===10 ? <p>jaitpuriya</p> : <></>}
+//     <button className='ml-5' onClick={incr}>+</button>
+//     <p className='ml-5'>{count}</p>
+//     <button className='ml-5' onClick={decr}>-</button>
+      
+//     </div>
+//   )
+// }
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // };   
-       
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
+// export default Deletdata
 
-    if (name === "LogoPath" && files.length > 0) {
-      const fileName = files[0].name;
-      console.log("Selected file name:", fileName); // 👈 Check yahan
-      setFormData((prev) => ({
-        ...prev,
-        LogoPath: fileName,
-      }));
-    }
-    
-    else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]  : value,
-      }));
-    }
-  };
 
-  useEffect(() => {
-    const fetchStates = async () => {
-      const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
-      const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
+// import React, { useState } from 'react'
 
-      const data = new URLSearchParams();
-      data.append("SecurityKey", "abcd");
-      data.append("TableName", "gststates");
-      data.append("Where", "All");
-      data.append("*", "*");
+// function Deletdata() {
+//  const [show,setshow] = useState()
+//   return (
+//     <div>
+//     <input type={show ? "password" :"text"}/>
+//     <button onClick={(()=>{setshow(!show)})}>{show ? "hide" :"show"}</button>
+      
+//     </div>
+//   )
+// }
 
-      try {
-        const response = await fetch(proxyUrl + apiUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: data.toString(),
-        });
+// export default Deletdata
 
-        const result = await response.json();
-        // console.log("Fetched States:", result);
 
-        if (Array.isArray(result.Response)) {
-          setStateList(result.Response); // ✅ load states into dropdown
-        } else {
-          console.error("Invalid response format:", result);
-        }
-      } catch (err) {
-        console.error("Error fetching states:", err);
-      }
-    };
 
-    fetchStates();
-  }, []);
 
-  // ⬇️ Submit form
- 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
+// import React, { useState } from 'react'
 
-  // Get logged-in userId from localStorage
-  const loggedInUserId = localStorage.getItem("userId");
+// function Deletdata() {
+//  const [show,setshow]=  useState()
+//   return (
+// <>
+//   <button onClick={(()=>{setshow(!show)})}>Button</button>
+//    {show && (
+//     <p>Hello vicky jaitpuriya</p>
+//    )}
+// </>
+//   )
+// }
 
-  // Check if loggedInUserId is null or undefined
-  if (!loggedInUserId) {
-    toast.error("User not logged in!");
-    console.log("Error: No userId found in localStorage");
-    return;
-  }
+// export default Deletdata
 
-  const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
-  const insertApiUrl = "http://etour.responseinfoway.com/restapi/insertdata.aspx";
 
-  try {
-    const data = new FormData();
-    data.append("SecurityKey", "abcd");
-    data.append("TableName", "Company");
-    data.append("MasterId", loggedInUserId); // Use dynamic user ID
-    data.append("Name", formData.Name);
-    data.append("Address", formData.Address);
-    data.append("TelNo", formData.TelNo);
-    data.append("GstNo", formData.GstNo);
-    // data.append("LogoPath", "testimage.png");
+import React, { useState } from "react";
 
-    // If LogoPath is a file, append it correctly
-    // if (formData.LogoPath) {
-    //   data.append("LogoPath", formData.LogoPath);
-    // }
-    console.log("Data being sent:", formData.LogoPath); // 👈 Isme string hona chahiye
+function SearchFilterList() {
+  const [searchTerm, setSearchTerm] = useState("");
 
-    data.append("LogoPath", formData.LogoPath);
-    
-    
+  const users = [
+    "Amit",
+    "Vikash",
+    "Rohit",
+    "Suman",
+    "Priya",
+    "Sneha",
+    "Karan",
+    "Rani"
+  ];
 
-    data.append("StateID", formData.StateID);
-
-    const response = await fetch(proxyUrl + insertApiUrl, {
-      method: "POST",
-      body: data,
-    });
-
-    const responseText = await response.text();
-    console.log("Insert Response:", responseText);
-
-    if (!response.ok || responseText.includes('"Status":"Error"')) {
-      throw new Error("API error");
-    }
-
-    toast.success("Successfully submitted!");
-    naviget("/selectcompny");
-
-    // Reset form after successful submission
-    setFormData({
-      Name: "",
-      Address: "",
-      TelNo: "",
-      GstNo: "",
-      LogoPath: "",
-      StateID: "",
-    });
-  } catch (error) {
-    console.error("Error during submission:", error);
-    toast.error("Submit failed! Please check your data.");
-  }
-};
-
-  
+  const filteredUsers = users.filter((user) =>
+    user.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="compney_container">
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
-      <form className="compney_form" onSubmit={handleSubmit}>
-        <h5 className="text-center font-bold m-3">Company Data</h5>
+    <div style={{ maxWidth: "400px", margin: "50px auto", textAlign: "center" }}>
+      <h2>🔍 Search Users</h2>
 
-        <div className="compney_input_div">
-          <label>Name</label>
-          <input
-            type="text"
-            name="Name"
-            value={formData.Name}
-            onChange={handleChange}
-            placeholder="Name"
-            required
-          />
-        </div>
+      <input
+        type="text"
+        placeholder="Search name..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
 
-        <div className="compney_input_div">
-          <label>Address</label>
-          <input
-            type="text"
-            name="Address"
-            value={formData.Address}
-            onChange={handleChange}
-            placeholder="Address"
-            required
-          />
-        </div>
+      <ul>
+        {filteredUsers.map((user, index) => (
+          <li key={index} >
+            {user}
+          </li>
+        ))}
 
-        <div className="compney_input_div">
-          <label>TelNo.</label>
-          <input
-            type="text"
-            name="TelNo"
-            value={formData.TelNo}
-            onChange={handleChange}
-            placeholder="TelNo."
-            required
-          />
-        </div>
-
-        <div className="compney_input_div">
-          <label>GstNo</label>
-          <input
-            type="text"
-            name="GstNo"
-            value={formData.GstNo}
-            onChange={handleChange}
-            placeholder="GstNo"
-            required
-          />
-        </div>
-
-        <div className="compney_input_div">
-          <label>LogoPath</label>
-          <input
-            type="file"
-            name="LogoPath"
-            onChange={handleChange}
-            placeholder="LogoPath"
-            required
-          />
-        </div>
-
-        <div className="compney_input_div">
-          <label>State</label>
-          <select
-            className="cursor-pointer"
-            name="StateID"
-            value={formData.StateID}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select State</option>
-            {stateList.map((state) => (
-              <option key={state.ID} value={state.ID}>
-                {state.State}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <button type="submit">Submit</button>
-      </form>
+      </ul>
     </div>
   );
 }
 
-export default Compney;
-
+export default SearchFilterList;

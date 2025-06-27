@@ -61,85 +61,6 @@ function Compney() {
 
     fetchStates();
   }, []);
-// handleSubmit without try-catch but with proper .then/.catch and response handling
-
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-
-//   const loggedInUserId = localStorage.getItem("userId");
-//   if (!loggedInUserId) {
-//     toast.error("User not logged in!");
-//     return;
-//   }
-
-//   const apiUrl = "http://etour.responseinfoway.com/restapi/insertdata.aspx";
-//   const data = new FormData();
-//   data.append("SecurityKey", "abcd");
-//   data.append("TableName", "Company");
-//   data.append("MasterId", loggedInUserId);
-//   data.append("Name", formData.Name);
-//   data.append("Address", formData.Address);
-//   data.append("TelNo", formData.TelNo);
-//   data.append("GstNo", formData.GstNo);
-//   data.append("StateID", formData.StateID);
-
-//   if (logoFile) {
-//     data.append("LogoPath", logoFile);
-//   }
-
-//   fetch(apiUrl, {
-//     method: "POST",
-//     body: data,
-//   })
-//     .then(async (response) => {
-//       const contentType = response.headers.get("content-type");
-
-//       let result = null;
-
-//       if (contentType && contentType.includes("application/json")) {
-//         result = await response.json();
-//       } else {
-//         const text = await response.text();
-//         try {
-//           result = JSON.parse(text);
-//         } catch (err) {
-//           // fallback: manually construct success if known response
-//           toast.success("Data submitted successfully!");
-//           setTimeout(() => {
-//             window.location.href = "/selectcompny";
-//           }, 1500);
-//           return;
-//         }
-//       }
-
-//       if (result?.Status === "Success" || result?.Response === "OK") {
-//    if (result?.LogoPath) {
-//   const cleanPath = result.LogoPath.replace("~", "http://etour.responseinfoway.com");
-//   localStorage.setItem("userLogo", cleanPath);
-//   console.log("Logo Path:", cleanPath);
-// }
-
-
-
-//         localStorage.setItem("username", formData.Name);
-//         localStorage.setItem("userMobile", formData.TelNo);
-
-//         toast.success("Data submitted successfully!");
-//         setTimeout(() => {
-//           window.location.href = "/selectcompny";
-//         }, 1500);
-//       } else {
-//         toast.error("Submission failed: " + (result?.Response || "Unknown error"));
-//       }
-//     })
-//     .catch((error) => {
-//       console.warn("Warning:", error);
-//       toast.success("Data submitted (server response issue)");
-//       setTimeout(() => {
-//         window.location.href = "/selectcompny";
-//       }, 1500);
-//     });
-// };
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -187,7 +108,7 @@ const handleSubmit = (e) => {
           return;
         }
       }
-
+  
       if (result?.Status === "Success" || result?.Response === "OK") {
         if (result?.LogoPath) {
           const cleanPath = result.LogoPath.replace("~", "http://etour.responseinfoway.com");

@@ -2,13 +2,13 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div>
-        <footer className='footer'>
+    <footer>
+        <div className='footer_div'>
            <p>2025 ©  &nbsp; &nbsp; e Tour.</p>
            <p>Design & Develop by Response Infoway</p>
-            </footer>
+            </div>
 
-    </div>
+    </footer>
   )
 }
 

@@ -395,6 +395,9 @@ cursor: pointer;
     width: 95%;
     margin: auto;
   }
+
+
+
   .input_text-labalname{
     display: inline;
   }
@@ -404,7 +407,7 @@ cursor: pointer;
     font-size: 14px;
   }
   .update-container{
-  width: 95%;
+  width: 90%;
   margin: auto;
 }
 .input-labal{
@@ -453,7 +456,5 @@ cursor: pointer;
   width: 164px;
   font-size: 11px;
 }
-
-
 
 }

@@ -315,8 +315,7 @@ cursor:pointer;
   .sidebar {
     width: 170px;
     color: white;
-    transition: width 0.3s ease;
-    
+    transition: width 0.3s ease; 
   }
   
   .sidebar.collapsed {
@@ -403,9 +402,7 @@ cursor:pointer;
       top: 45px;
      
   }
-  /* .calvind_box{
-    display: none;
-  } */
+
   .ul_calvind-text img{
    width: 42px;
    height: 42px;

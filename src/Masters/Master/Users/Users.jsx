@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./selectdata.css";
+import "../selectdata.css";
 import { Link } from "react-router-dom";
 
 const UaerTabel = () => {
@@ -19,51 +19,6 @@ const UaerTabel = () => {
     applyFilter(searchQuery);
   }, [responseData, searchQuery]);
 
-  // const fetchData = async () => {
-  //   setError(null);
-  //   setLoading(true);
-  //   setResponseData([]);
-
-  //   const data = new URLSearchParams();
-  //   data.append("SecurityKey", "abcd");
-  //   data.append("TableName", "masterdata");
-  //   data.append("WhereCondition", "All");
-  //   data.append("*", "*");
-
-  //   try {
-  //     const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
-  //     const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
-
-  //     const response = await fetch(proxyUrl + apiUrl, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/x-www-form-urlencoded",
-  //       },
-  //       body: data.toString(),
-  //     });
-
-  //     if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
-
-  //   //         const jsonData = await response.json();
-  //   //   console.log("Fetched Response Data:", jsonData);
-
-  //     const jsonData = await response.json();
-  //     console.log("Fetched Response Data:", jsonData);
-
-  //     if (jsonData.Response) {
-  //       setResponseData(jsonData.Response);
-  //       setFilteredData(jsonData.Response);
-  //     } else {
-  //       setError("No data found.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //     setError("Failed to fetch data.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   const fetchData = async () => {
     setError(null);
     setLoading(true);
@@ -73,8 +28,8 @@ const UaerTabel = () => {
 
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
-    data.append("TableName", "masterdata");
-    data.append("WhereCondition", `ID=${loggedInUserId}`); // ✅ filter for that specific ID
+    data.append("TableName", "users");
+    data.append("WhereCondition", "All"); // ✅ filter for that specific ID
     data.append("*", "*");
 
     try {
@@ -265,7 +220,7 @@ const UaerTabel = () => {
           </div>
         </div>
         <div className="button_search-payment">
-          <Link to={"/masterdata"}>
+          <Link to={"/newusers"}>
             <button type="button" className="btn btn">
               <i className="fa-solid fa-plus"></i> Add New Users
             </button>
@@ -277,49 +232,13 @@ const UaerTabel = () => {
               placeholder="Search for name or designation..."
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            {/* <span onClick={()=>{setpaymenticon(!paymenticon)}}>
-                   <BsThreeDotsVertical />
-                   </span> */}
+
           </div>
         </div>
 
-        {/* {
-                    paymenticon && (
-                    
-                      <div className='payment_three-icons'>
-                    <ul>All</ul>
-                    <ul>Last Week</ul>
-                    <ul>Last Month</ul>
-                    <ul>Last Year</ul>
-                    
-                    </div>
-                    )
-                  } */}
+  
       </div>
-      {/* <div className="search-container">
-        <div className="records-per-page-container">
-          <label htmlFor="recordsPerPage">Records Per Page:</label>
-          <select
-            id="recordsPerPage"
-            value={recordsPerPage}
-            onChange={(e) => setRecordsPerPage(Number(e.target.value))}
-          >
-            {[5, 10, 15, 20].map((n) => (
-              <option key={n} value={n}>
-                {n}
-              </option>
-            ))}
-          </select>
-        </div>
- 
-
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div> */}
+  
 
       {!loading && filteredData.length === 0 && !error && (
         <p className="no-data-message">No data available.</p>
@@ -333,27 +252,22 @@ const UaerTabel = () => {
                 <tr>
                   <th>Login Id</th>
                   <th>Password</th>
-                  <th>Status</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
 
               <tbody>
                 {currentRecords.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.MobileNo}</td>
+                    <td>{item.LoginID}</td>
                     <td>{item.Password}</td>
                     <td>
-                      {/* Toggle Switch for Active Status */}
-                      <div className="form-checku form-switch">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          checked={
-                            item.Active?.toString().toLowerCase() === "true"
-                          }
-                          onChange={() => toggleStatus(item.ID)}
-                        />
-                      </div>
+                    
+                      <Link to="/Updateuser" state={{ responseData: item }}>
+                        <button className="selet_edit-btn">
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

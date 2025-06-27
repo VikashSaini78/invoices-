@@ -14,6 +14,7 @@ const MasterData = () => {
     otp: "",
     PwdResetstring: "Nvalue",
     PwdLinkValidity: "",
+  
   });
 
   // Generate a 4-digit OTP
@@ -24,7 +25,19 @@ const MasterData = () => {
 
   // const getCurrentDate = () => new Date().toISOString().slice(0, 10);
 
-  
+  useEffect(() => {
+  const savedUserType = localStorage.getItem("UserType") || "0";
+
+  setFormData((prev) => ({
+    ...prev,
+    CreationDate: getCurrentDate(),
+    otp: generateOTP(),
+    UserType: savedUserType, // dynamically set usertype from login
+  }));
+}, []);
+
+
+
   useEffect(() => {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -143,7 +156,7 @@ const MasterData = () => {
             onChange={handleChange}
             required
           />
-        </div>
+        </div> 
 
         <div className="input_text-labalname">
           <label>Address</label>

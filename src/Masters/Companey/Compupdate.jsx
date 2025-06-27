@@ -3,158 +3,94 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Helper to generate correct logo URL
+const getLogoUrl = (fileName) => {
+  if (!fileName || fileName === "null") return null;
+  const cleanedPath = fileName.replace(/^~\//, "");
+  return `http://etour.responseinfoway.com/${cleanedPath}`;
+};
+
 const CompUpdateData = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const initialData = location.state?.responseData || {};
   const [editableData, setEditableData] = useState(initialData);
-  const [logoFile, setLogoFile] = useState(null);
+  const [previewImage, setPreviewImage] = useState(getLogoUrl(initialData.LogoPath));
 
- 
   useEffect(() => {
     console.log("Received Data for Update:", editableData);
   }, [editableData]);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditableData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const { name, value, files } = e.target;
+
+    if (name === "LogoPath" && files.length > 0) {
+      const file = files[0];
+      setEditableData((prevData) => ({
+        ...prevData,
+        [name]: file,
+      }));
+      // Set preview image
+      setPreviewImage(URL.createObjectURL(file));
+    } else {
+      setEditableData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSaveChanges = async () => {
     if (!editableData.CompID || !editableData.Name) {
-      console.error("Error: CompID and Name are required!");
-      toast.warn("Error: CompID and Name are required.");
+      toast.warn("CompID and Name are required.");
       return;
     }
-  
-    console.log("✔ Editable Data Before Sending:", editableData);
-  
-    // Define the condition for update
-    const whereCondition = `CompID=${editableData.CompID}`;
-  
-    // Construct URL-encoded form data
-    const updateData = new URLSearchParams({
-      SecurityKey: "abcd",
-      TableName: "company",
-      WhereCondition: whereCondition,
-    });                 
-  
-    // Append all other editable fields except ID
+
+    const formData = new FormData();
+    formData.append("SecurityKey", "abcd");
+    formData.append("TableName", "company");
+    formData.append("WhereCondition", `CompID=${editableData.CompID}`);
+
     Object.entries(editableData).forEach(([key, value]) => {
-      if (value !== undefined && value !== null && key !== "CompID") {
-        updateData.append(key, value.toString());
+      if (key !== "CompID" && value !== undefined && value !== null) {
+        formData.append(key, value);
       }
     });
-  
-    console.log("Final Data to Send:", updateData.toString());
-  
-    const updateUrl = "http://etour.responseinfoway.com/restapi/updatedata.aspx";
-  
+
     try {
-      console.log("Sending Update Request...");
-  
-      const response = await fetch(updateUrl, {
+      const response = await fetch("http://etour.responseinfoway.com/restapi/updatedata.aspx", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Accept: "application/json",
-        },
-        body: updateData.toString(),
+        body: formData,
       });
-  
-      console.log("🔍 Response Headers:", response.headers.get("content-type"));
-      console.log("✔ Response Status:", response.status);
-  
+
+      const textResponse = await response.text();
       let jsonResponse;
+
       try {
-        const textResponse = await response.text();
-        console.log("✔ Raw Update Response:", textResponse);
-        
         jsonResponse = JSON.parse(textResponse);
       } catch (error) {
-        console.warn("⚠ Response is not JSON. Assuming update was successful.");
-        toast.warn("Update successful, but response format is unknown.");
+        toast.warn("Update successful, but response format unknown.");
         navigate("/selectcompny", { state: { updatedItem: editableData } });
         return;
       }
-  
-      // Success check
+
       if (jsonResponse?.Response?.[0]?.Status === "Ok") {
-        alert("🎉 Data updated successfully!");
+        toast.success("🎉 Data updated successfully!");
         navigate("/selectcompny", { state: { updatedItem: editableData } });
       } else {
-        toast.error("Update failed: "+(jsonResponse.message || "Unknown error"));
+        toast.error("Update failed: " + (jsonResponse.message || "Unknown error"));
       }
-  
     } catch (error) {
-      console.error("Error updating data:", error);
-      alert("🎉 Data updated successfully!");
-      navigate("/selectcompny", { state: { updatedItem: editableData } });
+       toast.warn("Update successful, but response format unknown.");
+        navigate("/selectcompny", { state: { updatedItem: editableData } });
     }
   };
-  
-  
-  const handleFileChange = (e) => {
-  setLogoFile(e.target.files[0]);
-};
-
-// const handleSaveChanges = async () => {
-//   if (!editableData.CompID || !editableData.Name) {
-//     toast.warn("Error: CompID and Name are required.");
-//     return;
-//   }
-
-//   const whereCondition = `CompID=${editableData.CompID}`;
-
-//   const formData = new FormData();
-//   formData.append("SecurityKey", "abcd");
-//   formData.append("TableName", "company");
-//   formData.append("WhereCondition", whereCondition);
-
-//   Object.entries(editableData).forEach(([key, value]) => {
-//     if (value !== undefined && value !== null && key !== "CompID") {
-//       formData.append(key, value.toString());
-//     }
-//   });
-
-//   if (logoFile) {
-//     formData.append("LogoPath", logoFile); // 👈 Image file
-//   }
-
-//   try {
-//     const response = await fetch("http://etour.responseinfoway.com/restapi/updatedata.aspx", {
-//       method: "POST",
-//       body: formData,
-//     });
-
-//     const text = await response.text();
-//     console.log("✔ Raw Update Response:", text);
-
-//     const jsonResponse = JSON.parse(text);
-//     if (jsonResponse?.Response?.[0]?.Status === "Ok") {
-//       alert("🎉 Data updated successfully!");
-//       navigate("/selectcompny", { state: { updatedItem: editableData } });
-//     } else {
-//       toast.error("Update failed: " + (jsonResponse.message || "Unknown error"));
-//     }
-
-//   } catch (error) {
-//     console.error("Error updating data:", error);
-//     alert("Error updating data");
-//   }
-// };
-
-
-
 
   return (
-    <div className="update-container">
-    <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
-
+    <div className="update-container mt-3 mb-3">
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <h1>🔄 Update Company</h1>
+
       <form>
         <div className="input-group">
           <label>Name</label>
@@ -175,6 +111,15 @@ const CompUpdateData = () => {
             onChange={handleInputChange}
           />
         </div>
+          {/* <div className="input-group">
+          <label>StateID</label>
+          <input
+            type="number"
+            name="StateID"
+            value={editableData.StateID|| ""}
+            onChange={handleInputChange}
+          />
+        </div> */}
 
         <div className="input-group">
           <label>TelNo</label>
@@ -198,17 +143,10 @@ const CompUpdateData = () => {
 
         <div className="input-group">
           <label>LogoPath</label>
-          <input
-            type="file"
-            name="LogoPath"
-            value={editableData.logoFile}
-            onChange={handleInputChange}
-          />
+          <input type="file" name="LogoPath" onChange={handleInputChange} />
         </div>
 
-
-
-   
+       
         <button
           type="button"
           className="save-changebtn"
@@ -222,3 +160,4 @@ const CompUpdateData = () => {
 };
 
 export default CompUpdateData;
+

@@ -31,14 +31,13 @@ const Selectcompny = () => {
     setError(null);
     setLoading(true);
 
-        const loggedInUserId = localStorage.getItem("userId");
-
+    const loggedInUserId = localStorage.getItem("userId");
+    // console.log(loggedInUserId)
 
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
     data.append("TableName", "company");
-    // data.append("WhereCondition", "All");
-    data.append("WhereCondition",`MasterId=${loggedInUserId}`);
+    data.append("WhereCondition", `MasterId=${loggedInUserId}`);
     data.append("*", "*");
 
     try {
@@ -49,9 +48,11 @@ const Selectcompny = () => {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: data.toString(),
+       
       });
 
-      if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+      if (!response.ok)
+        throw new Error(`HTTP Error! Status: ${response.status}`);
 
       const jsonData = await response.json();
 
@@ -75,6 +76,7 @@ const Selectcompny = () => {
     const data = new URLSearchParams();
     data.append("SecurityKey", "abcd");
     data.append("TableName", "gststates");
+        data.append("WhereCondition", "All");
     data.append("*", "*");
 
     try {
@@ -87,7 +89,8 @@ const Selectcompny = () => {
         body: data.toString(),
       });
 
-      if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+      if (!response.ok)
+        throw new Error(`HTTP Error! Status: ${response.status}`);
 
       const json = await response.json();
 
@@ -98,6 +101,21 @@ const Selectcompny = () => {
       console.error("Failed to fetch states:", error);
     }
   };
+
+  //   Get state name by ID from fetched states
+const getStateName = (stateId) => {
+  // console.log("StateID received:", stateId); 
+  // console.log("States array:", states); 
+  const match = states.find((state) => String(state.ID) === String(stateId));
+  // console.log("Match found:", match);
+  return match ? match.State : "N/A";
+};
+
+  // const getStateName = (id) => {
+  //   const match = states.find((state) => String(state.ID) === String(id));
+  //   return match ? match.State : id;
+  // };
+
 
   // Apply search filter on company data
   const applyFilter = (query) => {
@@ -167,11 +185,6 @@ const Selectcompny = () => {
   const currentRecords = filteredData.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(filteredData.length / recordsPerPage);
 
-  // Get state name by ID from fetched states
-  const getStateName = (id) => {
-    const match = states.find((state) => String(state.ID) === String(id));
-    return match ? match.State : id;
-  };
 
   // Get logo URL or placeholder if not available
   const getLogoUrl = (fileName) => {
@@ -213,7 +226,7 @@ const Selectcompny = () => {
             />
           </div>
         </div>
-      </div>
+      </div> 
 
       <div className="search-container mt-3">
         <div className="records-per-page-container">
@@ -230,7 +243,7 @@ const Selectcompny = () => {
           </select>
         </div>
       </div>
-
+ 
       {filteredData.length > 0 ? (
         <div className="response-container">
           <div className="table-wrapper">
@@ -247,6 +260,7 @@ const Selectcompny = () => {
                   <th>Actions</th>
                 </tr>
               </thead>
+
               <tbody>
                 {currentRecords.map((item, index) => (
                   <tr key={index}>
@@ -255,7 +269,13 @@ const Selectcompny = () => {
                       .map(([key, val], i) => (
                         <td
                           key={i}
-                          style={key === "Address" ? { width: "150px" } : {}}
+                          className={key === "Name" ? "name-column" : ""}
+                          style={{
+                            ...(key === "Address" && { width: "200px" }),
+                            ...(key === "Name" && {
+                              Width: "150px",
+                            }),
+                          }}
                         >
                           {key === "LogoPath" ? (
                             getLogoUrl(item.LogoPath) ? (
@@ -289,7 +309,10 @@ const Selectcompny = () => {
 
                     <td>
                       <div className="seletdata_edit-delet-btn">
-                        <Link to="/compupdatedata" state={{ responseData: item }}>
+                        <Link
+                          to="/compupdatedata"
+                          state={{ responseData: item }}
+                        >
                           <button className="selet_edit-btn">
                             <i className="fa-solid fa-pen-to-square"></i>
                           </button>
@@ -319,8 +342,8 @@ const Selectcompny = () => {
               Previous
             </button>
             <span>
-              {" "}
-              {currentPage} of {totalPages}{" "}
+              
+              {currentPage} of {totalPages}
             </span>
             <button
               onClick={() =>
@@ -380,4 +403,3 @@ const Selectcompny = () => {
 };
 
 export default Selectcompny;
-
