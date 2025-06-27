@@ -40,7 +40,7 @@ function Taxes() {
     const formData = new FormData();
     formData.append("SecurityKey", "abcd");
     formData.append("TableName", "taxmaster");
-    formData.append("CompID", selectedCompID); // ✅ ONLY sending CompID
+    formData.append("CompID", selectedCompID); 
     // formData.append("TaxName", taxName);
     formData.append("TaxName", taxName.trimEnd());
 
