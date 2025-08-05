@@ -22,7 +22,7 @@ function Resetpass() {
     setConfirmPassword(e.target.value);
     setError("");
   };
-
+ 
   const handleUpdatePassword = async () => {
     if (!password || !confirmPassword) {
       setError("Password fields cannot be empty!");

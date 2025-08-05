@@ -39,7 +39,7 @@ const Selectcompny = () => {
     data.append("TableName", "company");
     data.append("WhereCondition", `MasterId=${loggedInUserId}`);
     data.append("*", "*");
-
+ 
     try {
       const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
       const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";

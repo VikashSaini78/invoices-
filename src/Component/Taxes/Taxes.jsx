@@ -32,7 +32,7 @@ function Taxes() {
     if (!selectedCompID || taxName.trim() === "" || taxRate.trim() === "") {
       toast.error("Please select company and enter Tax Name & Rate.");
       return;
-    }
+    } 
  
     const proxyUrl = "https://thingproxy.freeboard.io/fetch/"; // Or use your own proxy
     const apiUrl = "http://etour.responseinfoway.com/restapi/insertdata.aspx";
@@ -41,9 +41,7 @@ function Taxes() {
     formData.append("SecurityKey", "abcd");
     formData.append("TableName", "taxmaster");
     formData.append("CompID", selectedCompID); 
-    // formData.append("TaxName", taxName);
-    formData.append("TaxName", taxName.trimEnd());
-
+    formData.append("TaxName", taxName);
     formData.append("TaxRate", taxRate);
       
 
@@ -77,54 +75,7 @@ function Taxes() {
       toast.error("Network error. Please try again.");
     }
   };
-
-  useEffect(() => {
-    const fetchTaxes = async () => {
-      const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
-      const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
-
-      const data = new URLSearchParams();
-      data.append("SecurityKey", "abcd");
-      data.append("TableName", "Taxmaster");
-      data.append("WhereCondition", "All");
-      data.append("*", "*");
-
-      try {
-        const response = await fetch(proxyUrl + apiUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: data.toString(),
-        });
-
-        const text = await response.text();
-
-        let result;
-        try {
-          result = JSON.parse(text);
-        } catch (err) {
-          console.error("❌ Failed to parse JSON:", err);
-          return;
-        }
-
-        if (Array.isArray(result.Response)) {
-          console.log("📦 Taxes Data:", result.Response); 
-          setTaxes(result.Response);
-        } else {
-          console.warn("⚠️ Unexpected structure in response:", result);
-        }
-      } catch (err) {
-        console.error("❌ Network error while fetching taxes:", err);
-      }
-    };
-
-    fetchTaxes();
-  }, []);
-
-
-  // edit 
-     
+  
 
   const handleSaveChanges = async () => {
     const taxId = taxes[editIndex]?.ID;
@@ -134,6 +85,7 @@ function Taxes() {
     if (!editableData.TaxName || !editableData.TaxRate) {
       return toast.warn("Please enter both Tax Name and Rate.");
     }
+
 
     const formData = new URLSearchParams();
     formData.append("SecurityKey", "abcd");
@@ -156,16 +108,67 @@ function Taxes() {
       console.log("Edit Response:", textResponse);
 
       if (textResponse.toLowerCase().includes("ok")) {
-        toast.success("✅ Tax updated successfully!");
+        toast.success("Tax updated successfully!");
         window.location.reload();
       } else {
         toast.error("❌ Update failed: " + textResponse);
       }
     } catch (error) {
       console.error("Update Error:", error);
-      toast.success("✅ Tax updated successfully!");
+      toast.success("Tax updated successfully!");
     }
   };
+
+
+    useEffect(() => {
+      if (!selectedCompID) {
+        setTaxes([]); 
+        return;
+      }
+  
+      const fetchTaxes = async () => {
+        const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
+        const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
+  
+        const data = new URLSearchParams();
+        data.append("SecurityKey", "abcd");
+        data.append("TableName", "Taxmaster");
+        data.append("WhereCondition", `CompID=${selectedCompID}`);
+        data.append("*", "*");
+  
+        try {
+          const response = await fetch(proxyUrl + apiUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: data.toString(),
+          });
+  
+          const text = await response.text();
+          let result;
+          try {
+            result = JSON.parse(text);
+          } catch (err) {
+            console.error("❌ Failed to parse JSON:", err);
+            return;
+          }
+  
+          if (Array.isArray(result.Response)) {
+            console.log("📦 Taxes Data:", result.Response);
+            setTaxes(result.Response);
+          } else {
+            console.warn("⚠️ Unexpected structure in response:", result);
+            setTaxes([]);
+          }
+        } catch (err) {
+          console.error("❌ Network error while fetching taxes:", err);
+        }
+      };
+  
+      fetchTaxes();
+    }, [selectedCompID]);
+  
 
   // delet
 
@@ -209,42 +212,42 @@ function Taxes() {
 
   // Compney
 
-  useEffect(() => {
-    const loggedInUserId = localStorage.getItem("userId");
-
-    const fetchCompanies = async () => {
-      const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
-      const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
-
-      const data = new URLSearchParams();
-      data.append("SecurityKey", "abcd");
-      data.append("TableName", "company");
-      data.append("WhereCondition", `MasterId=${loggedInUserId}`);
-      data.append("*", "*");
-
-      try {
-        const response = await fetch(proxyUrl + apiUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: data.toString(),
-        });
-
-        const jsonData = await response.json();
-        if (jsonData.Response) {
-          setResponseData(jsonData.Response);
-        } else {
-          toast.error("No companies found.");
+    useEffect(() => {
+      const loggedInUserId = localStorage.getItem("userId");
+  
+      const fetchCompanies = async () => {
+        const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
+        const apiUrl = "http://etour.responseinfoway.com/restapi/Selectdata.aspx";
+  
+        const data = new URLSearchParams();
+        data.append("SecurityKey", "abcd");
+        data.append("TableName", "company");
+        data.append("WhereCondition", `MasterId=${loggedInUserId}`);
+        data.append("*", "*");
+  
+        try {
+          const response = await fetch(proxyUrl + apiUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: data.toString(),
+          });
+  
+          const jsonData = await response.json();
+          if (jsonData.Response) {
+            setResponseData(jsonData.Response);
+          } else {
+            toast.error("No companies found.");
+          }
+        } catch (error) {
+          console.error("Error fetching companies:", error);
         }
-      } catch (error) {
-        console.error("Error fetching companies:", error);
-        // toast.error("Failed to fetch companies.");
-      }
-    };
+      };
+  
+      fetchCompanies();
+    }, []);
 
-    fetchCompanies();
-  }, []);
 
   const handleCompanyChange = (e) => {
     const compId = e.target.value;
@@ -324,7 +327,7 @@ function Taxes() {
 
                 <div className=" w-20 ml-10">
                   <label className="block text-gray-600 text-sm font-medium ">
-                    Taxes Name
+                    Tax Name
                   </label>
                   <input
                     type="text"
@@ -339,7 +342,7 @@ function Taxes() {
 
                 <div className=" w-24">
                   <label className="block text-gray-600 text-sm font-medium">
-                    Taxes Rate (%)
+                    Tax Rate (%)
                   </label>
                   <input
                     type="text"
@@ -444,7 +447,7 @@ function Taxes() {
               >
                 Cancel
               </button>
-              <button
+             <button
                 type="button"
                 className="delete_button"
                 data-bs-dismiss="modal"

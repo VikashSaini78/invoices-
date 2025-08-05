@@ -149,7 +149,7 @@ const MasterData = () => {
         <div className="input_text-labalname">
           <label>Mobile No.</label>
           <input
-            type="text"
+            type="Number"
             name="mobileno"
             placeholder="Ex.8000000000"
             value={formData.mobileno}
@@ -182,27 +182,7 @@ const MasterData = () => {
           />
         </div>
 
-        {/* Active Field as a Select Dropdown */}
-        {/* <div className="input_text-labalname">
-          <label>Active</label>
-          <select name="active" value={formData.active} onChange={handleChange}>
-            <option value="true">True</option>
-            <option value="false">False</option>
-          </select>
-        </div> */}
-
-        {/* Pwd Reset String */}
-        {/* <div className="input_text-labalname none">
-          <label>Pwd Reset String</label>
-          <input
-            type="text"
-            name="PwdResetstring"
-            placeholder="Enter PwdResetstring"
-            value={formData.PwdResetstring}
-            onChange={handleChange}
-          />
-        </div> */}
-
+        
         <button className="masterdata_submit-btn" type="submit">
           Submit
         </button>

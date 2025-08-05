@@ -33,14 +33,9 @@ function Signup() {
     return ( 
         <>
            <div className="sign_up-container">
-
-        
-
-
            <div className="signup_div">
            <div className="sign_logo">
             <img src="./media/responseinfoway_logo.jpg" alt="errir image"/>
-
             </div>
            <form className="lognup_page" onSubmit={onsubmitvalue}>
            <h6>Create New Account !</h6>

@@ -279,7 +279,6 @@ useEffect(() => {
       <div className="Payment_div">
         <div className="payment_maintext">
           <h6>Master</h6>
-          {/* <h1>{userType}</h1> */}
 
           <div>
             <Link className="payment_breadcrumbs" to={"/selectcompny"}>

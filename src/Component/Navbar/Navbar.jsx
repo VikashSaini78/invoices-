@@ -428,14 +428,47 @@ function Navbar() {
                         Taxes
                       </li>
                     </Link>
-
-                    <Link to={"/payment"}>
-                      <li> Services</li>
+                    <Link to={"/showservice"}>
+                      <li
+                        onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >
+                        ServiceMast
+                      </li>
+                    </Link>
+                    <Link to={"/showvehicletype"}>
+                      <li
+                        onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >
+                        Vehicle Type
+                      </li>
+                    </Link>
+                    <Link to={"/showfares"}>
+                      <li
+                        onClick={() => {
+                          if (window.innerWidth <= 750) {
+                            setadmin(!admin);
+                          }
+                        }}
+                      >
+                        Fares
+                      </li>
                     </Link>
 
-                    <li>Vehicle Type</li>
+                    <Link to={"/payment"}>
+                      <li> Ledger</li>
+                    </Link>
+
+                    {/* <li></li> */}
                     <li>Vehicles</li>
-                    <li>Ledger</li>
+                    {/* <li></li> */}
                     <li>Group Master</li>
                     <li>Users</li>
                   </div>
@@ -724,8 +757,9 @@ function Navbar() {
               <footer>
                 <div className="footer_div">
                   <p>2025 © &nbsp; &nbsp; e Tour.</p>
-                  <h6 className={admin ? "w-[25%]" : " w-[36%]" }>Design & Develop by Response Infoway</h6>
-
+                  <h6 className={admin ? "w-[25%]" : " w-[36%]"}>
+                    Design & Develop by Response Infoway
+                  </h6>
                 </div>
               </footer>
             </>

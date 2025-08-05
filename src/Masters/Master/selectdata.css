@@ -118,7 +118,33 @@ body{
   position: static;
   display: flex;
   margin: auto;
+
 }
+.input-group_select label{
+  text-align: start;
+  font-size: 14px;
+  font-weight: 400;
+}
+.input-group_select{
+    width: 200px;
+  display: grid;
+  margin: auto;
+    font-size: 14px;
+
+}
+.input-group_select select{
+  font-size: 14px;
+  outline: none;
+    /* width: 60px;  */
+padding: 6px;
+margin: 0px; 
+border: 1px solid gray;
+border-radius: 3px;
+margin-top: 6px;
+margin-bottom: 16px;
+  
+}
+
 
 .input-labal{
   display: flex;
@@ -141,15 +167,18 @@ border: 1px solid gray;
 border-radius: 3px;
 }
 .input-group_max input{
-  width: 60px;
+  width: 60px; 
   font-size: 13px;
 padding: 6px;
-margin: 0px;
+margin: 0px; 
 border: 1px solid gray;
 border-radius: 3px;
 margin-top: 6px;
 margin-bottom: 16px;
 }
+
+
+
 .input-group_max {
   margin: auto;
   width: 200px;

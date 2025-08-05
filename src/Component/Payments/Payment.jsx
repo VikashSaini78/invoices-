@@ -5,7 +5,7 @@ function Payment() {
   const [paymenticon,setpaymenticon] = useState("")
     return ( 
         <>
-            <div className="container-fluid">
+            <div className="container-fluid mb-4">
             <div className="Payment_div">
           <div className='payment_maintext' >
             <h6>Payments</h6>
@@ -42,7 +42,7 @@ function Payment() {
             </div>
 
     
-             <div className="All_payment">
+             <div className="All_payment ">
              <div className="payment_id">
                   <div className="payment_text">
                <h6 className="payment_text-all"> All</h6> <h6>Paid</h6> <h6>Pending</h6>
